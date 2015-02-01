@@ -16,6 +16,7 @@ brew cask install vagrant-bar
 brew cask install flux
 brew cask install bartender
 brew cask install insomniax
+brew cask install caffeine
 
 # Sophos
 # brew cask install sophos-anti-virus-home-edition
