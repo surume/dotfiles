@@ -1,0 +1,151 @@
+filetype plugin indent off
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" plugin -----------------
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+" 補完
+NeoBundle 'Shougo/neocomplete'
+" スニペット
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+" カラースキーマ molokai
+NeoBundle 'tomasr/molokai'
+" ファイラ
+NeoBundle 'Shougo/vimfiler.vim'
+" スムーススクロール
+" NeoBundle 'yonchu/accelerated-smooth-scroll'
+
+" Git 重い気がする
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'sgur/vim-gitgutter'
+" vim-autoclose
+NeoBundle 'Townk/vim-autoclose'
+let g:autoclose_on = 1
+autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified("|", "")
+" emmet
+NeoBundle 'mattn/emmet-vim'
+" 自動保存
+NeoBundle 'vim-scripts/vim-auto-save'
+let g:auto_save = 1
+" Syntax Check Rubocop
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive',
+      \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+" インデント
+NeoBundle 'Yggdroot/indentLine'
+let g:indentLine_faster = 1
+nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
+" ステータスバー
+NeoBundle 'itchyny/lightline.vim' 
+
+" 高機能整形・桁揃えプラグイン
+NeoBundle 'Align'
+
+" rails用-----------------
+" Rails向けのコマンドを提供する
+NeoBundle 'tpope/vim-rails'
+" Ruby向けにendを自動挿入してくれる
+NeoBundle 'tpope/vim-endwise'
+" コメントON/OFFを手軽に実行 
+NeoBundle 'tomtom/tcomment_vim'
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
+      \ 'insert' : 1,
+      \ 'filetypes': 'ruby',
+      \ }}
+
+" .や::を入力したときにオムニ補完が有効になるようにする
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+" 環境変数RSENSE_HOMEに'/usr/local/bin/rsense'を指定しても動く
+let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
+
+call neobundle#end()
+NeoBundleCheck
+
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
+
+
+" number表示
+set number
+" タイトルにファイル名
+set title
+" カーソルが何行目の何列目に置かれているかを表示する
+set ruler
+" コマンドラインに使われる画面上の行数
+set cmdheight=2
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+" 文脈によって解釈が異なる全角文字の幅を、2に固定する
+set ambiwidth=double
+" 小文字のみで検索したときに大文字小文字を無視する
+set smartcase
+" 検索結果をハイライト表示する
+set hlsearch
+" 暗い背景色に合わせた配色にする
+set background=dark
+" タブをスペース２つに
+set tabstop=2
+set shiftwidth=2
+set expandtab
+" 対応する括弧やブレースを表示する
+set showmatch
+" 自動インデント
+set autoindent
+" Cプログラムファイルの自動インデントを始める
+set cindent      
+" 改行時に前の行のインデントを継続する
+set autoindent
+" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set smartindent
+
+" 検索ワードの最初の文字を入力した時点で検索を開始する
+set incsearch
+set showmatch
+set ignorecase 
+set autowrite 
+" 保存されていないファイルがあるときでも別のファイルを開けるようにする
+set hidden
+
+set history=50
+" 文字のないところにカーソル移動できるようにする
+" set virtualedit=block
+" カーソルを行頭、行末で止まらないようにする
+set whichwrap=b,s,[,],<,>
+" バックスペースを、空白、行末、行頭でも使えるようにする
+set backspace=indent,eol,start
+" コマンドラインモードで<Tab>キーによるファイル名補完を有効にする
+set wildmenu
+" コマンド表示
+set showcmd 
+" beep音出さない
+set visualbell
+
+" iTerm遅い問題
+set lazyredraw
+set ttyfast
+
+" マウス用設定
+set mouse=a 
+

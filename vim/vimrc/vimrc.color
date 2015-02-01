@@ -1,0 +1,11 @@
+"=======================
+" color設定
+"=======================
+
+" カラースキーマ
+colorscheme molokai
+" シンタックスハイライト on
+syntax on
+" 行番号の色
+highlight LineNr ctermfg=darkyellow
+

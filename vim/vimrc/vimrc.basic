@@ -1,0 +1,64 @@
+"---------------------------
+" vimrc基本設定
+"---------------------------
+
+" キーマップリーダー "
+let mapleader = ","
+" スクロール時の余白確保 "
+set scrolloff=5
+" 一行に長い文章を書いていても自動折り返しをしない "
+set textwidth=0
+" バックアップ取らない "
+set nobackup
+" スワップファイル無効化
+set noswapfile
+" 他で書き換えられたら自動で読み直す "
+set autoread
+" 保存されていないファイルがあるときでも別のファイルを開けるようにする
+set hidden
+" バックスペースを、空白、行末、行頭でも使えるようにする
+set backspace=indent,eol,start
+" テキスト整形オプション，マルチバイト系を追加 "
+set formatoptions=lmoq
+" beep音出さない
+set visualbell
+" Exploreの初期ディレクトリ
+set browsedir=buffer
+" カーソルを行頭、行末で止まらないようにする  "
+set whichwrap=b,s,h,l,<,>,[,]
+" コマンド表示
+set showcmd 
+" モードラインは無効 "
+set modelines=0
+"0"で始まる数値を、8進数として扱わないようにする
+set nrformats-=octal
+
+" set notitle
+
+" OSのクリップボードを使用する
+set clipboard+=unnamed
+
+" マウス用設定
+set mouse=a 
+set guioptions+=a
+set ttymouse=xterm2
+
+" iTerm遅い問題
+set lazyredraw
+set ttyfast
+
+"ヤンクした文字は、システムのクリップボードに入れる"
+set clipboard=unnamed
+
+"ヤンクした文字は、システムのクリップボードに入れる"
+set clipboard=unnamed
+" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
+imap <C-p>  <ESC>"*pa"
+
+
+" Ev/Rvでvimrcの編集と反映
+command! Ev edit $MYVIMRC
+command! Rv source $MYVIMRC
+
+filetype plugin indent on
+

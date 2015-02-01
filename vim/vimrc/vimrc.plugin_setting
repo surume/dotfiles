@@ -1,0 +1,97 @@
+" ----------------------
+" KeyMap
+" ----------------------
+
+" インサートモード抜ける
+inoremap <silent> jj <ESC>
+inoremap <silent> kk <ESC>
+
+"===================
+" Align
+"===================
+" Alignを日本語環境で使用するための設定
+let g:Align_xstrlen = 3
+
+"===================
+" accelerated-smooth-scroll用
+"===================
+" let g:ac_smooth_scroll_enable_accelerating = 0
+" " <C-d>/<C-u> 時のスリープ時間 (msec) : 小さくするとスクロールが早くなります。
+" let g:ac_smooth_scroll_du_sleep_time_msec = 2
+" " <C-f>/<C-b> 時のスリープ時間 (msec) : 小さくするとスクロールが早くなります。
+" " Default : 10
+" let g:ac_smooth_scroll_fb_sleep_time_msec = 3
+
+
+"===================
+" Rubocop Syntax用
+"===================
+nnoremap <silent> <Leader>s :<C-u>SyntasticCheck<CR>
+
+"===================
+" VimFiler用
+"===================
+"vimデフォルトのエクスプローラをvimfilerで置き換える
+let g:vimfiler_as_default_explorer = 1
+" セーフモードを無効にした状態で起動する
+let g:vimfiler_safe_mode_by_default = 0
+" 現在開いているバッファのディレクトリを開く
+nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+nnoremap <F2> :VimFilerExplore -split -winwidth=30 -toggle -no-quit<Cr>
+
+"=====================
+" Unite用
+" ====================
+" prefix keyの設定
+nmap <Space> [unite]
+
+"スペースキーとaキーでカレントディレクトリを表示
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+"スペースキーとfキーでバッファと最近開いたファイル一覧を表示
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer file_mru<CR>
+"スペースキーとdキーで最近開いたディレクトリを表示
+nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
+"スペースキーとbキーでバッファを表示
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+"スペースキーとrキーでレジストリを表示
+nnoremap <silent> [unite]r :<C-u>Unite<Space>register<CR>
+"スペースキーとtキーでタブを表示
+nnoremap <silent> [unite]t :<C-u>Unite<Space>tab<CR>
+"スペースキーとhキーでヒストリ/ヤンクを表示
+nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+"スペースキーとoキーでoutline
+nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
+"スペースキーとENTERキーでfile_rec:!
+nnoremap <silent> [unite]<CR> :<C-u>Unite<Space>file_rec:!<CR>
+"unite.vimを開いている間のキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+" ESCでuniteを終了
+function! s:unite_my_settings()"{{{
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+endfunction"}}}
+
+" ====================
+" neocomplete
+" ====================
+" neocompleteを起動時に有効化
+let g:neocomplete#enable_at_startup = 1
+" 大文字が入力されるまで大文字小文字を無視
+let g:neocomplete#enable_smart_case = 1
+" アンダーバー区切りの保管を有効化
+let g:neocomplete#enable_underbar_completion = 1
+" キャッシュの最大文字数を3文字に
+let g:neocomplete#min_syntax_length = 3
+
+" =====================
+" neosnippet
+" =====================
+
+" TABキーで補完の移動をしたい
+inoremap <expr><TAB> pumvisible() ? "\<C-p>" : "<TAB>
+imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" <C-k>で展開
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+
