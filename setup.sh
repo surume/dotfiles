@@ -5,6 +5,8 @@
 # Xcode license認証
 sudo xcodebuild -license
 
+xcode-select --install
+
 # Brewのインストール
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update

@@ -1,14 +1,12 @@
 " vi 互換ではなくVim のデフォルト設定にする
 set nocompatible
 filetype plugin indent off
-
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
 set runtimepath+=~/.vim/bundle/neobundle.vim/
  
 call neobundle#begin(expand('~/.vim/bundle/'))
- 
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
  
@@ -33,6 +31,12 @@ let g:vimfiler_safe_mode_by_default = 0
 " NeoBundle 'tpope/vim-fugitive'
 " NeoBundle 'airblade/vim-gitgutter'
 " NeoBundle 'sgur/vim-gitgutter'
+" vim-autoclose
+NeoBundle 'Townk/vim-autoclose'
+let g:autoclose_on = 1
+autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified("|", "")
+" emmet
+NeoBundle 'mattn/emmet-vim'
 " 自動保存
 NeoBundle 'vim-scripts/vim-auto-save'
 let g:auto_save = 1
@@ -203,3 +207,4 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction"}}}
+

@@ -14,6 +14,8 @@ brew cask install dropbox
 brew cask install evernote
 brew cask install vagrant-bar
 brew cask install flux
+brew cask install bartender
+brew cask install insomniax
 
 # Sophos
 # brew cask install sophos-anti-virus-home-edition
