@@ -15,6 +15,9 @@ brew install ruby-build
 brew install rbenv-gemset
 brew install rbenv-gem-rehash
 
+# tmux クリップボード共有用
+brew install reattach-to-user-namespace
+
 # gibo
 brew install gibo
 
