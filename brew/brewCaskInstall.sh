@@ -17,6 +17,7 @@ brew cask install flux
 brew cask install bartender
 brew cask install insomniax
 brew cask install caffeine
+brew cask install kobito
 
 # Sophos
 # brew cask install sophos-anti-virus-home-edition
