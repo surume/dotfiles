@@ -27,6 +27,8 @@
 [alias]
     co = checkout
     cm = commit
+    ps = push
+    ft = fetch
     ce = commit -v --amend
     st = status --branch --short
     si = status --ignored --short
