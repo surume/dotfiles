@@ -41,3 +41,4 @@ alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s
 alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 
 alias cdghq='cd $(ghq list -p | peco)'
+alias be='bundle exec'
