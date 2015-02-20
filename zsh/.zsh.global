@@ -42,3 +42,4 @@ alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 
 alias cdghq='cd $(ghq list -p | peco)'
 alias be='bundle exec'
+alias v='vagrant'
