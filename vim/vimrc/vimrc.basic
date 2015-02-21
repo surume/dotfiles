@@ -33,7 +33,7 @@ set modelines=0
 "0"で始まる数値を、8進数として扱わないようにする
 set nrformats-=octal
 
-" set notitle
+set notitle
 
 " OSのクリップボードを使用する
 set clipboard+=unnamed
