@@ -42,16 +42,6 @@ nnoremap <F2> :VimFilerExplore -split -winwidth=30 -toggle -no-quit<Cr>
 "=====================
 " Unite用
 " ====================
-" prefix keyの設定
-nmap <Space> [unite]
-
-" grep検索
-nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-" カーソル位置の単語をgrep検索
-nnoremap <silent> [unite]cg :<C-u>Unite grep:.  -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-nnoremap <silent> [unite]r  :<C-u>UniteResume search-buffer<CR>
 
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
@@ -60,6 +50,15 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+" prefix keyの設定
+nmap <Space> [unite]
+
+" grep検索
+nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> [unite]cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" grep検索結果の再呼出
+nnoremap <silent> [unite]r  :<C-u>UniteResume search-buffer<CR>
 "スペースキーとaキーでカレントディレクトリを表示
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 "スペースキーとfキーでバッファと最近開いたファイル一覧を表示
