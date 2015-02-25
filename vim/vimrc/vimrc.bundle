@@ -35,7 +35,7 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'mattn/emmet-vim'
 " 自動保存
 NeoBundle 'vim-scripts/vim-auto-save'
-" let g:auto_save = 1
+let g:auto_save = 1
 " Syntax Check Rubocop
 NeoBundle 'scrooloose/syntastic'
 " let g:syntastic_mode_map = { 'mode': 'passive',
