@@ -10,6 +10,7 @@ brew cask install karabiner
 brew cask install iterm2
 brew cask install virtualbox
 brew cask install vagrant
+brew cask install chefdk
 brew cask install dropbox
 brew cask install evernote
 brew cask install vagrant-bar
