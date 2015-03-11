@@ -17,6 +17,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export GOPATH=/Users/s_miyamoto
 export TERM=xterm-256color
 
+# direnv
+whence direnv >/dev/null && eval "$(direnv hook zsh)"
+
 # peco設定
 function peco-select-history() {
   local tac
@@ -41,6 +44,8 @@ alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 
 # ghqディレクトリ
 alias cdghq='cd $(ghq list -p | peco)'
+# ghqディレクトリ削除
+alias rmghq='rm -rf $(ghq list -p | peco)'
 # bundle exec
 alias be='bundle exec'
 # vim 
