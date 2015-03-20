@@ -2,45 +2,48 @@
 # .gitconfig
 #
 [core]
-    excludesfile = ~/.gitignore
-    attributesfile = ~/.gitattributes
-    editor = vim
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  editor = vim
     # Unicode
-    precomposeunicode = true
-    quotepath = true
+  precomposeunicode = true
+  quotepath = true
 [include]
-    path = ~/.gitconfig_local
+  path = ~/.gitconfig_local
 [push]
     # simple,matching,upstream,current
-    default = simple
+  default = simple
 [color]
-    ui = auto
-    status = auto
-    diff = auto
-    branch = auto
-    interactive = auto
-    grep = auto
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
 [diff]
-    patience = true
+  patience = true
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
 [help]
-    autocorrect = 0
+  autocorrect = 0
 [alias]
-    co = checkout
-    cm = commit
-    ps = push
-    ft = fetch
-    br = branch
-    ce = commit -v --amend
-    st = status --branch --short
-    si = status --ignored --short
-    branches = branch -a
-    remotes = remote -v
-    tags = tag -l
-    lg = log --graph --all --decorate --abbrev-commit --branches --date=short --pretty=format:\"%C(red)%h%C(reset) %C(green)[%ad]%C(reset) %s %C(cyan)@%an%C(reset) %C(yellow)%d%C(reset)\"
-    fp = fetch --prune
-    dh = diff --histogram
-    dw = diff --word-diff
-    dc = diff --cached
-    wc = whatchanged
-	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-    
+  co = checkout
+  cm = commit
+  ps = push
+  ft = fetch
+  br = branch
+  ce = commit -v --amend
+  st = status --branch --short
+  si = status --ignored --short
+  branches = branch -a
+  remotes = remote -v
+  tags = tag -l
+  lg = log --graph --all --decorate --abbrev-commit --branches --date=short --pretty=format:\"%C(red)%h%C(reset) %C(green)[%ad]%C(reset) %s %C(cyan)@%an%C(reset) %C(yellow)%d%C(reset)\"
+  fp = fetch --prune
+  dh = diff --histogram
+  dw = diff --word-diff
+  dc = diff --cached
+  wc = whatchanged
+  tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+
