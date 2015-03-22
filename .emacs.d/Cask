@@ -32,3 +32,5 @@
 (depends-on "evil")
 (depends-on "helm")
 (depends-on "multiple-cursors")
+(depends-on "auto-save-buffers-enhanced")
+(depends-on "rinari")
