@@ -124,5 +124,6 @@ tramp
 
 # cask packages
 .cask/
+*.dat
 
 
