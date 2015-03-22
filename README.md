@@ -1,8 +1,6 @@
 ## dotfiles
 
-1. git cloneする
-  * $ git clone
-1. Gitのユーザ設定をする
-  * vim .gitconfig_local
- 
-多分うまくいくはず…
+* ファイル構成汚い、いつか直す
+
+こっちから使ってる
+* ``` [mac-provisioning](https://github.com/Surume/mac-provisioning) ```
