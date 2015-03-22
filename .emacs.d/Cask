@@ -34,3 +34,6 @@
 (depends-on "multiple-cursors")
 (depends-on "auto-save-buffers-enhanced")
 (depends-on "rinari")
+(depends-on "helm-ghq")
+(depends-on "git-gutter")
+(depends-on "git-gutter-fringe+")

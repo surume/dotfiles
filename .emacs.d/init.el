@@ -6,6 +6,11 @@
 (cask-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; helm-ghq
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'helm-ghq)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'evil)
@@ -19,26 +24,26 @@
 (helm-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; linum 
+;; linum
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 行No
 (require 'linum)
 (global-linum-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; flycheck 
+;; flycheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; popwin 
+;; popwin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; auto-complete 
+;; auto-complete
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -56,7 +61,6 @@
 (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
 (auto-save-buffers-enhanced t)
 
-
 ;; ターミナルのときメニューを表示しない
 (if (eq window-system 'x)
         (menu-bar-mode 1) (menu-bar-mode 0))
@@ -68,7 +72,7 @@
 (show-paren-mode t)
 
 ;; yes-noをy-nに置き換え
-(fset 'yes-or-no-p 'y-or-n-p) 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)
@@ -95,3 +99,9 @@
 ; KeyBinding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mac-option-modifier 'meta)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; git-gutter-fringe
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'git-gutter-fringe)
+(global-git-gutter-mode)
