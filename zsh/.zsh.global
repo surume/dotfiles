@@ -54,5 +54,7 @@ alias rmghq='rm -rf $(ghq list -p | peco)'
 alias be='bundle exec'
 # vim 
 alias vi='vim'
+# git
+alias g='git'
 # vagrant
 alias v='vagrant'
