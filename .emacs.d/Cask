@@ -31,9 +31,14 @@
 (depends-on "popwin")
 (depends-on "evil")
 (depends-on "helm")
+(depends-on "helm-ghq")
 (depends-on "multiple-cursors")
 (depends-on "auto-save-buffers-enhanced")
 (depends-on "rinari")
-(depends-on "helm-ghq")
+
 (depends-on "git-gutter")
+(depends-on "fringe-helper")
+(depends-on "git-gutter-fringe")
 (depends-on "git-gutter-fringe+")
+
+(depends-on "atom-dark-theme")

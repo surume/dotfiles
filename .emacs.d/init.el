@@ -6,11 +6,6 @@
 (cask-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; helm-ghq
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'helm-ghq)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'evil)
@@ -30,17 +25,22 @@
 ;; For helm-find-files etc.
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
+(setq helm-buffer-max-length 50)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; helm-ghq
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'helm-ghq)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; linum
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 行No
-(require 'linum)
-(global-linum-mode)
+(global-linum-mode t)
+(setq linum-format "%2d ")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flycheck
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -63,12 +63,28 @@
 (require 'magit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; git-gutter-fringe
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'git-gutter-fringe)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; atom-dark
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-theme 'atom-dark t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-save-buffers-enhanced
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'auto-save-buffers-enhanced)
 (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
 (auto-save-buffers-enhanced t)
 
+;; スタートアップ非表示
+(setq inhibit-startup-screen t)
+;; scratchの初期メッセージ消去
+(setq initial-scratch-message "")
 ;; ターミナルのときメニューを表示しない
 (if (eq window-system 'x)
         (menu-bar-mode 1) (menu-bar-mode 0))
@@ -108,8 +124,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mac-option-modifier 'meta)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; git-gutter-fringe
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'git-gutter-fringe)
-(global-git-gutter-mode)
+
