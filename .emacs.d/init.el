@@ -27,6 +27,7 @@
 (require 'helm-config)
 (require 'helm-files)
 (require 'helm-ag)
+(require 'helm-imenu)
 (helm-mode 1)
 ;; agのデフォルトのコマンドオプションを指定
 ;; -nを消すとサブディレクトリも再帰的に検索します
