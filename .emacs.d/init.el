@@ -5,6 +5,8 @@
 (require 'cask)
 (cask-initialize)
 
+(require 'cl)
+(require 'yasnippet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,7 +18,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'key-chord)
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.15)
+(setq key-chord-two-keys-delay 0.5)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm
@@ -75,6 +77,7 @@
 (setq popwin:popup-window-position 'bottom)
 ;; helm
 (push '("*helm*") popwin:special-display-config)
+(push '("*rspec*") popwin:special-display-config)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-save-buffers-enhanced
@@ -82,6 +85,12 @@
 (require 'auto-save-buffers-enhanced)
 (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
 (auto-save-buffers-enhanced t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-highlight-symbol
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil-surround
@@ -103,6 +112,7 @@
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ruby-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,16 +123,14 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rcodetools
+;; rspec-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(add-to-list 'load-path "~/.emacs.d/rcodetools-0.8.5.0")
-;(require 'rcodetools)
-;(setq rct-find-tag-if-available nil)
-;(defun ruby-mode-hook-rcodetools ()
-;  (define-key ruby-mode-map "\M-\C-i" 'rct-complete-symbol)
-;  (define-key ruby-mode-map "\C-c\C-t" 'ruby-toggle-buffer)
-;  (define-key ruby-mode-map "\C-c\C-f" 'rct-ri))
-;(add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
+(require 'rspec-mode)
+(eval-after-load 'rspec-mode
+   '(rspec-install-snippets))
+(add-to-list 'minor-mode-alist ' (rspec-mode))
+(custom-set-variables '(rspec-use-rake-flag nil))
+(custom-set-faces )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -169,6 +177,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)
+;; バックアップファイルを作らないようにする
+(setq make-backup-files nil)
+;;; 終了時にオートセーブファイルを消す
+(setq delete-auto-save-files t)
+
 ;; インデントはタブではなくスペースを使用
 (setq-default indent-tabs-mode nil)
 ;; 行末の空白をハイライト
@@ -179,6 +192,13 @@
 ;; ファイル名補完で大文字小文字を区別しない
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
+
+;;; 現在行を目立たせる
+(global-hl-line-mode)
+
+;; バッファの同一ファイル名を区別する
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 操作に関する設定
@@ -192,6 +212,8 @@
 ;; KeyBinding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mac-option-modifier 'meta)
+(setq ns-alternate-modifier (quote meta))
+(global-set-key "\C-cg" 'magit-status)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -204,15 +226,6 @@
 
 
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rspec-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'rspec-mode)
-(eval-after-load 'rspec-mode
-    '(rspec-install-snippets))
-(custom-set-variables '(rspec-use-rake-flag nil))
-(custom-set-faces )
 
 
 
