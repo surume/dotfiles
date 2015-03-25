@@ -102,6 +102,7 @@ auto-save-list
 tramp
 .\#*
 recentf
+projectile-bookmarks.eld
 
 # Org-mode
 .org-id-locations
