@@ -29,11 +29,27 @@
 (depends-on "yasnippet")
 (depends-on "auto-complete")
 (depends-on "popwin")
+
 (depends-on "evil")
+(depends-on "evil-surround")
+
+(depends-on "rbenv")
+(depends-on "ruby-block")
+(depends-on "ruby-electric")
+(depends-on "mode-compile")
+(depends-on "rspec-mode")
+
 (depends-on "helm")
+(depends-on "helm-ghq")
+
 (depends-on "multiple-cursors")
 (depends-on "auto-save-buffers-enhanced")
 (depends-on "rinari")
-(depends-on "helm-ghq")
+
 (depends-on "git-gutter")
+(depends-on "fringe-helper")
+(depends-on "git-gutter-fringe")
 (depends-on "git-gutter-fringe+")
+
+(depends-on "atom-dark-theme")
+(depends-on "key-chord")

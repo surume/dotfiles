@@ -102,6 +102,7 @@ build/
 auto-save-list
 tramp
 .\#*
+recentf
 
 # Org-mode
 .org-id-locations
