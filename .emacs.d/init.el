@@ -5,6 +5,8 @@
 (require 'cask)
 (cask-initialize)
 
+(require 'cl)
+(require 'yasnippet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,14 +18,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'key-chord)
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.15)
+(setq key-chord-two-keys-delay 0.5)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'helm)
 (require 'helm-config)
+(require 'helm-files)
+(require 'helm-ag)
+(require 'helm-imenu)
 (helm-mode 1)
+;; agのデフォルトのコマンドオプションを指定
+;; -nを消すとサブディレクトリも再帰的に検索します
+(setq helm-ag-base-command "ag --nocolor --nogroup -n")
+
+;;Alt+sでag実行
+(define-key global-map [(M s)] 'helm-ag)
 (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 (define-key global-map (kbd "C-x b") 'helm-for-files)
@@ -75,6 +86,7 @@
 (setq popwin:popup-window-position 'bottom)
 ;; helm
 (push '("*helm*") popwin:special-display-config)
+(push '("*rspec*") popwin:special-display-config)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-save-buffers-enhanced
@@ -82,6 +94,12 @@
 (require 'auto-save-buffers-enhanced)
 (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
 (auto-save-buffers-enhanced t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-highlight-symbol
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil-surround
@@ -103,6 +121,7 @@
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ruby-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,16 +132,14 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rcodetools
+;; rspec-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(add-to-list 'load-path "~/.emacs.d/rcodetools-0.8.5.0")
-;(require 'rcodetools)
-;(setq rct-find-tag-if-available nil)
-;(defun ruby-mode-hook-rcodetools ()
-;  (define-key ruby-mode-map "\M-\C-i" 'rct-complete-symbol)
-;  (define-key ruby-mode-map "\C-c\C-t" 'ruby-toggle-buffer)
-;  (define-key ruby-mode-map "\C-c\C-f" 'rct-ri))
-;(add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
+(require 'rspec-mode)
+(eval-after-load 'rspec-mode
+   '(rspec-install-snippets))
+(add-to-list 'minor-mode-alist ' (rspec-mode))
+(custom-set-variables '(rspec-use-rake-flag nil))
+(custom-set-faces )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -151,6 +168,57 @@
 
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; projectile-rails
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'projectile)
+(projectile-global-mode)
+
+(require 'projectile-rails)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+;; rirariと同様のキーバインドを使う
+(define-key projectile-rails-mode-map (kbd "C-c ; f m") 'projectile-rails-find-current-model)
+(define-key projectile-rails-mode-map (kbd "C-c ; f c") 'projectile-rails-find-current-controller)
+(define-key projectile-rails-mode-map (kbd "C-c ; f v") 'projectile-rails-find-current-view)
+(define-key projectile-rails-mode-map (kbd "C-c ; f s") 'projectile-rails-find-current-spec)
+(define-key projectile-rails-mode-map (kbd "C-c ; c") 'projectile-rails-console)
+
+;; evilの`gf`で`projectile-rails-goto-file-at-point`を使うように
+(evil-define-key 'normal projectile-rails-mode-map (kbd "gf")
+  'projectile-rails-goto-file-at-point)
+;; fix above keybind can't be applied til state changes
+;; https://bitbucket.org/lyro/evil/issue/301/evil-define-key-for-minor-mode-does-not
+(add-hook 'find-file-hook
+          #'(lambda ()
+              (when projectile-rails-mode
+                (evil-normalize-keymaps))))
+
+;; `app/views/application`と`app/views/shared`のビューも探す候補に入れる
+(defun projectile-rails-goto-template-at-point ()
+  (interactive)
+  (let* ((template (projectile-rails-filename-at-point))
+         (dir (projectile-rails-template-dir template))
+         (name (projectile-rails-template-name template))
+         (format (projectile-rails-template-format template)))
+    (if format
+        (loop for processor in '("erb" "haml" "slim")
+              for template = (s-lex-format "${dir}${name}.${format}.${processor}")
+              for partial = (s-lex-format "${dir}_${name}.${format}.${processor}")
+              for partial-2 = (expand-file-name
+                               (s-lex-format "_${name}.${format}.${processor}")
+                               (projectile-expand-root "app/views/application"))
+              for partial-3 = (expand-file-name
+                               (s-lex-format "_${name}.${format}.${processor}")
+                               (projectile-expand-root "app/views/shared"))
+              until (or
+                     (projectile-rails-ff template)
+                     (projectile-rails-ff partial)
+                     (projectile-rails-ff partial-2)
+                     (projectile-rails-ff partial-3)))
+      (message "Could not recognize the template's format")
+            (dired dir))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; general-settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -169,6 +237,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)
+;; バックアップファイルを作らないようにする
+(setq make-backup-files nil)
+;;; 終了時にオートセーブファイルを消す
+(setq delete-auto-save-files t)
+
 ;; インデントはタブではなくスペースを使用
 (setq-default indent-tabs-mode nil)
 ;; 行末の空白をハイライト
@@ -179,6 +252,13 @@
 ;; ファイル名補完で大文字小文字を区別しない
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
+
+;;; 現在行を目立たせる
+(global-hl-line-mode)
+
+;; バッファの同一ファイル名を区別する
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 操作に関する設定
@@ -192,6 +272,9 @@
 ;; KeyBinding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mac-option-modifier 'meta)
+(setq ns-alternate-modifier (quote meta))
+(global-set-key "\C-cg" 'magit-status)
+(global-set-key "\C-ch" 'helm-ghq)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -204,15 +287,6 @@
 
 
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rspec-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'rspec-mode)
-(eval-after-load 'rspec-mode
-    '(rspec-install-snippets))
-(custom-set-variables '(rspec-use-rake-flag nil))
-(custom-set-faces )
 
 
 
