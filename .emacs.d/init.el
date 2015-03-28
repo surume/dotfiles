@@ -142,13 +142,20 @@
 (custom-set-faces )
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ruby-electric
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-(setq ruby-electric-expand-delimiters-list nil)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; ruby-electric
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (require 'ruby-electric)
+;; (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;; (setq ruby-electric-expand-delimiters-list nil)
 
+(require 'ruby-end)
+(add-hook 'ruby-mode-hook
+          '(lambda()
+             (abbrev-mode 1)
+             (electric-pair-mode t)
+             (electric-indent-mode t)
+             (electric-layout-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; atom-dark
@@ -165,8 +172,6 @@
                     :background "#2E2E2E"
                     :height 0.9)
 (setq linum-format "%3d ")
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
