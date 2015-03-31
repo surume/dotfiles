@@ -76,7 +76,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; git-gutter-fringe
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'git-gutter-fringe)
+;(require 'git-gutter-fringe)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; popwin
@@ -260,6 +260,7 @@
 
 ;;; 現在行を目立たせる
 (global-hl-line-mode)
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; バッファの同一ファイル名を区別する
 (require 'uniquify)
