@@ -31,10 +31,11 @@
 (helm-mode 1)
 ;; agのデフォルトのコマンドオプションを指定
 ;; -nを消すとサブディレクトリも再帰的に検索します
-(setq helm-ag-base-command "ag --nocolor --nogroup -n")
+(setq helm-ag-base-command "ag --nocolor --nogroup")
 
 ;;Alt+sでag実行
-(define-key global-map [(M s)] 'helm-ag)
+(define-key global-map (kbd "C-x g") 'helm-ag)
+(define-key global-map (kbd "C-x /") 'comment-dwim)
 (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 (define-key global-map (kbd "C-x b") 'helm-for-files)
@@ -44,6 +45,8 @@
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
 (setq helm-buffer-max-length 50)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm-ghq
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -224,6 +227,15 @@
       (message "Could not recognize the template's format")
             (dired dir))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; my-copy-file-path
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(defun my-copy-file-path ()
+; "show the full path file name in the minibuffer and copy to kill ring."
+; (interactive)
+; (when buffer-file-name
+;   (kill-new (file-truename buffer-file-name))
+;       (message (buffer-file-name))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; general-settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
