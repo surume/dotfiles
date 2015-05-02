@@ -129,4 +129,5 @@ projectile-bookmarks.eld
 .cask/
 *.dat
 
+.emacs.d/ensime/
 
