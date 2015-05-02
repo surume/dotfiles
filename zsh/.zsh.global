@@ -18,6 +18,8 @@ export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export GOPATH=/Users/s_miyamoto
 export TERM=xterm-256color
+export EDITOR='vim'
+export SHELL='zsh'
 
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
@@ -40,7 +42,7 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 # git branch選択をpecoで
-alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`' 
+alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 # git remotebranch 選択をpecoで
 alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 
