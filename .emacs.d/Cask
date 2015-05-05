@@ -45,6 +45,8 @@
 
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
+(depends-on "haml-mode")
+(depends-on "sass-mode")
 
 (depends-on "helm")
 (depends-on "helm-ghq")
