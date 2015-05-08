@@ -129,4 +129,6 @@ projectile-bookmarks.eld
 .cask/
 *.dat
 
-
+.envrc
+*.envrc
+/.envrc

@@ -74,7 +74,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'magit)
+;;(require 'magit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; git-gutter-fringe
@@ -291,7 +291,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mac-option-modifier 'meta)
 (setq ns-alternate-modifier (quote meta))
-(global-set-key "\C-cg" 'magit-status)
+;;(global-set-key "\C-cg" 'magit-status)
 (global-set-key "\C-ch" 'helm-ghq)
 
 
@@ -307,4 +307,5 @@
 
 
 
+(setq x-select-enable-clipboard t)
 
