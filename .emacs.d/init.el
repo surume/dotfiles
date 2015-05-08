@@ -74,7 +74,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(require 'magit)
+;; (require 'magit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; git-gutter-fringe
@@ -110,6 +110,11 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; yaml-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(when (require 'yaml-mode nil t)
+    (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rbenv
@@ -228,6 +233,11 @@
             (dired dir))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; scala
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my-copy-file-path
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(defun my-copy-file-path ()
@@ -303,9 +313,20 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 
-
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; iserch-select
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
+  (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
+      (progn
+        (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
+        (deactivate-mark)
+        ad-do-it
+        (if (not forward)
+            (isearch-repeat-backward)
+          (goto-char (mark))
+          (isearch-repeat-forward)))
+        ad-do-it))
 
 (setq x-select-enable-clipboard t)
 

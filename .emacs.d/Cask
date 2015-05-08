@@ -40,6 +40,14 @@
 (depends-on "mode-compile")
 (depends-on "rspec-mode")
 
+(depends-on "ensime")
+(depends-on "scala-mode2")
+
+(depends-on "markdown-mode")
+(depends-on "yaml-mode")
+(depends-on "haml-mode")
+(depends-on "sass-mode")
+
 (depends-on "helm")
 (depends-on "helm-ghq")
 (depends-on "helm-ag")

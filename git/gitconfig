@@ -50,3 +50,7 @@
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep "^[a-z]"
 
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
