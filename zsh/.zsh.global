@@ -13,6 +13,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+
 # 履歴を保存するファイル
 HISTFILE=$HOME/.zhistory
 
@@ -31,7 +32,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export GOPATH=~/
 export TERM=xterm-256color
 export EDITOR='vim'
-export SHELL='zsh'
 
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
