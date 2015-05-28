@@ -6,7 +6,6 @@
 (cask-initialize)
 
 (require 'cl)
-(require 'yasnippet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -18,7 +17,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'key-chord)
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.5)
+(setq key-chord-two-keys-delay 5.5)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm
@@ -291,7 +290,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 操作に関する設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;; スクロールマウスを有効
+;; スクロールマウスを有効
 (global-set-key [mouse-4] 'scroll-down)
 (global-set-key [mouse-5] 'scroll-up)
 
@@ -305,9 +304,7 @@
 (global-set-key "\C-ch" 'helm-ghq)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evil KeyBinding
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
@@ -330,3 +327,7 @@
 
 (setq x-select-enable-clipboard t)
 
+
+;; ファイルの尻尾に改行を入れるかどうか。
+;; (t->常に挿入する、nil->常に挿入しない、それ以外->ユーザに問い合わせる。)
+(setq-default require-final-newline t)
