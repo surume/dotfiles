@@ -47,6 +47,8 @@
 (depends-on "yaml-mode")
 (depends-on "haml-mode")
 (depends-on "sass-mode")
+(depends-on "elixir-mode")
+(depends-on "alchemist")
 
 (depends-on "helm")
 (depends-on "helm-ghq")
