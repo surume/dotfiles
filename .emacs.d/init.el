@@ -331,3 +331,5 @@
 ;; ファイルの尻尾に改行を入れるかどうか。
 ;; (t->常に挿入する、nil->常に挿入しない、それ以外->ユーザに問い合わせる。)
 (setq-default require-final-newline t)
+
+(put 'dired-find-alternate-file 'disabled nil)
