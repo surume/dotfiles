@@ -43,6 +43,7 @@
 (depends-on "ensime")
 (depends-on "scala-mode2")
 
+(depends-on "yard-mode")
 (depends-on "markdown-mode")
 (depends-on "yaml-mode")
 (depends-on "haml-mode")
