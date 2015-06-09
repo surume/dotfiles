@@ -12,6 +12,7 @@
 (depends-on "highlight-symbol")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
+(depends-on "flyspell")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
