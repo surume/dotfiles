@@ -30,8 +30,6 @@
 (depends-on "auto-complete")
 (depends-on "projectile-rails")
 
-(depends-on "popwin")
-
 (depends-on "evil")
 (depends-on "evil-surround")
 
@@ -59,6 +57,7 @@
 (depends-on "multiple-cursors")
 (depends-on "auto-save-buffers-enhanced")
 (depends-on "rinari")
+(depends-on "rubocop")
 
 (depends-on "git-gutter")
 (depends-on "fringe-helper")
