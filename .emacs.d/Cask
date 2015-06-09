@@ -70,3 +70,5 @@
 
 (depends-on "auto-highlight-symbol")
 
+(depends-on "rainbow-delimiters")
+
