@@ -26,7 +26,7 @@
 (depends-on "smex")
 (depends-on "use-package")
 (depends-on "web-mode")
-;; (depends-on "yasnippet")
+(depends-on "yasnippet")
 (depends-on "auto-complete")
 (depends-on "projectile-rails")
 
@@ -38,6 +38,7 @@
 (depends-on "ruby-end")
 (depends-on "mode-compile")
 (depends-on "rspec-mode")
+(depends-on "gitignore-mode")
 
 (depends-on "ensime")
 (depends-on "scala-mode2")
