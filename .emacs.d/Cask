@@ -2,8 +2,8 @@
 (source melpa)
 (source marmalade)
 
-(depends-on "bind-key")
-(depends-on "cask")
+  (depends-on "bind-key")
+  (depends-on "cask")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "exec-path-from-shell")
@@ -60,10 +60,10 @@
 (depends-on "rinari")
 (depends-on "rubocop")
 
-(depends-on "git-gutter")
-(depends-on "fringe-helper")
-(depends-on "git-gutter-fringe")
-(depends-on "git-gutter-fringe+")
+;; (depends-on "git-gutter")
+;; (depends-on "fringe-helper")
+;; (depends-on "git-gutter-fringe")
+;; (depends-on "git-gutter-fringe+")
 
 (depends-on "atom-dark-theme")
 (depends-on "key-chord")
