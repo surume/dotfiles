@@ -17,9 +17,6 @@
 
 (load "~/.emacs.d/includes/modes.el")
 
-;; (require 'rubocop)
-;; (add-hook 'ruby-mode-hook 'rubocop-mode)
-
 (load "~/.emacs.d/includes/flycheckSettings.el")
 
 (load "~/.emacs.d/includes/powerline.el")
