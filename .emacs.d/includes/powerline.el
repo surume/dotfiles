@@ -85,6 +85,6 @@
 (make/set-face 'mode-line-5-fg "#005f5f" "#87d7ff" 'normal)
 (make/set-face 'mode-line-5-bg "#0087af" "#87d7ff" 'normal)
 (make/set-face 'mode-line-6-fg "#005f5f" "#87d7ff" 'bold)
-;;--------------------------------------------------------------------------------
 
-
+(provide 'powerline)
+;;; powerline.el ends here

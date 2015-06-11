@@ -1,6 +1,8 @@
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; evil
 (require 'evil)
+;;; Code:
 (evil-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -39,3 +41,5 @@
 ;; (setq ns-alternate-modifier (quote meta))
 ;; ;;(global-set-key "\C-cg" 'magit-status)
 
+(provide 'keySettings)
+;;; keySettings.el ends here
