@@ -23,6 +23,13 @@ HISTSIZE=1000000
 # $HISTFILE に保存される履歴の数
 SAVEHIST=1000000
 
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  z --add "$(pwd -P)"
+}
+
+
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:~/.rbenv/shims:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
