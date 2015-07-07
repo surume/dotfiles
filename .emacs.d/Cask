@@ -88,3 +88,5 @@
 ;; (depends-on "use-package")
 ;; (depends-on "yasnippet")
 
+(depends-on "smartrep")
+(depends-on "nurumacs")

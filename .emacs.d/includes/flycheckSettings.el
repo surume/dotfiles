@@ -3,11 +3,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; flycheck
 (require 'flycheck)
-(require 'flyspell)
+;;(require 'flyspell)
 ;;; Code:
-(flycheck-mode 1)
-(flyspell-mode 1)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;;(flycheck-mode 1)
+;;(flyspell-mode 1)
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+;; flycheck
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+                          (flycheck-mode 1)))
+
 ;; (flycheck-define-checker ruby-rubocop
 ;;   "A Ruby syntax and style checker using the RuboCop tool."
 ;;   :command ("rubocop" "--format" "emacs" "--silent"
@@ -35,6 +41,11 @@
           (file-name) ":" line ":" column ": " (or "E" "F") ": " (message)
           line-end))
     :modes (enh-ruby-mode ruby-mode))
+
+
+
+
+
 
 (provide 'flycheckSettings)
 ;;; flycheckSettings.el ends here
