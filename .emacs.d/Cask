@@ -89,4 +89,3 @@
 ;; (depends-on "yasnippet")
 
 (depends-on "smartrep")
-(depends-on "nurumacs")
