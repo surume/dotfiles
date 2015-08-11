@@ -2,15 +2,15 @@
 set nocompatible
 
 " neobunlde.vimで管理してるpluginを読み込む
-source ~/.vim/vimrc/vimrc.bundle
+source ~/.vim/includes/vimrc.bundle
 
 " 基本設定
-source ~/.vim/vimrc/vimrc.basic
+source ~/.vim/includes/vimrc.basic
 " 基本設定
-source ~/.vim/vimrc/vimrc.basic
+source ~/.vim/includes/vimrc.basic
 " 表示関連
-source ~/.vim/vimrc/vimrc.apperance
+source ~/.vim/includes/vimrc.apperance
 " プラグイン設定
-source ~/.vim/vimrc/vimrc.plugin_setting
+source ~/.vim/includes/vimrc.plugin_setting
 " color関連
-source ~/.vim/vimrc/vimrc.color
+source ~/.vim/includes/vimrc.color
