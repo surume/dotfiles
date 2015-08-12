@@ -86,6 +86,6 @@
 ;; (depends-on "smartparens")
 ;; (depends-on "smex")
 ;; (depends-on "use-package")
-;; (depends-on "yasnippet")
 
+(depends-on "yasnippet")
 (depends-on "smartrep")
