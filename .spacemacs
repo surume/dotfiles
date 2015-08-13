@@ -18,7 +18,7 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      elixir
      extra-langs
@@ -32,11 +32,13 @@
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      osx
-     ruby
+;;    ruby
      shell-scripts
      syntax-checking
      version-control
      )
+
+   ruby-insert-encoding-magic-comment nil
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
@@ -56,6 +58,7 @@ before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
+   ruby-insert-encoding-magic-comment nil
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
    dotspacemacs-editing-style 'vim
@@ -170,8 +173,20 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+;; (require 'helm-ghq)
+;;; Code:
+  (helm-mode 1)
+  (setq helm-buffer-max-length 50)
+  (setq helm-ag-base-command "ag --nocolor --nogroup")
+  (define-key global-map (kbd "C-c h") 'helm-ghq)
+  (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+  (define-key global-map (kbd "C-c g") 'helm-ag)
+  (define-key global-map (kbd "C-x /") 'comment-dwim)
+  (define-key global-map (kbd "C-c C-r") 'helm-recentf)
+  (define-key global-map (kbd "C-x b") 'helm-for-files)
+  (define-key global-map (kbd "C-c i")   'helm-imenu)
+  (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-
