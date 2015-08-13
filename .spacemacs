@@ -26,13 +26,14 @@
      haskell
      html
      javascript
+     userpackages
      ;; markdown
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      osx
-;;    ruby
+     ruby
      shell-scripts
      syntax-checking
      version-control
@@ -91,10 +92,10 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Ricty"
-                               :size 13
+                               :size 16
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -136,7 +137,7 @@ before layers configuration."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'.
@@ -186,7 +187,64 @@ layers configuration."
   (define-key global-map (kbd "C-x b") 'helm-for-files)
   (define-key global-map (kbd "C-c i")   'helm-imenu)
   (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+
+  ;; 終了時にオートセーブファイルを消す
+  (setq delete-auto-save-files t)
+  ;; バックアップファイルを作らない
+  (setq make-backup-files nil)
+  ;; yes-noをy-nに置き換え
+  (fset 'yes-or-no-p 'y-or-n-p)
+  ;; 行末の空白をハイライト
+  (setq-default show-trailing-whitespace t)
+;;; ファイルの尻尾に改行を入れるかどうか。
+  ;; (t->常に挿入する、nil->常に挿入しない、それ以外->ユーザに問い合わせる。)
+  (setq-default require-final-newline t)
+
+  (defun swap-screen()
+    "Swap two screen,leaving cursor at current window."
+    (interactive)
+    (let ((thiswin (selected-window))
+          (nextbuf (window-buffer (next-window))))
+      (set-window-buffer (next-window) (window-buffer))
+      (set-window-buffer thiswin nextbuf)))
+  (defun swap-screen-with-cursor()
+    "Swap two screen,with cursor in same buffer."
+    (interactive)
+    (let ((thiswin (selected-window))
+          (thisbuf (window-buffer)))
+      (other-window 1)
+      (set-window-buffer thiswin (window-buffer))
+      (set-window-buffer (selected-window) thisbuf)))
+  (global-set-key [f2] 'swap-screen)
+  (global-set-key [S-f2] 'swap-screen-with-cursor)
 )
 
-;; Do not write anything past this comment. This is where Emacs will
+;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;; Please Create private/userpackages
+;; SPC - : configuration-layer/create-layer
+;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(setq userpackages-packages
+      '(
+        auto-save-buffers-enhanced
+        key-chord
+        helm-ghq
+        ))
+
+
+(defun userpackages/init-auto-save-buffers-enhanced ()
+  (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
+  (auto-save-buffers-enhanced t)
+  )
+
+(defun userpackages/init-key-chord ()
+  (key-chord-mode 1)
+  (setq key-chord-two-keys-delay 0.1)
+  (define-key evil-insert-state-map [escape] 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  )
+
+(defun userpackages/init-helm-ghq ()
+  (global-set-key "\C-ch" 'helm-ghq)
+  )
+;;not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
