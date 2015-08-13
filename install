@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ls -A | grep -v README | grep -v install | xargs -I{} rm -rf ~/{}
-ls -A | grep -v README | grep -v install | xargs -I{} ln -s `pwd`/{} ~/{}
