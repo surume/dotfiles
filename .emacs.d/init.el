@@ -1,27 +1,31 @@
+;;; init.el --- Spacemacs Initialization File
+;;
+;; Copyright (c) 2012-2014 Sylvain Benner
+;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
+;;
+;; Author: Sylvain Benner <sylvain.benner@gmail.com>
+;; URL: https://github.com/syl20bnr/spacemacs
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: GPLv3
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; cask
-;;; Code:
-(when (and (not (equal window-system 'w32))
-	   (or (require 'cask nil t) ;; MacOS X (homebrew)
-	       (require 'cask "~/.cask/cask.el" t))) ;; Linux (install by curl)
-   (cask-initialize))
+;; Without this comment emacs25 adds (package-initialize) here
+;; (package-initialize)
 
-(load "~/.emacs.d/includes/generalSettings.el")
+(defconst spacemacs-version          "0.103.5" "Spacemacs version.")
+(defconst spacemacs-emacs-min-version   "24.3" "Minimal version of Emacs.")
 
-(load "~/.emacs.d/includes/keySettings.el")
+(defun spacemacs/emacs-version-ok ()
+  (version<= spacemacs-emacs-min-version emacs-version))
 
-(load "~/.emacs.d/includes/helmsetting.el")
-
-(load "~/.emacs.d/includes/orgFunction.el")
-
-(load "~/.emacs.d/includes/modes.el")
-
-(load "~/.emacs.d/includes/flycheckSettings.el")
-
-(load "~/.emacs.d/includes/powerline.el")
-
-(load "~/.emacs.d/includes/misc.el")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init.el ends here
+(when (spacemacs/emacs-version-ok)
+  (load-file (concat user-emacs-directory "core/core-load-paths.el"))
+  (require 'core-spacemacs)
+  (require 'core-configuration-layer)
+  (spacemacs/init)
+  (configuration-layer/sync)
+  (spacemacs/setup-after-init-hook)
+  (spacemacs/maybe-install-dotfile)
+  (require 'server)
+  (unless (server-running-p) (server-start)))
