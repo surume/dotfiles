@@ -3,4 +3,6 @@
 ls -A | grep -v _local | grep  -vwe README -e install -e private -e ".git" -e ".gitmodules" | xargs -I{} rm -rf ~/{}
 ls -A | grep -v _local | grep  -vwe README -e install -e private -e ".git" -e ".gitmodules" | xargs -I{} ln -s `pwd`/{} ~/{}
 
+rm -rf .emacs.d/private                                                                                                                                                                                                                       ⏎ ⬆ ✭ ✱
+ln -s `pwd`/private ~/.emacs.d/
 
