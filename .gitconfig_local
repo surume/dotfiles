@@ -1,3 +1,11 @@
 [user]
     name = yourname
     email = you@example.com
+[github-nippou]
+    user = Surume
+    token = your_token
+[pr-release]
+    token = your_token
+[pr-release "branch"]
+    production = release
+    staging = master
