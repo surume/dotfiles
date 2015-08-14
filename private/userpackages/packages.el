@@ -10,15 +10,29 @@
 ;;
 ;;; License: GPLv3
 
-;; List of all packages to install and/or initialize. Built-in packages
-;; which require an initialization must be listed explicitly in the list.
+(setq userpackages-packages
+      '(
+        auto-save-buffers-enhanced
+        key-chord
+        helm-ghq
+        ))
 
-;; For each package, define a function userpackages/init-<package-name>
-;;
-;; (defun userpackages/init-my-package ()
-;;   "Initialize my package"
-;;   )
-;;
+(defun userpackages/init-auto-save-buffers-enhanced ()
+  (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
+  (auto-save-buffers-enhanced t)
+  )
+
+(defun userpackages/init-key-chord ()
+  (key-chord-mode 1)
+  (setq key-chord-two-keys-delay 0.1)
+  (define-key evil-insert-state-map [escape] 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  )
+
+(defun userpackages/init-helm-ghq ()
+  (global-set-key "\C-ch" 'helm-ghq)
+  )
+
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package

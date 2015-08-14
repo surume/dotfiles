@@ -219,32 +219,25 @@ layers configuration."
   (global-set-key [S-f2] 'swap-screen-with-cursor)
 )
 
-;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-;; Please Create private/userpackages
-;; SPC - : configuration-layer/create-layer
-;;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-(setq userpackages-packages
-      '(
-        auto-save-buffers-enhanced
-        key-chord
-        helm-ghq
-        ))
-
-
-(defun userpackages/init-auto-save-buffers-enhanced ()
-  (setq auto-save-buffers-enhanced-interval 1) ; 指定のアイドル秒で保存
-  (auto-save-buffers-enhanced t)
-  )
-
-(defun userpackages/init-key-chord ()
-  (key-chord-mode 1)
-  (setq key-chord-two-keys-delay 0.1)
-  (define-key evil-insert-state-map [escape] 'evil-normal-state)
-  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-  )
-
-(defun userpackages/init-helm-ghq ()
-  (global-set-key "\C-ch" 'helm-ghq)
-  )
 ;;not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil)
+ '(ring-bell-function (quote ignore) t)
+ '(ruby-insert-encoding-magic-comment t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
