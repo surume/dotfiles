@@ -1,21 +1,18 @@
 dotfiles
 ====
 
-Surume'sDotfiles
+Surume's dotfiles
 
-## Install
+## Usages
 
-```
-sh install
+```bash
+$ sh install
 ```
 
 ## Licence
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
-## Author
-
-[surume](https://github.com/Surume)
 
 ## note
 

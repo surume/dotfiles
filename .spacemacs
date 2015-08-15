@@ -27,7 +27,7 @@
      html
      javascript
      userpackages
-     ;; markdown
+     markdown
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
