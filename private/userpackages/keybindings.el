@@ -5,4 +5,4 @@
 (define-key global-map (kbd "C-c C-r") 'helm-recentf)
 (define-key global-map (kbd "C-x b") 'helm-for-files)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
-(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+;; (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
