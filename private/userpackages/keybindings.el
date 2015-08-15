@@ -1,0 +1,8 @@
+(define-key global-map (kbd "C-c h") 'helm-ghq)
+(define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+(define-key global-map (kbd "C-c g") 'helm-ag)
+(define-key global-map (kbd "C-x /") 'comment-dwim)
+(define-key global-map (kbd "C-c C-r") 'helm-recentf)
+(define-key global-map (kbd "C-x b") 'helm-for-files)
+(define-key global-map (kbd "C-c i")   'helm-imenu)
+(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)

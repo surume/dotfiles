@@ -15,7 +15,7 @@
         auto-save-buffers-enhanced
         key-chord
         helm-ghq
-        atom-dark-theme
+;;        atom-dark-theme
         ))
 
 (defun userpackages/init-auto-save-buffers-enhanced ()

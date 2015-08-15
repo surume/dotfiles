@@ -13,7 +13,7 @@
 (setq userpackages-pre-extensions
       '(
         ;; pre extension names go here
-        ))
+       ))
 
 (setq userpackages-post-extensions
       '(

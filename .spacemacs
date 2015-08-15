@@ -77,9 +77,9 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         solarized-dark
                          atom-dark
                          monokai
-                         solarized-dark
                          spacemacs-light
                          solarized-ligh
                          tspacemacs-dark
@@ -172,49 +172,6 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-;; (require 'helm-ghq)
-;;; Code:
-  (helm-mode 1)
-  (setq helm-buffer-max-length 50)
-  (setq helm-ag-base-command "ag --nocolor --nogroup")
-  (define-key global-map (kbd "C-c h") 'helm-ghq)
-  (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
-  (define-key global-map (kbd "C-c g") 'helm-ag)
-  (define-key global-map (kbd "C-x /") 'comment-dwim)
-  (define-key global-map (kbd "C-c C-r") 'helm-recentf)
-  (define-key global-map (kbd "C-x b") 'helm-for-files)
-  (define-key global-map (kbd "C-c i")   'helm-imenu)
-  (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
-
-  ;; 終了時にオートセーブファイルを消す
-  (setq delete-auto-save-files t)
-  ;; バックアップファイルを作らない
-  (setq make-backup-files nil)
-  ;; yes-noをy-nに置き換え
-  (fset 'yes-or-no-p 'y-or-n-p)
-  ;; 行末の空白をハイライト
-  (setq-default show-trailing-whitespace t)
-;;; ファイルの尻尾に改行を入れるかどうか。
-  ;; (t->常に挿入する、nil->常に挿入しない、それ以外->ユーザに問い合わせる。)
-  (setq-default require-final-newline t)
-
-  (defun swap-screen()
-    "Swap two screen,leaving cursor at current window."
-    (interactive)
-    (let ((thiswin (selected-window))
-          (nextbuf (window-buffer (next-window))))
-      (set-window-buffer (next-window) (window-buffer))
-      (set-window-buffer thiswin nextbuf)))
-  (defun swap-screen-with-cursor()
-    "Swap two screen,with cursor in same buffer."
-    (interactive)
-    (let ((thiswin (selected-window))
-          (thisbuf (window-buffer)))
-      (other-window 1)
-      (set-window-buffer thiswin (window-buffer))
-      (set-window-buffer (selected-window) thisbuf)))
-  (global-set-key [f2] 'swap-screen)
-  (global-set-key [S-f2] 'swap-screen-with-cursor)
 )
 
 ;;not write anything past this comment. This is where Emacs will
