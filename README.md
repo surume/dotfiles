@@ -13,8 +13,7 @@ $ sh install
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
-
-## note
+## Note
 
 こっちから使ってる
 * [mac-provisioning](https://github.com/Surume/mac-provisioning)
