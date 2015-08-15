@@ -31,21 +31,23 @@ function precmd () {
 
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:~/.rbenv/shims:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export ANYENV_ROOT=~/.anyenv
 export GOPATH=~/
-export TERM=xterm-256color
+export TERM="xterm-256color"
 export EDITOR='vim'
-export DOCKER_HOST=tcp://192.168.59.103:2376
-# export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
-export DOCKER_CERT_PATH=/Users/s_miyamoto/.boot2docker/certs/boot2docker-vm
+export DOCKER_HOST="tcp://192.168.59.103:2376"
+export DOCKER_CERT_PATH="/Users/s_miyamoto/.boot2docker/certs/boot2docker-vm"
 export DOCKER_TLS_VERIFY=1
 
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
+export PATH="${ANYENV_ROOT}/bin:$PATH"
+export PATH="$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH"
+
+# anyenv
+if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
+
 
 # peco設定
 function peco-select-history() {
@@ -85,4 +87,3 @@ alias g='git'
 # vagrant
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
-
