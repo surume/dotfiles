@@ -3,6 +3,11 @@
 ls -A | grep -v _local | grep  -vwe README -e install -e private -e ".git" -e ".gitmodules" | xargs -I{} rm -rf ~/{}
 ls -A | grep -v _local | grep  -vwe README -e install -e private -e ".git" -e ".gitmodules" | xargs -I{} ln -s `pwd`/{} ~/{}
 
-rm -rf .emacs.d/private                                                                                                                                                                                                                       ⏎ ⬆ ✭ ✱
+rm -rf .emacs.d/private
 ln -s `pwd`/private ~/.emacs.d/
 
+ls -A | grep _local | xargs -I{} rm -rf ~/{}
+ls -A | grep _local | xargs -I{} cp -rf `pwd`/{} ~/{}
+
+cd `pwd`/.zprezto/modules/prompt/functions/
+rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
