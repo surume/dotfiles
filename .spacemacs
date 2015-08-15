@@ -232,7 +232,7 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(ring-bell-function (quote ignore) t)
- '(ruby-insert-encoding-magic-comment t))
+ '(ruby-insert-encoding-magic-comment nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
