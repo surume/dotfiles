@@ -15,6 +15,7 @@
         auto-save-buffers-enhanced
         key-chord
         helm-ghq
+        atom-dark-theme
         ))
 
 (defun userpackages/init-auto-save-buffers-enhanced ()
@@ -32,6 +33,8 @@
 (defun userpackages/init-helm-ghq ()
   (global-set-key "\C-ch" 'helm-ghq)
   )
+
+(defun userpackages/init-atom-dark-theme ())
 
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
