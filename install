@@ -1,15 +1,15 @@
 #!/bin/bash
 
 copy_file () {
-    if [ ! -f ~/$1 ]; then
-        cp -rf `pwd`/$1 ~/$1
+    if [ ! -e ~/$1 ]; then
+        cp -rf `pwd`/$1 ~
     fi
 }
 export -f copy_file
 
 link_file () {
-    if [ ! -f ~/$1 ]; then
-        ln -s `pwd`/$1 ~/$1
+    if [ ! -e ~/$1 ]; then
+        ln -s `pwd`/$1 ~
     fi
 }
 export -f link_file
