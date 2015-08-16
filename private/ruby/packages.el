@@ -14,7 +14,7 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq ruby-packages
     '(
-      ;; package names go here
+      rspec-mode
       ))
 
 ;; List of packages to exclude.
@@ -22,9 +22,8 @@
 
 ;; For each package, define a function ruby/init-<package-name>
 ;;
-;; (defun ruby/init-my-package ()
-;;   "Initialize my package"
-;;   )
+(defun ruby/init-rspec-mode ()
+  )
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
