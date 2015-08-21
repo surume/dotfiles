@@ -16,7 +16,8 @@
         key-chord
         helm-ghq
         helm-ls-git
-;;        atom-dark-theme
+        ;; darcula-theme
+        ;; atom-dark-theme
         ))
 
 (defun userpackages/init-auto-save-buffers-enhanced ()
@@ -40,6 +41,7 @@
   (define-key global-map (kbd "C-c C-g d") 'helm-browse-project)
   )
 
+;; (defun userpackages/init-darcula-theme ())
 ;; (defun userpackages/init-atom-dark-theme ())
 
 ;; Often the body of an initialize function uses `use-package'
