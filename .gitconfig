@@ -33,6 +33,8 @@
   ps = push
   ft = fetch
   br = branch
+  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
+  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
   dif = diff
   ce = commit -v --amend
   st = status --branch --short
