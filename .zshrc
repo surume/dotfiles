@@ -13,3 +13,6 @@ fi
 # Customize to your needs...
 
 source ~/.zsh.global
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
