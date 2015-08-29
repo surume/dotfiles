@@ -88,8 +88,15 @@ alias g='git'
 # vagrant
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
+# docker
+alias fig='docker-compose'
+alias b2docker='docker-machine'
+
+
 
 # chrome
 alias chrome='open "/Applications/Google Chrome.app/" --args --renderer-process-limit=1'
 
-eval "$(hub alias -s)"
+function git(){hub "$@"}
+
+export DATABASE_URL=mysql2://root:supersecretpass@$(docker-machine ip dev):3306
