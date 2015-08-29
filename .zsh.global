@@ -87,3 +87,6 @@ alias g='git'
 # vagrant
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
+
+# chrome
+alias chrome = "open "/Applications/Google Chrome.app/" --args --renderer-process-limit=1"
