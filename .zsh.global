@@ -28,7 +28,23 @@ SAVEHIST=1000000
 function precmd () {
   z --add "$(pwd -P)"
 }
-
+j
+# peco設定
+function peco-select-history() {
+  local tac
+  if which tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+  BUFFER=$(history -n 1 | \
+    eval $tac | \
+    peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
 
 # Customize to your needs...
 export ANYENV_ROOT=~/.anyenv
@@ -49,23 +65,6 @@ if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
 
-
-# peco設定
-function peco-select-history() {
-  local tac
-  if which tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(history -n 1 | \
-    eval $tac | \
-    peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
 
 # git branch選択をpecoで
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
@@ -91,8 +90,6 @@ alias fuck='$(thefuck $(fc -ln -1))'
 # docker
 alias fig='docker-compose'
 alias b2docker='docker-machine'
-
-
 
 # chrome
 alias chrome='open "/Applications/Google Chrome.app/" --args --renderer-process-limit=1'
