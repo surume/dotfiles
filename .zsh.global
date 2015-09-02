@@ -28,7 +28,7 @@ SAVEHIST=1000000
 function precmd () {
   z --add "$(pwd -P)"
 }
-j
+
 # peco設定
 function peco-select-history() {
   local tac
