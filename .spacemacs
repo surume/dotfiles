@@ -19,6 +19,7 @@
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     dockerfile
      emacs-lisp
      elixir
      extra-langs
@@ -37,6 +38,7 @@
      ruby
      shell-scripts
      syntax-checking
+     vagrant
      version-control
      )
 
