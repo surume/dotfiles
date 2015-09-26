@@ -2,7 +2,7 @@
     name = yourname
     email = you@example.com
 [github-nippou]
-    user = Surume
+    user = yourname
     token = your_token
 [pr-release]
     token = your_token
