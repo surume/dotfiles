@@ -40,6 +40,7 @@
      syntax-checking
      vagrant
      version-control
+     xcode
      )
 
    ;; List of additional packages that will be installed without being
