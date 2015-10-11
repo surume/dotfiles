@@ -89,6 +89,7 @@ alias g='git'
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
 # docker
+alias d='docker'
 alias fig='docker-compose'
 alias b2docker='docker-machine'
 
