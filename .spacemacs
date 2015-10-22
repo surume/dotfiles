@@ -95,8 +95,8 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Ricty"
-                               :size 16
+   dotspacemacs-default-font '("CamingoCode"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -192,15 +192,51 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
  '(ring-bell-function (quote ignore) t)
- '(ruby-insert-encoding-magic-comment nil))
+ '(ruby-insert-encoding-magic-comment nil)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822" :family "Ricty" :foundry "nil" :slant normal :weight normal :height 161 :width normal)) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C" :family "Ricty" :foundry "nil" :slant normal :weight normal :height 161 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
 ;; (define-key global-map (kbd "C-c t t") 'toggle-transparency)
+
+;; ;; http://d.hatena.ne.jp/setoryohei/20110117/1295336454
+;;; フォントセットを作る
+(let* ((fontset-name "myfonts") ; フォントセットの名前
+       (size 14) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
+       (asciifont "CamingoCode") ; ASCIIフォント
+       (jpfont "Hiragino Maru Gothic ProN") ; 日本語フォント
+       (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
+       (fontspec (font-spec :family asciifont))
+       (jp-fontspec (font-spec :family jpfont)) 
+       (fsn (create-fontset-from-ascii-font font nil fontset-name)))
+  (set-fontset-font fsn 'japanese-jisx0213.2004-1 jp-fontspec)
+  (set-fontset-font fsn 'japanese-jisx0213-2 jp-fontspec)
+  (set-fontset-font fsn 'katakana-jisx0201 jp-fontspec) ; 半角カナ
+  (set-fontset-font fsn '(#x0080 . #x024F) fontspec) ; 分音符付きラテン
+  (set-fontset-font fsn '(#x0370 . #x03FF) fontspec) ; ギリシャ文字
+  )
+
+;;; デフォルトのフレームパラメータでフォントセットを指定
+(add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
+
+;;; フォントサイズの比を設定
+(dolist (elt '(("^-apple-hiragino.*" . 1.2)
+	       (".*osaka-bold.*" . 1.2)
+	       (".*osaka-medium.*" . 1.2)
+	       (".*courier-bold-.*-mac-roman" . 1.0)
+	       (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
+	       (".*monaco-bold-.*-mac-roman" . 0.9)))
+  (add-to-list 'face-font-rescale-alist elt))
+
+;;; デフォルトフェイスにフォントセットを設定
+;;; (これは起動時に default-frame-alist に従ったフレームが作成されない現象への対処)
+(set-face-font 'default "fontset-myfonts")
