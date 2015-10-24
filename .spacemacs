@@ -228,7 +228,7 @@ layers configuration."
 ;;; デフォルトのフレームパラメータでフォントセットを指定
 (add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
 
-;;; フォントサイズの比を設定
+;; フォントサイズの比を設定
 (dolist (elt '(("^-apple-hiragino.*" . 1.2)
 	       (".*osaka-bold.*" . 1.2)
 	       (".*osaka-medium.*" . 1.2)
