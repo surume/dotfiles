@@ -14,7 +14,7 @@ link_file () {
 }
 export -f link_file
 
-ls -A | grep -v _local | grep  -vwe README -e install -e private -e ".git" -e ".gitmodules" | xargs -I{} bash -c "link_file {}"
+ls -A | grep -v _local | grep -vwe default-gems -vwe README -e install -e private -e ".sh" -e ".git" -e ".gitmodules" | xargs -I{} bash -c "link_file {}"
 
 rm -rf .emacs.d/private
 ln -s `pwd`/private ~/.emacs.d/
