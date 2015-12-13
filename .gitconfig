@@ -39,6 +39,9 @@
   ce = commit -v --amend
   st = status --branch --short
   si = status --ignored --short
+	stpeco = "!f () { git st | egrep -v '##' | awk '{print $2}' | peco; };f"
+	vspec = "!f () { git stpeco | xargs vagrant ssh -- rspec; };f"
+	strubocop = "!f () { git stpeco | xargs rubocop -a; };f"
   branches = branch -a
   remotes = remote -v
   tags = tag -l
