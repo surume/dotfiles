@@ -40,7 +40,7 @@
   st = status --branch --short
   si = status --ignored --short
 	stpeco = "!f () { git st | grep -v '##' | awk '{print $2}' | peco; };f"
-	vspec = "!f () { git st | grep 'spec | awk '{print $2}' | peco | xargs vagrant ssh -- rspec; };f"
+	vspec = "!f () { git st | grep 'spec' | awk '{print $2}' | peco | xargs vagrant ssh -- rspec; };f"
 	strubocop = "!f () { git stpeco | xargs rubocop -a; };f"
   branches = branch -a
   remotes = remote -v
