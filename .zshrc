@@ -13,6 +13,9 @@ fi
 # Customize to your needs...
 
 source ~/.zsh.global
+if -e Liunx.txt ; then
+    source ~/.zsh.local
+fi
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
