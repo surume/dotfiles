@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 
 source ~/.zsh.global
-if -e Liunx.txt ; then
+if [ -e ~/.zsh.local ]; then
     source ~/.zsh.local
 fi
 

@@ -93,6 +93,13 @@ alias fuck='$(thefuck $(fc -ln -1))'
 alias d='docker'
 alias fig='docker-compose'
 alias b2docker='docker-machine'
+# ssh
+alias ssh='cat ~/.ssh/config.local ~/.ssh/config.global > ~/.ssh/config; ssh'
+function peco-ssh() {
+  SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "*" |  tr  ' ' '\n' | sort | peco)
+  ssh $SSH
+}
+alias ss="peco-ssh"
 
 # chrome
 alias chrome='open "/Applications/Google Chrome.app/" --args --renderer-process-limit=1'
