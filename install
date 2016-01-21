@@ -1,4 +1,11 @@
 #!/bin/bash
+# =========================
+# spacemacs
+# =========================
+if [ ! -e ~/.emacs.d ]; then git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d; fi
+
+rm -rf .emacs.d/private
+ln -s `pwd`private ~/.emacs.d/
 
 copy_file () {
     if [ ! -e ~/$1 ]; then
@@ -14,12 +21,10 @@ link_file () {
 }
 export -f link_file
 
-ls -A | grep -v _local | grep -vwe default-gems -vwe README -e install -e private -e ".sh" -e ".git" -e ".gitmodules" | xargs -I{} bash -c "link_file {}"
+ls -A | grep -v _local | grep -vwe default-gems -vwe README -e install -e private -e "line_hidden.sh" -e ".git" -e ".gitmodules" | xargs -I{} bash -c "link_file {}"
 
-rm -rf .emacs.d/private
-ln -s `pwd`/private ~/.emacs.d/
 
 ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 
-cd `pwd`/.zprezto/modules/prompt/functions/
-rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
+# cd `pwd`/.zprezto/modules/prompt/functions/
+# rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup

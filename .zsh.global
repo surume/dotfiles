@@ -24,10 +24,10 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-  z --add "$(pwd -P)"
-}
+# . `brew --prefix`/etc/profile.d/z.sh
+# function precmd () {
+#   z --add "$(pwd -P)"
+# }
 
 # peco設定
 function peco-select-history() {
@@ -63,7 +63,7 @@ export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # anyenv
-if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
+if which anyenv > /dev/null; then eval "$(anyenv init - zsh)"; fi
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
 
