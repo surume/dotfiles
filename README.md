@@ -9,6 +9,12 @@ Surume's dotfiles
 $ sh install
 ```
 
+#### update gitconfig
+
+```bash
+$ vi ~/.gitconfig_local
+```
+
 ## Licence
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
