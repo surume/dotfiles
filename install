@@ -2,10 +2,37 @@
 # =========================
 # spacemacs
 # =========================
-if [ ! -e ~/.emacs.d ]; then git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d; fi
+echo "Install spacemacs"
+if [ ! -e ~/.spacemacs ]; then rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d; fi
 
-rm -rf .emacs.d/private
-ln -s `pwd`private ~/.emacs.d/
+rm -rf ~/.emacs.d/private
+echo "`pwd`/private ->  ~/.emacs.d/private"
+ln -s `pwd`/private ~/.emacs.d/private
+
+
+# =========================
+# Antigen & prezto
+# =========================
+echo "Install antigen & prezto"
+if [ ! -e ./antigen ]; then
+    # Antigen を導入
+    git clone https://github.com/zsh-users/antigen.git;
+    source ./antigen/antigen.zsh
+
+    # Antigen から Prezto を導入
+    antigen bundle sorin-ionescu/prezto
+
+    # Prezto から参照させるため、シンボリックリンクを設置
+    ln -s ~/.antigen/repos/.zprezto ~/.zprezto
+
+    # Prezto の Zsh 設定ファイルへのシンボリックリンクを設置
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N)"; do
+        if ! [ rcfile = "${ZDOTDIR:-$HOME}/.zshrc"]; then
+            ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+        fi
+    done
+fi
 
 copy_file () {
     if [ ! -e ~/$1 ]; then
