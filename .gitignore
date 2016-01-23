@@ -134,4 +134,5 @@ projectile-bookmarks.eld
 /.envrc
 
 .emacs.d/ensime/
+antigen
 
