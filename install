@@ -1,20 +1,35 @@
 #!/bin/bash
-# =========================
-# spacemacs
-# =========================
-echo "Install spacemacs"
-if [ ! -e ~/.spacemacs ]; then rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d; fi
 
-rm -rf ~/.emacs.d/private
-echo "`pwd`/private ->  ~/.emacs.d/private"
-ln -s `pwd`/private ~/.emacs.d/private
+cat << 'EOF'
+__              __         ___          ___
+/\ \            /\ \__    /'___\  __    /\_ \
+ \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
+ /'_` \   / __`\  \ \ \/  \ \ ,__\\/\ \    \ \ \    /'__`\  /',__\
+/\ \L\ \ /\ \L\ \  \ \ \_  \ \ \_/ \ \ \    \_\ \_ /\  __/ /\__, `\
+\ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
+ \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
+EOF
 
 
-# =========================
-# Antigen & prezto
-# =========================
-echo "Install antigen & prezto"
+if [ ! -e ~/.spacemacs ]; then
+    cat << 'EOF'
+=================================================================================================================
+ Install spacemacs
+=================================================================================================================
+EOF
+    rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d;
+
+    rm -rf ~/.emacs.d/private; ln -s `pwd`/private ~/.emacs.d/private
+fi
+
+
+
 if [ ! -e ./antigen ]; then
+    cat << 'EOF'
+=================================================================================================================
+ Install Antigen & prezto
+=================================================================================================================
+EOF
     # Antigen を導入
     git clone https://github.com/zsh-users/antigen.git;
     source ./antigen/antigen.zsh
@@ -36,6 +51,7 @@ fi
 
 copy_file () {
     if [ ! -e ~/$1 ]; then
+        echo "copy $1"
         cp -rf `pwd`/$1 ~
     fi
 }
@@ -43,14 +59,26 @@ export -f copy_file
 
 link_file () {
     if [ ! -e ~/$1 ]; then
+        echo "link $1"
         ln -s `pwd`/$1 ~
     fi
 }
 export -f link_file
 
+
+cat << 'EOF'
+=================================================================================================================
+ Link file
+=================================================================================================================
+EOF
 ls -A | grep -v _local | grep -vwe default-gems -vwe README -e install -e private -e "line_hidden.sh" -e ".git" -e ".gitmodules" | xargs -I{} bash -c "link_file {}"
 
 
+cat << 'EOF'
+=================================================================================================================
+ Copy files
+=================================================================================================================
+EOF
 ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 
 # cd `pwd`/.zprezto/modules/prompt/functions/
