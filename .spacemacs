@@ -24,6 +24,7 @@
      elixir
      extra-langs
      git
+     gradle
      haskell
      html
      javascript
