@@ -8,8 +8,6 @@
     # Unicode
   precomposeunicode = true
   quotepath = true
-[include]
-  path = ~/.gitconfig_local
 [push]
     # simple,matching,upstream,current
   default = simple
@@ -55,7 +53,7 @@
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep "^[a-z]"
-
+	pr = "!hub browse -- compare/$(git symbolic-ref --short HEAD)'?'expand=1'&'body=%23%23%23%20%e8%83%8c%e6%99%af%0d%0a%0d%0a%23%23%23%20%e4%bd%95%e3%81%8c%e5%95%8f%e9%a1%8c%e3%81%8b%0d%0a%0d%0a%23%23%23%20%e5%a4%89%e6%9b%b4%e5%86%85%e5%ae%b9%e3%81%be%e3%81%9f%e3%81%af%20TODO%0d%0a%0d%0a%23%23%23%20%e5%8b%95%e4%bd%9c%e7%a2%ba%e8%aa%8d%e6%96%b9%e6%b3%95%0d%0a%0d%0a%23%23%23%20%e3%83%9e%e3%83%bc%e3%82%b8%e6%9d%a1%e4%bb%b6%0d%0a"
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f
@@ -63,4 +61,6 @@
 [ghq]
   root = ~/src
 [commit]
-	template = /Users/s_miyamoto/.git_commit_msg.txt
+	template = ~/.git_commit_msg.txt
+[include]
+  path = ~/.gitconfig_local

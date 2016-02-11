@@ -94,7 +94,7 @@ alias d='docker'
 alias fig='docker-compose'
 alias b2docker='docker-machine'
 # ssh
-alias ssh='cat ~/.ssh/config.local ~/.ssh/config.global > ~/.ssh/config; ssh'
+alias ssh='rm -f ~/.ssh/config; cat ~/.ssh/config.local ~/.ssh/config.global > ~/.ssh/config; ssh'
 function peco-ssh() {
   SSH=$(grep "^\s*Host " ~/.ssh/config | sed s/"[\s ]*Host "// | grep -v "*" |  tr  ' ' '\n' | sort | peco)
   ssh $SSH
@@ -107,4 +107,5 @@ alias chrome='open "/Applications/Google Chrome.app/" --args --renderer-process-
 
 function git(){hub "$@"}
 
-export DATABASE_URL=mysql2://root:supersecretpass@$(docker-machine ip dev):3306
+# export DATABASE_URL=mysql2://root:supersecretpass@$(docker-machine ip dev):3306
+source /usr/local/share/zsh/site-functions/_aws

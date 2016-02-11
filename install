@@ -42,7 +42,7 @@ EOF
 
     # Prezto の Zsh 設定ファイルへのシンボリックリンクを設置
     setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N)"; do
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/README.md; do
         if ! [ rcfile = "${ZDOTDIR:-$HOME}/.zshrc"]; then
             ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
         fi
@@ -83,3 +83,6 @@ ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 
 # cd `pwd`/.zprezto/modules/prompt/functions/
 # rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
+
+# Xcode
+curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
