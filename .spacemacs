@@ -31,6 +31,7 @@
      userpackages
      markdown
      yaml
+     react
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
