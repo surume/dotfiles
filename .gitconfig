@@ -64,3 +64,6 @@
 	template = ~/.git_commit_msg.txt
 [include]
   path = ~/.gitconfig_local
+[merge "mergepbx"]
+	name = Xcode project files merger
+	driver = mergepbx %O %A %B
