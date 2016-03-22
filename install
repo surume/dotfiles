@@ -86,3 +86,11 @@ ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 
 # Xcode
 curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+
+
+cat << 'EOF'
+=================================================================================================================
+ Install mergepbx
+=================================================================================================================
+EOF
+curl -s https://gist.githubusercontent.com/kaneshin/40d9331941682bf46f5d/raw/42e2a7df2d8dbf6c956edcd3fd1c332e3364f573/install_mergepbx.sh | sh
