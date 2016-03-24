@@ -17,14 +17,16 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t)
      better-defaults
      dockerfile
      emacs-lisp
      elixir
      extra-langs
      git
-     gradle
+     github
      haskell
      html
      javascript
@@ -37,12 +39,18 @@
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      osx
-     ruby
+     (ruby :variables
+           ruby-enable-ruby-on-rails-support t
+           ruby-enable-enh-ruby-mode t
+           ruby-version-manager 'rbenv
+           ruby-test-runner 'rspec)
+     ruby-on-rails
      shell-scripts
      syntax-checking
      vagrant
      version-control
      xcode
+     swift
      )
 
    ;; List of additional packages that will be installed without being
