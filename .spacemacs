@@ -30,7 +30,6 @@
      haskell
      html
      javascript
-     userpackages
      markdown
      yaml
      react
@@ -46,10 +45,11 @@
            ruby-test-runner 'rspec)
      ruby-on-rails
      shell-scripts
+     spell-checking
+     themes-megapack
      syntax-checking
      vagrant
      version-control
-     xcode
      swift
      )
 
@@ -57,7 +57,12 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      auto-save-buffers-enhanced
+                                      key-chord
+                                      helm-ghq
+                                      helm-ls-git
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -92,14 +97,6 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          solarized-dark
-                         ;; darcula
-                         ;; atom-dark
-                         ;; monokai
-                         ;; spacemacs-light
-                         ;; solarized-ligh
-                         ;; tspacemacs-dark
-                         ;; leuven
-                         ;; zenburn
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -188,65 +185,61 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (require 'key-chord)
+  (key-chord-mode 1)
+  (key-chord-define evil-insert-state-map  "jj" 'evil-normal-state)
+  (define-key global-map (kbd "s-/") 'spacemacs/comment-or-uncomment-lines)
+  (define-key global-map (kbd "C-c h") 'helm-ghq)
+  (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+  (define-key global-map (kbd "C-c g") 'helm-ag)
+  (define-key global-map (kbd "C-x /") 'comment-dwim)
+  (define-key global-map (kbd "C-c C-r") 'helm-recentf)
+  (define-key global-map (kbd "C-x b") 'helm-for-files)
+  (define-key global-map (kbd "C-c i")   'helm-imenu)
+
+
+  (setq
+   neo-theme 'nerd
+   powerline-default-separator 'slant
+   linum-format "%4d"
+
+   ;; magit
+   magit-repository-directories '("~/repos/")
+
+   ;; deft
+   deft-extensions '("org" "md" "txt")
+   deft-directory "~/notes"
+
+   ;; ruby
+   ruby-insert-encoding-magic-comment nil
+   ;; 指定のアイドル秒で保存
+   auto-save-buffers-enhanced-interval 1
+
+   helm-buffer-max-length 50
+   helm-ag-base-command "ag --nocolor --nogroup"
+   )
+  (setq-default
+   show-trailing-whitespace t
+   require-final-newline t
+   )
+  (auto-save-buffers-enhanced t)
 )
 
-;;not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
- '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
- '(blink-cursor-mode nil)
- '(column-number-mode t)
- '(ring-bell-function (quote ignore) t)
- '(ruby-insert-encoding-magic-comment nil)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822" :family "Ricty" :foundry "nil" :slant normal :weight normal :height 161 :width normal)) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C" :family "Ricty" :foundry "nil" :slant normal :weight normal :height 161 :width normal))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(defun swap-screen()
+  "Swap two screen,leaving cursor at current window."
+  (interactive)
+  (let ((thiswin (selected-window))
+        (nextbuf (window-buffer (next-window))))
+    (set-window-buffer (next-window) (window-buffer))
+    (set-window-buffer thiswin nextbuf)))
+(global-set-key [f2] 'swap-screen)
 
-;; (define-key global-map (kbd "C-c t t") 'toggle-transparency)
-
-;; ;; http://d.hatena.ne.jp/setoryohei/20110117/1295336454
-;;; フォントセットを作る
-(let* ((fontset-name "myfonts") ; フォントセットの名前
-       (size 14) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
-       (asciifont "CamingoCode") ; ASCIIフォント
-       (jpfont "Hiragino Maru Gothic ProN") ; 日本語フォント
-       (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
-       (fontspec (font-spec :family asciifont))
-       (jp-fontspec (font-spec :family jpfont)) 
-       (fsn (create-fontset-from-ascii-font font nil fontset-name)))
-  (set-fontset-font fsn 'japanese-jisx0213.2004-1 jp-fontspec)
-  (set-fontset-font fsn 'japanese-jisx0213-2 jp-fontspec)
-  (set-fontset-font fsn 'katakana-jisx0201 jp-fontspec) ; 半角カナ
-  (set-fontset-font fsn '(#x0080 . #x024F) fontspec) ; 分音符付きラテン
-  (set-fontset-font fsn '(#x0370 . #x03FF) fontspec) ; ギリシャ文字
-  )
-
-;;; デフォルトのフレームパラメータでフォントセットを指定
-(add-to-list 'default-frame-alist '(font . "fontset-myfonts"))
-
-;; フォントサイズの比を設定
-(dolist (elt '(("^-apple-hiragino.*" . 1.2)
-	       (".*osaka-bold.*" . 1.2)
-	       (".*osaka-medium.*" . 1.2)
-	       (".*courier-bold-.*-mac-roman" . 1.0)
-	       (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
-	       (".*monaco-bold-.*-mac-roman" . 0.9)))
-  (add-to-list 'face-font-rescale-alist elt))
-
-;;; デフォルトフェイスにフォントセットを設定
-;;; (これは起動時に default-frame-alist に従ったフレームが作成されない現象への対処)
-(set-face-font 'default "fontset-myfonts")
+(defun swap-screen-with-cursor()
+  "Swap two screen,with cursor in same buffer."
+  (interactive)
+  (let ((thiswin (selected-window))
+        (thisbuf (window-buffer)))
+    (other-window 1)
+    (set-window-buffer thiswin (window-buffer))
+    (set-window-buffer (selected-window) thisbuf)))
+(global-set-key [S-f2] 'swap-screen-with-cursor)
