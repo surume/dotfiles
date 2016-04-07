@@ -4,7 +4,8 @@
 [core]
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
-  editor = vim
+  # editor = vim
+  editor = emacsclient
     # Unicode
   precomposeunicode = true
   quotepath = true
