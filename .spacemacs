@@ -97,6 +97,10 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          solarized-dark
+                         monokai
+                         sanityinc-solarized-dark
+                         lush
+                         colorsarenice-dark
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -188,6 +192,8 @@ layers configuration."
   (require 'key-chord)
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map  "jj" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map  "kk" 'evil-normal-state)
+
   (define-key global-map (kbd "s-/") 'spacemacs/comment-or-uncomment-lines)
   (define-key global-map (kbd "C-c h") 'helm-ghq)
   (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
@@ -195,7 +201,9 @@ layers configuration."
   (define-key global-map (kbd "C-x /") 'comment-dwim)
   (define-key global-map (kbd "C-c C-r") 'helm-recentf)
   (define-key global-map (kbd "C-x b") 'helm-for-files)
-  (define-key global-map (kbd "C-c i")   'helm-imenu)
+  (define-key global-map (kbd "C-c i") 'helm-imenu)
+  (define-key global-map (kbd "C-c C-g l") 'helm-ls-git-ls)
+  (define-key global-map (kbd "C-c C-g d") 'helm-browse-project)
 
 
   (setq
@@ -223,6 +231,12 @@ layers configuration."
    require-final-newline t
    )
   (auto-save-buffers-enhanced t)
+
+  ;; define our own super awesome hook that will remove the before-save-hook
+  (defun remove-enh-magic-comment ()
+    (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+  ;; add the hook to call our super awesome function.
+  (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
 )
 
 (defun swap-screen()
