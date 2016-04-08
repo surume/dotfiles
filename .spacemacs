@@ -206,6 +206,9 @@ layers configuration."
   (define-key global-map (kbd "C-c i") 'helm-imenu)
   (define-key global-map (kbd "C-c C-g l") 'helm-ls-git-ls)
   (define-key global-map (kbd "C-c C-g d") 'helm-browse-project)
+  (define-key global-map (kbd "C-c n") 'flycheck-next-error)
+  (define-key global-map (kbd "C-c p") 'flycheck-previous-error)
+  (define-key global-map (kbd "C-c d") 'flycheck-list-errors)
 
 
   (setq
