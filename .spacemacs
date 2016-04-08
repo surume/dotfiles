@@ -227,6 +227,7 @@ layers configuration."
    ruby-insert-encoding-magic-comment nil
    ;; 指定のアイドル秒で保存
    auto-save-buffers-enhanced-interval 1
+   flycheck-rubocoprc "~/.rubocop.yml"
 
    helm-buffer-max-length 50
    helm-ag-base-command "ag --nocolor --nogroup"
