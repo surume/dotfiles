@@ -1,22 +1,32 @@
 # inherit_from: rubocop-todo.yml
+# sample "https://github.com/bbatsov/rubocop/tree/master/config"
 
 AsciiComments:
-    Enabled: false
+  Enabled: false
 
 Lambda:
-    Enabled: false
+  Enabled: false
 
 LineLength:
   Max: 127
 
 ClassAndModuleChildren:
-    Enabled: false
+  Enabled: false
 
 Documentation:
-    Enabled: false
+  Enabled: false
 
 AndOr:
-    Enabled: false
+  Enabled: false
+
+Style/RedundantSelf:
+  Description: "Don't use self where it's not needed."
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-self-unless-required'
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20
 
 AllCops:
   Includes:
@@ -30,5 +40,5 @@ AllCops:
     - config/unicorn_staging.rb
     - tmp/**/*
     - vendor/*
-  Rails:
-    Enabled: false
+Rails:
+  Enabled: true
