@@ -1,25 +1,20 @@
 # inherit_from: rubocop-todo.yml
 
-# 日本語でのコメントを許可
 AsciiComments:
     Enabled: false
 
-# 複数行での「lambda」で「->」による省略記法を許可
 Lambda:
     Enabled: false
 
 LineLength:
   Max: 127
 
-# モジュール名::クラス名の定義を許可
 ClassAndModuleChildren:
     Enabled: false
 
-# クラスにコメントを残さない
 Documentation:
     Enabled: false
 
-# 「and」「or」の使用を許可
 AndOr:
     Enabled: false
 
@@ -35,4 +30,5 @@ AllCops:
     - config/unicorn_staging.rb
     - tmp/**/*
     - vendor/*
-  RunRailsCops: true
+  Rails:
+    Enabled: false
