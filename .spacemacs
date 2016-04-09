@@ -96,13 +96,13 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         zenburn
-                         hc-zenburn
                          solarized-dark
+                         colorsarenice-dark
                          monokai
+                         hc-zenburn
+                         zenburn
                          sanityinc-solarized-dark
                          lush
-                         colorsarenice-dark
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -206,6 +206,9 @@ layers configuration."
   (define-key global-map (kbd "C-c i") 'helm-imenu)
   (define-key global-map (kbd "C-c C-g l") 'helm-ls-git-ls)
   (define-key global-map (kbd "C-c C-g d") 'helm-browse-project)
+  (define-key global-map (kbd "C-c n") 'flycheck-next-error)
+  (define-key global-map (kbd "C-c p") 'flycheck-previous-error)
+  (define-key global-map (kbd "C-c d") 'flycheck-list-errors)
 
 
   (setq
@@ -224,6 +227,7 @@ layers configuration."
    ruby-insert-encoding-magic-comment nil
    ;; 指定のアイドル秒で保存
    auto-save-buffers-enhanced-interval 1
+   flycheck-rubocoprc "~/.rubocop.yml"
 
    helm-buffer-max-length 50
    helm-ag-base-command "ag --nocolor --nogroup"

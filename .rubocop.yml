@@ -1,27 +1,32 @@
 # inherit_from: rubocop-todo.yml
+# sample "https://github.com/bbatsov/rubocop/tree/master/config"
 
-# 日本語でのコメントを許可
 AsciiComments:
-    Enabled: false
+  Enabled: false
 
-# 複数行での「lambda」で「->」による省略記法を許可
 Lambda:
-    Enabled: false
+  Enabled: false
 
 LineLength:
   Max: 127
 
-# モジュール名::クラス名の定義を許可
 ClassAndModuleChildren:
-    Enabled: false
+  Enabled: false
 
-# クラスにコメントを残さない
 Documentation:
-    Enabled: false
+  Enabled: false
 
-# 「and」「or」の使用を許可
 AndOr:
-    Enabled: false
+  Enabled: false
+
+Style/RedundantSelf:
+  Description: "Don't use self where it's not needed."
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-self-unless-required'
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20
 
 AllCops:
   Includes:
@@ -35,4 +40,5 @@ AllCops:
     - config/unicorn_staging.rb
     - tmp/**/*
     - vendor/*
-  RunRailsCops: true
+Rails:
+  Enabled: true

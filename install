@@ -18,8 +18,7 @@ if [ ! -e ~/.spacemacs ]; then
 =================================================================================================================
 EOF
     rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d;
-
-    rm -rf ~/.emacs.d/private; ln -s `pwd`/private ~/.emacs.d/private
+    # rm -rf ~/.emacs.d/private; ln -s `pwd`/private ~/.emacs.d/private
 fi
 
 
