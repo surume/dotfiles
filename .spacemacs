@@ -59,6 +59,8 @@
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
                                       auto-save-buffers-enhanced
+                                      chef-mode
+                                      nginx-mode
                                       key-chord
                                       helm-ghq
                                       helm-ls-git
