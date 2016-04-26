@@ -2,8 +2,9 @@
 # in separate files. This file adds all other parameters apart from Enabled.
 
 inherit_from:
-  - enabled.yml
-  - disabled.yml
+    # - ~/.rubocop/setting.yml
+#   - enabled.yml
+#   - disabled.yml
 
 # Common configuration.
 AllCops:
@@ -27,6 +28,12 @@ AllCops:
     - '**/Vagabondfile'
   Exclude:
     - 'vendor/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'config/unicorn.rb'
+    - 'config/unicorn_staging.rb'
+    - 'tmp/**/*'
+    - 'vendor/*'
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
   # Cop names are not displayed in offense messages by default. Change behavior
@@ -888,7 +895,7 @@ Style/TrailingCommaInLiteral:
   # hash, but only when each item is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last item of all
   # non-empty array and hash literals.
-  EnforcedStyleForMultiline: no_comma
+  EnforcedStyleForMultiline: comma
   SupportedStyles:
     - comma
     - consistent_comma
@@ -983,7 +990,7 @@ Metrics/CyclomaticComplexity:
   Max: 6
 
 Metrics/LineLength:
-  Max: 80
+  Max: 120
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
@@ -1069,6 +1076,9 @@ Performance/RedundantMerge:
   MaxKeyValuePairs: 2
 
 ##################### Rails ##################################
+
+Rails:
+  Enabled: true
 
 Rails/ActionFilter:
   EnforcedStyle: action
