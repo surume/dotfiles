@@ -100,6 +100,7 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          solarized-dark
+                         spacemacs-dark
                          colorsarenice-dark
                          monokai
                          hc-zenburn
