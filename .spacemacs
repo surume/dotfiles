@@ -49,6 +49,7 @@
      themes-megapack
      syntax-checking
      vagrant
+     eyebrowse
      version-control
      swift
      )
