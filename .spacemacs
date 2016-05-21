@@ -28,6 +28,7 @@
      git
      github
      haskell
+     python
      html
      javascript
      markdown
