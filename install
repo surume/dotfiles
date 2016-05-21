@@ -84,7 +84,15 @@ ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 # rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
 
 # Xcode
-curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+if [ ! -e ~/Library/Application\ Support/Alcatraz ]; then
+    cat << 'EOF'
+=================================================================================================================
+ Install Alcatraz
+=================================================================================================================
+EOF
+
+    curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+fi
 
 
 cat << 'EOF'
