@@ -12,9 +12,9 @@ fi
 
 # Customize to your needs...
 
-source ~/.zsh.global
-if [ -e ~/.zsh.local ]; then
-    source ~/.zsh.local
+source ~/.global.zshrc
+if [ -e ~/.local.zshrc ]; then
+    source ~/.local.zshrc
 fi
 
 # added by travis gem
