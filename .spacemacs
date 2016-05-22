@@ -64,6 +64,7 @@
                                       chef-mode
                                       nginx-mode
                                       key-chord
+                                      helm-ghq
                                       helm-ls-git
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -201,6 +202,7 @@ layers configuration."
   (key-chord-define evil-insert-state-map  "kk" 'evil-normal-state)
 
   (define-key global-map (kbd "s-/") 'spacemacs/comment-or-uncomment-lines)
+  (define-key global-map (kbd "C-c h") 'helm-ghq)
   (define-key global-map (kbd "M-y") 'helm-show-kill-ring)
   (define-key global-map (kbd "C-c g") 'helm-ag)
   (define-key global-map (kbd "C-x /") 'comment-dwim)
