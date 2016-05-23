@@ -2,7 +2,7 @@
 # in separate files. This file adds all other parameters apart from Enabled.
 
 inherit_from:
-    # - ~/.rubocop/setting.yml
+    - ~/.rubocop/setting.yml
 #   - enabled.yml
 #   - disabled.yml
 
