@@ -85,7 +85,7 @@ alias cdghq='cd $(ghq list -p | peco)'
 # ghqディレクトリ削除
 alias rmghq='rm -rf $(ghq list -p | peco)'
 # emacs
-alias emacs='open -a ~/Applications/Emacs.app'
+# alias emacs='open -a ~/Applications/Emacs.app'
 # bundle exec
 alias be='bundle exec'
 # vim
