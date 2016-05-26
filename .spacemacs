@@ -101,13 +101,24 @@ before layers configuration."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          zenburn
+                         flatland
+                         spacegray
+                         material
+                         heroku
+                         naquadah
+                         niflheim
+                         tangotango
+                         smyx
+                         stekene-dark
+                         graham
+                         wilson
                          solarized-dark
                          spacemacs-dark
-                         colorsarenice-dark
+                         ;; colorsarenice-dark
                          monokai
-                         hc-zenburn
-                         sanityinc-solarized-dark
-                         lush
+                         ;; hc-zenburn
+                         ;; sanityinc-solarized-dark
+                         ;; lush
                          )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
