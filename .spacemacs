@@ -128,21 +128,21 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          zenburn
-                         flatland
-                         spacegray
-                         material
-                         heroku
-                         naquadah
-                         niflheim
-                         tangotango
-                         smyx
-                         stekene-dark
-                         graham
-                         wilson
-                         solarized-dark
-                         spacemacs-dark
-                         monokai
-                         leuven
+                         ;; flatland
+                         ;; spacegray
+                         ;; material
+                         ;; heroku
+                         ;; naquadah
+                         ;; niflheim
+                         ;; tangotango
+                         ;; smyx
+                         ;; stekene-dark
+                         ;; graham
+                         ;; wilson
+                         ;; solarized-dark
+                         ;; spacemacs-dark
+                         ;; monokai
+                         ;; leuven
                          monokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
