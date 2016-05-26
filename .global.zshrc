@@ -65,7 +65,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
 export PATH=${ANYENV_ROOT}/bin:$PATH
-export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
+# export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # anyenv
