@@ -1,73 +1,32 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-if [ -e Liunx.txt ]; then
-   source ~/.tmuxinator/tmuxinator.zsh
-fi
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-
-# 履歴を保存するファイル
-HISTFILE=$HOME/.zhistory
-
-# メモリ内の履歴の数
-HISTSIZE=1000000
-
-# $HISTFILE に保存される履歴の数
-SAVEHIST=1000000
-
-# z
-# . `brew --prefix`/etc/profile.d/z.sh
-# function precmd () {
-#   z --add "$(pwd -P)"
-# }
-
-# peco設定
-function peco-select-history() {
-  local tac
-  if which tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(history -n 1 | \
-    eval $tac | \
-    peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
-# Customize to your needs...
+# General =================================================
+autoload -U compinit
+compinit -u
+setopt prompt_subst
 setopt HIST_IGNORE_DUPS           # 前と重複する行は記録しない
 setopt HIST_IGNORE_ALL_DUPS       # 履歴中の重複行をファイル記録前に無くす
 setopt HIST_IGNORE_SPACE          # 行頭がスペースのコマンドは記録しない
 setopt HIST_FIND_NO_DUPS          # 履歴検索中、(連続してなくとも)重複を飛ばす
 setopt HIST_REDUCE_BLANKS         # 余分な空白は詰めて記録
 setopt HIST_NO_STORE              # histroyコマンドは記録しない
-export ANYENV_ROOT=~/.anyenv
-export GOPATH=~/
+HISTFILE=$HOME/.zhistory # 履歴を保存するファイル
+HISTSIZE=1000000 # メモリ内の履歴の数
+SAVEHIST=1000000 # $HISTFILE に保存される履歴の数
+
+
+# Env path ================================================
+export ZSH=$HOME/.zplug/repos/robbyrussell/oh-my-zsh
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export TERM="xterm-256color"
 export EDITOR='vim'
-export DOCKER_HOST="tcp://192.168.59.103:2376"
-export DOCKER_CERT_PATH="/Users/s_miyamoto/.boot2docker/certs/boot2docker-vm"
-export DOCKER_TLS_VERIFY=1
 export VAGRANT_HOME=$HOME
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
+export ANYENV_ROOT=~/.anyenv
+export GOPATH=~/
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
+export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
 export PATH=${ANYENV_ROOT}/bin:$PATH
 export PATH=${JOHN_HOME}:$PATH
-# export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # anyenv
@@ -76,6 +35,45 @@ if which anyenv > /dev/null; then eval "$(anyenv init - zsh)"; fi
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
 
 
+# Plugin ==================================================
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+
+source ~/.zplug/init.zsh
+
+# zplug "plugins/brew", from:oh-my-zsh, nice:10
+# zplug "plugins/brew-cask", from:oh-my-zsh, nice:10
+# zplug "plugins/osx", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+# zplug "plugins/zsh_reload", from:oh-my-zsh
+# zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
+zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
+
+zplug "mollifier/anyframe"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# zplug 'themes/sorin', from:oh-my-zsh, nice:11
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+# Alias ====================================================
+
+alias cdghq=anyframe-widget-cd-ghq-repository
+alias killp=anyframe-widget-kill
+alias tmuxa=anyframe-widget-tmux-attach
+alias ll='ls -al'
 # git branch選択をpecoで
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 # git remotebranch 選択をpecoで
@@ -93,7 +91,7 @@ alias be='bundle exec'
 # vim
 alias vi='vim'
 # git
-alias g='git'
+# alias g='git'
 # vagrant
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
@@ -108,12 +106,8 @@ function peco-ssh() {
   ssh $SSH
 }
 alias ss="peco-ssh"
-
-# chrome
-alias chrome='open "/Applications/Google Chrome.app/" --args --renderer-process-limit=1'
-
-
 function git(){hub "$@"}
 
-# export DATABASE_URL=mysql2://root:supersecretpass@$(docker-machine ip dev):3306
-source /usr/local/share/zsh/site-functions/_aws
+# Bind Key ====================================================
+
+bindkey '^r' anyframe-widget-execute-history
