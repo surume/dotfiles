@@ -29,6 +29,7 @@ values."
      better-defaults
      dockerfile
      emacs-lisp
+     erlang
      elixir
      extra-langs
      git
@@ -40,6 +41,7 @@ values."
      markdown
      yaml
      react
+     autohotkey
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -54,10 +56,14 @@ values."
      shell-scripts
      spell-checking
      themes-megapack
+     theming
+     asciidoc
      syntax-checking
      vagrant
+     tmux
      eyebrowse
      version-control
+     colors
      swift
      )
    ;; List of additional packages that will be installed without being
@@ -73,7 +79,9 @@ values."
                                       helm-ls-git
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    smooth-scrolling
+                                    )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
