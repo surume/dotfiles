@@ -43,19 +43,21 @@ fi
 
 source ~/.zplug/init.zsh
 
-# zplug "plugins/brew", from:oh-my-zsh, nice:10
-# zplug "plugins/brew-cask", from:oh-my-zsh, nice:10
-# zplug "plugins/osx", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
-# zplug "plugins/zsh_reload", from:oh-my-zsh
-# zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/brew", from:oh-my-zsh, nice:10
+zplug "plugins/brew-cask", from:oh-my-zsh, nice:10
+zplug "plugins/osx", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
-zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
 
 zplug "mollifier/anyframe"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
+# themes
+zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
 # zplug 'themes/sorin', from:oh-my-zsh, nice:11
+
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -69,10 +71,11 @@ fi
 zplug load --verbose
 
 # Alias ====================================================
-
 alias cdghq=anyframe-widget-cd-ghq-repository
+# ghqディレクトリ削除
+alias rmghq='rm -rf $(ghq list -p | peco)'
 alias killp=anyframe-widget-kill
-alias tmuxa=anyframe-widget-tmux-attach
+# alias tmuxa=anyframe-widget-tmux-attach
 alias ll='ls -al'
 # git branch選択をpecoで
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
@@ -80,18 +83,10 @@ alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s
 alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 #grep color
 alias grep='grep --color=auto'
-# ghqディレクトリ
-alias cdghq='cd $(ghq list -p | peco)'
-# ghqディレクトリ削除
-alias rmghq='rm -rf $(ghq list -p | peco)'
-# emacs
-# alias emacs='open -a ~/Applications/Emacs.app'
 # bundle exec
 alias be='bundle exec'
 # vim
 alias vi='vim'
-# git
-# alias g='git'
 # vagrant
 alias v='vagrant'
 alias fuck='$(thefuck $(fc -ln -1))'
