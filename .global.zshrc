@@ -62,9 +62,11 @@ export DOCKER_CERT_PATH="/Users/s_miyamoto/.boot2docker/certs/boot2docker-vm"
 export DOCKER_TLS_VERIFY=1
 export VAGRANT_HOME=$HOME
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin
 export PATH=${ANYENV_ROOT}/bin:$PATH
+export PATH=${JOHN_HOME}:$PATH
 # export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
