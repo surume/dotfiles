@@ -111,3 +111,5 @@ bindkey '^r' anyframe-widget-execute-history
 if [ -e ~/.local.zshrc ]; then
     source ~/.local.zshrc
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
