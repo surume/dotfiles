@@ -101,6 +101,8 @@ function peco-ssh() {
   ssh $SSH
 }
 alias ss="peco-ssh"
+# global ip
+alias globalip='curl inet-ip.info'
 function git(){hub "$@"}
 
 # Bind Key ====================================================
