@@ -11,7 +11,8 @@ setopt HIST_NO_STORE              # histroyコマンドは記録しない
 HISTFILE=$HOME/.zhistory # 履歴を保存するファイル
 HISTSIZE=1000000 # メモリ内の履歴の数
 SAVEHIST=1000000 # $HISTFILE に保存される履歴の数
-
+# 大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Env path ================================================
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
