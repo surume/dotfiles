@@ -53,7 +53,7 @@ zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
 
 zplug "mollifier/anyframe"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 # themes
 zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
@@ -77,7 +77,9 @@ alias cdghq=anyframe-widget-cd-ghq-repository
 alias rmghq='rm -rf $(ghq list -p | peco)'
 alias killp=anyframe-widget-kill
 # alias tmuxa=anyframe-widget-tmux-attach
-alias ll='ls -al'
+alias ls='ls -G'
+alias ll='ls -l'
+alias la='ls -al'
 # git branch選択をpecoで
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 # git remotebranch 選択をpecoで
