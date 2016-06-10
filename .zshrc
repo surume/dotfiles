@@ -54,6 +54,7 @@ zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
 zplug "mollifier/anyframe"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "b4b4r07/zsh-gomi", as:command, of:bin, file:rm
 
 # themes
 zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
