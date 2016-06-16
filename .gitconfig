@@ -24,6 +24,7 @@
   log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
+	compactionHeuristic = true
 [help]
   autocorrect = 0
 [alias]
@@ -69,3 +70,7 @@
 [merge "mergepbx"]
 	name = Xcode project files merger
 	driver = mergepbx %O %A %B
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less

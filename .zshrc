@@ -25,10 +25,12 @@ export VAGRANT_HOME=$HOME
 export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 export ANYENV_ROOT=~/.anyenv
 export GOPATH=~/src
+export GIT_DIFF_HIGHLIGHT=/usr/local/share/git-core/contrib/diff-highlight
 
 export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
 export PATH=${ANYENV_ROOT}/bin:$PATH
 export PATH=${JOHN_HOME}:$PATH
+export PATH=${GIT_DIFF_HIGHLIGHT}:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # anyenv
