@@ -16,15 +16,15 @@ SAVEHIST=1000000                  # $HISTFILE に保存される履歴の数
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Env path ================================================
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
 export TERM="xterm-256color"
 export VAGRANT_HOME=$HOME
 # 何故かEDITERを指定するとtmuxでctrl+F,Bとかが効かないのでとりあえずコメントアウトしている
 # export EDITOR='vim'
 # export ANDROID_HOME=/usr/local/opt/android-sdk
 export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
-export ANYENV_ROOT=~/.anyenv
-export GOPATH=~/src
+export ANYENV_ROOT=${HOME}/.anyenv
+export GOPATH=${HOME}/src
 export GIT_DIFF_HIGHLIGHT=/usr/local/share/git-core/contrib/diff-highlight
 
 export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
