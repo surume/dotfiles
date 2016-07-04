@@ -318,6 +318,10 @@ you should place your code here."
   (define-key global-map (kbd "C-c p") 'flycheck-previous-error)
   (define-key global-map (kbd "C-c d") 'flycheck-list-errors)
 
+  ;; 翻訳のデフォルト値を設定（en -> ja）
+  (custom-set-variables
+   '(google-translate-default-source-language "en")
+   '(google-translate-default-target-language "ja"))
 
   (setq
    neo-theme 'nerd
