@@ -26,6 +26,7 @@ export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 export ANYENV_ROOT=${HOME}/.anyenv
 export GOPATH=${HOME}/src
 export GIT_DIFF_HIGHLIGHT=/usr/local/share/git-core/contrib/diff-highlight
+export BYOBU_PREFIX=$(brew --prefix)
 
 export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
 export PATH=${ANYENV_ROOT}/bin:$PATH
