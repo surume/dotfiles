@@ -93,6 +93,7 @@ brew:
     # - dropbox
     # - emacs
     # - evernote
+    - docker
     # - dockertoolbox
     - dropbox
     - evernote
