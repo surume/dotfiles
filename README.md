@@ -5,7 +5,7 @@ Surume's dotfiles
 
 ## Install
 
-Installed directory is based on the `DOTFILE_PATH` environment variable
+Installed directory is based on the `DOTFILES_PATH` environment variable
 
 ```
 # example

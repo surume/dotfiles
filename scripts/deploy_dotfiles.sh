@@ -10,7 +10,8 @@ EOF
 exit
 fi
 
-cd $DOTFILES_PATH
+dotfile_path=$DOTFILES_PATH
+cd $dotfile_path
 
 if [ ! -e ~/.spacemacs ]; then
     cat << 'EOF'
@@ -63,5 +64,5 @@ cat << 'EOF'
  Create .local.zshrc
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
-    echo "export DOTFILE_PATH=${dotfile_path}" >> ~/.local.zshrc
+    echo "export DOTFILES_PATH=${dotfile_path}" >> ~/.local.zshrc
 fi
