@@ -62,7 +62,7 @@ brew:
     # - packer
     - peco
     - reattach-to-user-namespace
-    # - sbt
+    - sbt
     - sshrc
     - the_silver_searcher
     - tig
