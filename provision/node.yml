@@ -61,7 +61,6 @@ brew:
     # - nodebrew
     # - packer
     - peco
-    # - ricty
     - reattach-to-user-namespace
     # - sbt
     - sshrc
@@ -93,6 +92,7 @@ brew:
     # - firefoxdeveloperedition-ja
     - flux
     - font-fira-code
+    # - font-ricty-diminished
     # - forklift
     # - genymotion
     - google-chrome
