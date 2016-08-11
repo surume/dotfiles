@@ -20,12 +20,7 @@ brew:
     # - homebrew/binary
     # - homebrew/dupes
     # - homebrew/versions
-    # - motemen/ghq
-    # - peco/peco
-    # - railwaycat/emacsmacport
-    # - sanemat/font
     - tkengo/highway
-    # - yudai/gotty
   install_packages:
     # - ack
     # - android-sdk
@@ -91,8 +86,6 @@ brew:
     - clipy
     # - dash
     # - dropbox
-    # - emacs
-    # - evernote
     - docker
     # - dockertoolbox
     - dropbox
