@@ -1,14 +1,21 @@
 cat << 'EOF'
-                                  __             __
- _____    _ __    ___    __  __  /\_\     ____  /\_\     ___     ___
-/\ '__`\ /\`'__\ / __`\ /\ \/\ \ \/\ \   /',__\ \/\ \   / __`\ /' _ `\
-\ \ \L\ \\ \ \/ /\ \L\ \\ \ \_/ | \ \ \ /\__, `\ \ \ \ /\ \L\ \/\ \/\ \
- \ \ ,__/ \ \_\ \ \____/ \ \___/   \ \_\\/\____/  \ \_\\ \____/\ \_\ \_\
-  \ \ \/   \/_/  \/___/   \/__/     \/_/ \/___/    \/_/ \/___/  \/_/\/_/
-   \ \_\
-    \/_/
+  __              __         ___          ___
+ /\ \            /\ \__    /'___\  __    /\_ \
+ \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
+ /'_` \   / __`\  \ \ \/  \ \ ,__\\/\ \    \ \ \    /'__`\  /',__\
+/\ \L\ \ /\ \L\ \  \ \ \_  \ \ \_/ \ \ \    \_\ \_ /\  __/ /\__, `\
+\ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
+ \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
 EOF
 
+if test "${DOTFILES_PATH}" = "";then
+ cat << 'EOF'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+  DOTFILES_PATH is undefined 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+EOF
+exit
+fi
 
 if ! which brew > /dev/null 2>&1 ; then
 cat << 'EOF'
@@ -29,7 +36,7 @@ EOF
     curl -fsSL https://raw.githubusercontent.com/rgcr/m-cli/master/install.sh | sh
 fi
 
-dotfiles_path="$HOME/src/github.com/Surume/dotfiles"
+dotfiles_path=$DOTFILES_PATH
 if [ ! -d $dotfiles_path ]; then
 cat << 'EOF'
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
@@ -69,7 +76,7 @@ cat << 'EOF'
  Install dotfiles
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
-    cd $dotfiles_path/scripts/deploy_dotfiles.sh
+    cd $dotfiles_path/scripts
     sh $dotfiles_path/scripts/deploy_dotfiles.sh
 fi
 
@@ -89,6 +96,14 @@ cat << 'EOF'
 EOF
 curl -s https://gist.githubusercontent.com/kaneshin/40d9331941682bf46f5d/raw/42e2a7df2d8dbf6c956edcd3fd1c332e3364f573/install_mergepbx.sh | sh
 
+cat << 'EOF'
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+ Change mac settings
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+EOF
+cd $dotfiles_path/scripts
+sh $dotfiles_path/scripts/mac_settings.sh
+
 
 if ! test $SHELL = '/usr/local/bin/zsh'; then
 cat << 'EOF'
@@ -105,4 +120,15 @@ EOF
 
     chsh -s /usr/local/bin/zsh
 fi
+
+cat << 'EOF'
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+ Provision Finished
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+
+   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+ ->             Please Restart Terminal !!!!!               <-
+   ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+EOF
 

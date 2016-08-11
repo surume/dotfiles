@@ -3,23 +3,11 @@ dotfiles
 
 Surume's dotfiles
 
-## Usages
+## Install
 
-```bash
-$ sh install
+Installed directory is based on the `DOTFILE_PATH` environment variable
+
 ```
-
-#### update gitconfig
-
-```bash
-$ vi ~/.gitconfig_local
+# example
+$ DOTFILES_PATH=${HOME}/your/dotfile/path curl -s -L http://raw.githubusercontent.com/Surume/dotfiles/master/scripts/install.sh | sh
 ```
-
-## Licence
-
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
-
-## Note
-
-こっちから使ってる
-* [mac-provisioning](https://github.com/Surume/mac-provisioning)

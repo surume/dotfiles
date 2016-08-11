@@ -1,15 +1,16 @@
 #!/bin/bash
 
-cat << 'EOF'
-  __              __         ___          ___
- /\ \            /\ \__    /'___\  __    /\_ \
- \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
- /'_` \   / __`\  \ \ \/  \ \ ,__\\/\ \    \ \ \    /'__`\  /',__\
-/\ \L\ \ /\ \L\ \  \ \ \_  \ \ \_/ \ \ \    \_\ \_ /\  __/ /\__, `\
-\ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
- \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
 EOF
+if test "${DOTFILES_PATH}" = "";then
+ cat << 'EOF'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+  DOTFILES_PATH is undefined 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+EOF
+exit
+fi
 
+cd $DOTFILES_PATH
 
 if [ ! -e ~/.spacemacs ]; then
     cat << 'EOF'
@@ -19,33 +20,6 @@ if [ ! -e ~/.spacemacs ]; then
 EOF
     rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d;
     # rm -rf ~/.emacs.d/private; ln -s `pwd`/private ~/.emacs.d/private
-fi
-
-
-
-if [ ! -e ./antigen ]; then
-    cat << 'EOF'
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
- Install Antigen & prezto
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
-EOF
-    # Antigen を導入
-    git clone https://github.com/zsh-users/antigen.git;
-    source ./antigen/antigen.zsh
-
-    # Antigen から Prezto を導入
-    antigen bundle sorin-ionescu/prezto
-
-    # Prezto から参照させるため、シンボリックリンクを設置
-    ln -s ~/.antigen/repos/.zprezto ~/.zprezto
-
-    # Prezto の Zsh 設定ファイルへのシンボリックリンクを設置
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/README.md; do
-        if ! [ rcfile = "${ZDOTDIR:-$HOME}/.zshrc"]; then
-            ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-        fi
-    done
 fi
 
 copy_file () {
@@ -83,3 +57,11 @@ ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 # cd `pwd`/.zprezto/modules/prompt/functions/
 # rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
 
+if [ ! -e ~/.local.zshrc ]; then
+cat << 'EOF'
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+ Create .local.zshrc
+===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
+EOF
+    echo "export DOTFILE_PATH=${dotfile_path}" >> ~/.local.zshrc
+fi
