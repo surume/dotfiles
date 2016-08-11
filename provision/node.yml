@@ -6,6 +6,8 @@ anyenv:
       - 1.3.2
     - nodenv:
       - 6.2.2
+    - scalaenv:
+      - scala-2.11.8
 
 brew:
   install_path: /Applications
@@ -108,7 +110,7 @@ brew:
     # - intellij-idea
     # - insomniax
     - iterm2
-    # - java
+    - java
     # - kaleidoscope
     - karabiner
     - kindle
