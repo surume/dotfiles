@@ -74,6 +74,7 @@ values."
    dotspacemacs-additional-packages '(
                                       auto-save-buffers-enhanced
                                       chef-mode
+                                      scala-mode2
                                       nginx-mode
                                       key-chord
                                       helm-ghq
