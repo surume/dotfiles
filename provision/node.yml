@@ -38,6 +38,7 @@ brew:
     # - coreutils
     # - ctags
     - curl
+    - diff-so-fancy
     - direnv
     # - emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon
     - emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
@@ -58,6 +59,7 @@ brew:
     # - lv
     - markdown
     - mas
+    - mysql --client-only
     # - nodebrew
     # - packer
     - peco
@@ -71,6 +73,7 @@ brew:
     - vim
     # - w3m
     - wget
+    - wrk
     # - z
     - zsh
     - zsh-completions
@@ -87,8 +90,8 @@ brew:
     # - dropbox
     - docker
     # - dockertoolbox
-    - dropbox
-    - evernote
+    # - dropbox
+    # - evernote
     # - firefoxdeveloperedition-ja
     - flux
     - font-fira-code
@@ -107,7 +110,7 @@ brew:
     - java
     # - kaleidoscope
     - karabiner
-    - kindle
+    # - kindle
     - kitematic
     - licecap
     # - seashore
