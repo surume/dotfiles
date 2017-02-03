@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! -n "$1" ]; then
+  echo "projectname not exist."
+  exit 1
+fi
+
+path=`ghq root`/github.com/surume/$1
+
+mkdir $path && cd $_
+git init
