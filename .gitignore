@@ -161,5 +161,5 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
-
+.byobu/.ssh-agent
 
