@@ -1,6 +1,6 @@
 # General =================================================
-autoload -U compinit
-compinit -u
+# autoload -U compinit
+# compinit -u
 setopt prompt_subst
 setopt HIST_IGNORE_DUPS           # 前と重複する行は記録しない
 setopt HIST_IGNORE_ALL_DUPS       # 履歴中の重複行をファイル記録前に無くす
@@ -22,22 +22,28 @@ export VAGRANT_HOME=$HOME
 # 何故かEDITERを指定するとtmuxでctrl+F,Bとかが効かないのでとりあえずコメントアウトしている
 # export EDITOR='vim'
 # export ANDROID_HOME=/usr/local/opt/android-sdk
-export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
+# export JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 export ANYENV_ROOT=${HOME}/.anyenv
 export GOPATH=${HOME}/src
 export GIT_DIFF_HIGHLIGHT=/usr/local/share/git-core/contrib/diff-highlight
 export BYOBU_PREFIX=$(brew --prefix)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export ORG_BIN_ROOT=${HOME}/.bin
 
-export PATH=${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}
+export PATH=${HOME}/.bin:${HOME}/.local/bin:/usr/local/bin:${PATH}:$GOPATH/bin
 export PATH=${ANYENV_ROOT}/bin:$PATH
-export PATH=${JOHN_HOME}:$PATH
+# export PATH=${JOHN_HOME}:$PATH
 export PATH=${GIT_DIFF_HIGHLIGHT}:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # anyenv
-if which anyenv > /dev/null; then eval "$(anyenv init - zsh)"; fi
+if which anyenv > /dev/null; then eval "$(anyenv init - --no-rehash)"; fi
 # direnv
 whence direnv >/dev/null && eval "$(direnv hook zsh)"
+
+export YARN_GLBL_PATH=$(yarn global bin)
+export PATH=${YARN_GLBL_PATH}:$PATH
+
 
 # Plugin ==================================================
 if [[ ! -d ~/.zplug ]]; then
@@ -47,16 +53,16 @@ fi
 
 source ~/.zplug/init.zsh
 
-zplug "plugins/brew", from:oh-my-zsh, nice:10
-zplug "plugins/brew-cask", from:oh-my-zsh, nice:10
-zplug "plugins/osx", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
-zplug "plugins/zsh_reload", from:oh-my-zsh
-zplug "plugins/colorize", from:oh-my-zsh
+# zplug "plugins/brew", from:oh-my-zsh, nice:10
+# zplug "plugins/brew-cask", from:oh-my-zsh, nice:10
+# zplug "plugins/osx", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+# zplug "plugins/zsh_reload", from:oh-my-zsh
+# zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
 
 zplug "mollifier/anyframe"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+# zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 # themes
 zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme"
@@ -64,12 +70,12 @@ zplug "shashankmehta/dotfiles", use:"/thesetup/zsh/.oh-my-zsh/custom/themes/gits
 
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
@@ -99,7 +105,7 @@ alias fuck='$(thefuck $(fc -ln -1))'
 # docker
 alias d='docker'
 alias fig='docker-compose'
-alias b2docker='docker-machine'
+alias dst='docker stats $(docker ps|grep -v "NAMES"|awk '{ print $NF }'|tr "\n" " ")'
 # ssh
 alias ssh='rm -f ~/.ssh/config; cat ~/.sshlocal/config ~/.ssh/global.config > ~/.ssh/config; ssh'
 function peco-ssh() {
@@ -119,5 +125,10 @@ if [ -e ~/.local.zshrc ]; then
     source ~/.local.zshrc
 fi
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # iterm2 ======================================================
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# if type zprof > /dev/null 2>&1; then
+#   zprof | less
+# fi
