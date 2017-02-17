@@ -29,9 +29,11 @@ export GIT_DIFF_HIGHLIGHT=/usr/local/share/git-core/contrib/diff-highlight
 export BYOBU_PREFIX=$(brew --prefix)
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export ORG_BIN_ROOT=${HOME}/.bin
+export YARN_GLBL_BIN=$HOME/.config/yarn/global/node_modules/.bin
 
 export PATH=${HOME}/.bin:${HOME}/.local/bin:/usr/local/bin:${PATH}:$GOPATH/bin
 export PATH=${ANYENV_ROOT}/bin:$PATH
+export PATH=${YARN_GLBL_BIN}:$PATH
 # export PATH=${JOHN_HOME}:$PATH
 export PATH=${GIT_DIFF_HIGHLIGHT}:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -132,3 +134,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # if type zprof > /dev/null 2>&1; then
 #   zprof | less
 # fi
+eval $(/usr/libexec/path_helper -s)
