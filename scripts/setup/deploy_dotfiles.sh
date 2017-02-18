@@ -1,17 +1,15 @@
 #!/bin/bash
 
-EOF
 if test "${DOTFILES_PATH}" = "";then
  cat << 'EOF'
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-  DOTFILES_PATH is undefined 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  DOTFILES_PATH is undefined
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 EOF
 exit
 fi
 
-dotfile_path=$DOTFILES_PATH
-cd $dotfile_path
+cd $DOTFILES_PATH
 
 if [ ! -e ~/.spacemacs ]; then
     cat << 'EOF'
@@ -20,7 +18,6 @@ if [ ! -e ~/.spacemacs ]; then
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
     rm -rf ~/.emacs.d; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d;
-    # rm -rf ~/.emacs.d/private; ln -s `pwd`/private ~/.emacs.d/private
 fi
 
 copy_file () {
@@ -55,14 +52,14 @@ cat << 'EOF'
 EOF
 ls -A | grep _local | xargs -I{} bash -c "copy_file {}"
 
-# cd `pwd`/.zprezto/modules/prompt/functions/
-# rm -f prompt_agnoster_setup prompt_powerline_setup prompt_pure_setup
-
-if [ ! -e ~/.local.zshrc ]; then
+if [ ! -e ~/.local/share/zsh/.zshrc ]; then
 cat << 'EOF'
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
- Create .local.zshrc
+ Create .local/zsh/.zshrc and .local/fish/config.fish
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
-    echo "export DOTFILES_PATH=${dotfile_path}" >> ~/.local.zshrc
+    mkdir -p ~/.local/share/zsh
+    echo "export DOTFILES_PATH=$DOTFILES_PATH" >> ~/.local/share/zsh/.zshrc
+    mkdir -p ~/.local/share/fish
+    echo "set -x DOTFILES_PATH $DOTFILES_PATH" >> ~/.local/share/fish/config.fish
 fi

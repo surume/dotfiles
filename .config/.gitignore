@@ -1,0 +1,7 @@
+karabiner
+yarn
+fish/*
+!fish/aliases.fish
+!fish/config.fish
+!fish/env.fish
+!fish/fishfile
