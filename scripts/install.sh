@@ -32,6 +32,8 @@ source $DOTFILES_PATH/scripts/setup/deploy_dotfiles.sh
 source $DOTFILES_PATH/scripts/setup/asdf.sh
 source $DOTFILES_PATH/scripts/setup/fish.sh
 source $DOTFILES_PATH/scripts/setup/mac_settings.sh
+fish $DOTFILES_PATH/scripts/setup/install.fish
+
 
 
 cat << 'EOF'
