@@ -90,7 +90,7 @@ nbproject/
 *.xcodeproj/*
 
 ## Build dir ##
-build/
+# build/
 ### https://raw.github.com/github/gitignore/b8da0e3a89f5d75acdb9d5fed06700bfff3695f9/Global/emacs.gitignore
 
 # -*- mode: gitignore; -*-
@@ -143,7 +143,7 @@ antigen
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-build/
+# build/
 DerivedData
 
 ## Various settings
