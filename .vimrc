@@ -1,5 +1,8 @@
 " vi 互換ではなくVim のデフォルト設定にする
 set nocompatible
+set number
+syntax on
+colorscheme desert
 
 " neobunlde.vimで管理してるpluginを読み込む
 " source ~/.vim/includes/vimrc.bundle
