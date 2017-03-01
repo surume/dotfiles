@@ -3,8 +3,7 @@ set -x HOMEBREW_CASK_OPTS "--appdir=/Applications --caskroom=/opt/homebrew-cask/
 set -x TERM "xterm-256color"
 set -x VAGRANT_HOME $HOME
 # set -x BYOBU_PREFIX $(brew --prefix)
-# 何故かEDITERを指定するとtmuxでctrl+F,Bとかが効かないのでとりあえずコメントアウトしている
-# set -x EDITOR='vim'
+set -x EDITOR 'vim'
 # set -x ANDROID_HOME=/usr/local/opt/android-sdk
 # set -x JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 set -x ANYENV_ROOT ~/.anyenv
