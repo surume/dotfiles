@@ -20,9 +20,9 @@ langInstall () {
 
 
 # LANG INSTALL
-langInstall elixir asdf-vm/asdf-elixir 1.4.1
+langInstall elixir asdf-vm/asdf-elixir 1.4.2
 langInstall go kennyp/asdf-golang 1.8
-langInstall nodejs asdf-vm/asdf-nodejs 7.4.0
+langInstall nodejs asdf-vm/asdf-nodejs 7.7.1
 langInstall ruby asdf-vm/asdf-ruby 2.4.0
 langInstall rust code-lever/asdf-rust 1.15.1
 langInstall scala mtatheonly/asdf-scala 2.12.1
