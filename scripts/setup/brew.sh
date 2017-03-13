@@ -28,6 +28,7 @@ brew install \
      autojump \
      automake \
      awscli \
+     aspell \
      byobu \
      curl \
      diff-so-fancy \
