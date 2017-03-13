@@ -23,4 +23,4 @@ set -x PATH $YARN_GLBL_PATH $PATH
 
 
 # direnv
-eval (direnv hook fish)
+direnv hook fish | source

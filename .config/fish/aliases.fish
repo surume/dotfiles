@@ -15,8 +15,8 @@ end
 
 # git ============================================================================
 alias g git
-eval (hub alias -s)
 
+hub alias -s | source
 function mkrepo
   set -lx repo $MY_GITHUB_ROOT/$argv
   mkdir -p $repo
