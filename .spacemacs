@@ -361,6 +361,10 @@ you should place your code here."
    '(google-translate-default-source-language "en")
    '(google-translate-default-target-language "ja"))
 
+  (setq ispell-program-name "aspell"
+        ;; force the English dictionary, support Camel Case spelling check (tested with aspell 0.6)
+        ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
+
   (setq
    neo-theme 'nerd
    powerline-default-separator 'slant
