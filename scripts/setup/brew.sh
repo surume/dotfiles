@@ -61,7 +61,7 @@ brew install \
      tig \
      tmux \
      tree \
-     unixodbc
+     unixodbc \
      vim \
      wget \
      wrk \
