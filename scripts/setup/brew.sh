@@ -24,29 +24,36 @@ brew tap \
 
 # brew install =============================================
 brew install \
+     autoconf \
      autojump \
      automake \
      awscli \
-     fish \
-     fzf \
-     newt \
+     aspell \
      byobu \
      curl \
      diff-so-fancy \
      direnv \
      emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon \
      erlang \
+     fish \
+     fzf \
      ghc \
      ghq \
      gibo \
      git \
-     hub \
      highway \
+     hub \
      jq \
+     libtool \
+     libxslt \
+     libyaml \
      m-cli \
      markdown \
      mas \
      mysql --client-only \
+     newt \
+     openssl \
+     readline \
      reattach-to-user-namespace \
      sbt \
      sshrc \
@@ -54,6 +61,7 @@ brew install \
      tig \
      tmux \
      tree \
+     unixodbc \
      vim \
      wget \
      wrk \
@@ -82,6 +90,7 @@ brew cask install \
      the-unarchiver \
      virtualbox
 
+
 # brew cask install android-studio
 # brew cask install atom
 # brew cask install bartender
@@ -92,9 +101,9 @@ brew cask install \
 # brew cask install forklift
 # brew cask install genymotion
 # brew cask install hyperswitch
+# brew cask install insomniax
 # brew cask install intel-haxm
 # brew cask install intellij-idea
-# brew cask install insomniax
 # brew cask install iterm2
 # brew cask install kaleidoscope
 # brew cask install karabiner
