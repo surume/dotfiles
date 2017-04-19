@@ -6,7 +6,7 @@ function ssh
 end
  
 function ss
-  grep "^Host " ~/.ssh/config | sed s/"Host "// | sort | peco | read -l hostname
+  grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | peco | read -l hostname
   ssh $hostname
 end
 
