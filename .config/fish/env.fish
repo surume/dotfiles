@@ -11,6 +11,7 @@ set -x GOPATH ~/src
 set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
 
 set -x PATH /usr/local/bin $PATH
+set -x PATH ~/.cargo/bin $PATH
 # set -x PATH $GOPATH/bin $PATH
 
 set -x PATH $ANYENV_ROOT/bin $PATH
