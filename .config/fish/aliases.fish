@@ -4,7 +4,7 @@ function ssh
   cat ~/.sshlocal/config ~/.ssh/global.config > ~/.ssh/config
   /usr/bin/ssh $argv
 end
- 
+
 function ss
   grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | peco | read -l hostname
   ssh $hostname
@@ -13,14 +13,14 @@ end
 # git ============================================================================
 alias g git
 hub alias -s | source
- 
+
 function mkrepo
   set -lx repo $MY_GITHUB_ROOT/$argv
   mkdir -p $repo
   cd $repo
   git init
 end
- 
+
 function rmrepo
   ghq list -p | peco | read -l selectedRepo
   rm -rf $selectedRepo
@@ -36,6 +36,6 @@ alias fig docker-compose
 
 # global ip
 alias gip 'curl globalip.me'
- 
+
 # bundle exec
 alias be 'bundle exec'
