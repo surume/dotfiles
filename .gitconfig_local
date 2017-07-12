@@ -1,9 +1,6 @@
 [user]
     name = yourname
     email = you@example.com
-[github-nippou]
-    user = yourname
-    token = your_token
 [pr-release]
     token = your_token
 [pr-release "branch"]
