@@ -12,6 +12,7 @@ end
 
 # git ============================================================================
 alias g git
+alias ls exa
 hub alias -s | source
 
 function mkrepo

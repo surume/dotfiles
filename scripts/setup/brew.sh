@@ -35,6 +35,7 @@ brew install \
      direnv \
      emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon \
      erlang \
+     exa \
      fish \
      fzf \
      ghc \
