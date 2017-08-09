@@ -52,6 +52,7 @@ brew install \
      markdown \
      mas \
      mysql --client-only \
+     neovim \
      newt \
      openssl \
      readline \
@@ -63,7 +64,6 @@ brew install \
      tmux \
      tree \
      unixodbc \
-     vim \
      wget \
      wrk \
      z
