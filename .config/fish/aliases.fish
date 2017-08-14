@@ -13,8 +13,8 @@ end
 # git ============================================================================
 alias g git
 alias ls exa
-alias vi neovim
-alias vim neovim
+alias vi nvim
+alias vim nvim
 hub alias -s | source
 
 function mkrepo
