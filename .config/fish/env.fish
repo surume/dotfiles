@@ -15,7 +15,6 @@ set -x PATH /usr/local/bin $PATH
 set -x PATH $CARGO_PATH/bin $PATH
 set -x PATH $PATH $DIFF_HIGHLIGHT_PATH
 # set -x PATH $JOHN_HOME $PATH
-# set -x PATH $HOME/.nodebrew/current/bin $PATH
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
 set -x YARN_GLBL_PATH (yarn global bin)
