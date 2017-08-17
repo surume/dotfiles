@@ -9,13 +9,14 @@ set -x EDITOR 'vim'
 set -x ANYENV_ROOT ~/.anyenv
 set -x GOPATH ~/src
 set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
+set -x DIFF_HIGHLIGHT_PATH /usr/local/share/git-core/contrib/diff-highlight
 
 set -x PATH /usr/local/bin $PATH
 set -x PATH ~/.cargo/bin $PATH
-# set -x PATH $GOPATH/bin $PATH
 
 set -x PATH $ANYENV_ROOT/bin $PATH
-# set -x PATH=${JOHN_HOME} $PATH
+set -x PATH $PATH $DIFF_HIGHLIGHT_PATH
+# set -x PATH ${JOHN_HOME} $PATH
 # set -x PATH $HOME/.nodebrew/current/bin $PATH
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
