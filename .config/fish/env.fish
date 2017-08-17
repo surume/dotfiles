@@ -1,22 +1,20 @@
 # Env path ================================================
 set -x HOMEBREW_CASK_OPTS "--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
 set -x TERM "xterm-256color"
-set -x VAGRANT_HOME $HOME
 
 set -x EDITOR 'vim'
-# set -x ANDROID_HOME=/usr/local/opt/android-sdk
-# set -x JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
-set -x ANYENV_ROOT ~/.anyenv
 set -x GOPATH ~/src
 set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
+set -x VAGRANT_HOME $HOME
 set -x DIFF_HIGHLIGHT_PATH /usr/local/share/git-core/contrib/diff-highlight
+set -x CARGO_PATH ~/.cargo
+# set -x ANDROID_HOME=/usr/local/opt/android-sdk
+# set -x JOHN_HOME=/usr/local/Cellar/john-jumbo/1.8.0/share/john
 
 set -x PATH /usr/local/bin $PATH
-set -x PATH ~/.cargo/bin $PATH
-
-set -x PATH $ANYENV_ROOT/bin $PATH
+set -x PATH $CARGO_PATH/bin $PATH
 set -x PATH $PATH $DIFF_HIGHLIGHT_PATH
-# set -x PATH ${JOHN_HOME} $PATH
+# set -x PATH $JOHN_HOME $PATH
 # set -x PATH $HOME/.nodebrew/current/bin $PATH
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
