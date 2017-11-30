@@ -7,7 +7,7 @@ end
 
 function ss
   grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | peco | read -l hostname
-  ssh $hostname
+  ssh -A $hostname
 end
 
 # git ============================================================================
