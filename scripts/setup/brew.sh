@@ -80,7 +80,7 @@ brew cask install \
      bettertouchtool \
      caffeine \
      clipy \
-     docker \
+     docker-edge \
      flux \
      google-chrome \
      google-japanese-ime \
