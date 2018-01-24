@@ -89,6 +89,7 @@ brew cask install \
      kitematic \
      slack \
      the-unarchiver \
+     google-cloud-sdk \
      virtualbox
 
 
