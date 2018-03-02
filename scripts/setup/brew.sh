@@ -33,6 +33,7 @@ brew install \
      curl \
      diff-so-fancy \
      direnv \
+     ediorconfig \
      emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon \
      erlang \
      exa \
