@@ -7,3 +7,4 @@ end
 
 . ~/.asdf/asdf.fish
 . ~/.local/share/fish/config.fish
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
