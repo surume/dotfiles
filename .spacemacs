@@ -83,6 +83,7 @@ values."
                                       auto-save-buffers-enhanced
                                       gradle-mode
                                       chef-mode
+                                      kotlin-mode
                                       protobuf-mode
                                       ;; scala-mode2
                                       nginx-mode
