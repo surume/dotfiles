@@ -60,7 +60,7 @@
   unskip-worktree = update-index --no-skip-worktree
   skiped = git ls-files -v | grep ^S
   addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | peco | xargs git add; };f"
-  pr = "!hub browse -- compare/$(git symbolic-ref --short HEAD)'?'expand=1'&'body=%23%23%23%20%e8%83%8c%e6%99%af%0d%0a%0d%0a%23%23%23%20%e4%bd%95%e3%81%8c%e5%95%8f%e9%a1%8c%e3%81%8b%0d%0a%0d%0a%23%23%23%20%e5%a4%89%e6%9b%b4%e5%86%85%e5%ae%b9%e3%81%be%e3%81%9f%e3%81%af%20TODO%0d%0a%0d%0a%23%23%23%20%e5%8b%95%e4%bd%9c%e7%a2%ba%e8%aa%8d%e6%96%b9%e6%b3%95%0d%0a%0d%0a%23%23%23%20%e3%83%9e%e3%83%bc%e3%82%b8%e6%9d%a1%e4%bb%b6%0d%0a"
+  pr = "!hub browse -- compare/$(git symbolic-ref --short HEAD)'?'expand=1'&'body=%23%23%23%20%e6%a6%82%e8%a6%81%0d%0a%0d%0a%23%23%23%20TODO%0d%0a%0d%0a%2d%20%5b%20%5d%20todo1%0d%0a%0d%0a%23%23%23%20%e5%8b%95%e4%bd%9c%e7%a2%ba%e8%aa%8d%e6%96%b9%e6%b3%95%0d%0a%0d%0a%23%23%23%20%e3%83%9e%e3%83%bc%e3%82%b8%e6%9d%a1%e4%bb%b6"
   create-pull-request = !sh -c 'stash pull-request $0 $@'
   fpop = git stash show -p | git apply && git stash drop
   dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
