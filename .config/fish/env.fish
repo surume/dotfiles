@@ -18,7 +18,11 @@ set -x PATH $DIFF_HIGHLIGHT_PATH $PATH
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
 set -x YARN_GLBL_PATH (yarn global bin)
+set -x YARN_GLBL_PATH2 ~/.config/yarn/global/node_modules/.bin
 set -x PATH $YARN_GLBL_PATH $PATH
+set -x PATH $YARN_GLBL_PATH2 $PATH
+set -x NPM_BIN_PATH ~/.npm-packages/bin
+set -x PATH $NPM_BIN_PATH $PATH
 
 
 # direnv
