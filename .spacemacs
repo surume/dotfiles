@@ -81,6 +81,7 @@ values."
                                       editorconfig
                                       elscreen
                                       auto-save-buffers-enhanced
+                                      gradle-mode
                                       chef-mode
                                       protobuf-mode
                                       ;; scala-mode2
