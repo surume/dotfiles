@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+CRON_PATH=$DOTFILES_PATH/scripts/cron
+0 * * * * sh $CRON_PATH/updateBrews.sh >> /dev/null 2>&1
+0 * * * * mv $CRON_PATH/cleanDesktop.sh >> /dev/null 0>&1
