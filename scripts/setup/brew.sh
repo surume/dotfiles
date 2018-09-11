@@ -44,6 +44,7 @@ brew install \
      gibo \
      git \
      highway \
+     httpie \
      hub \
      jq \
      libtool \
