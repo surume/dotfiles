@@ -1,11 +1,130 @@
+#! /bin/bash
+
+brew_tap=(
+    caskroom/cask
+    caskroom/fonts
+    railwaycat/emacsmacport
+
+    # tkengo/highway
+)
+
+
+cli_apps=(
+    awscli
+    curl
+    diff-so-fancy
+    direnv
+    editorconfig
+    emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
+    exa
+    fish
+    fzf
+    ghq
+    gibo
+    git
+    httpie
+    hub
+    jq
+    m-cli
+    mysql --client-only
+    neovim
+    newt
+    openssl
+    sshrc
+    the_silver_searcher
+    tmux
+    reattach-to-user-namespace
+    tree
+    wget
+    wrk
+
+    # android-sdk
+    # aspell
+    # autoconf
+    # autojump
+    # automake
+    # byobu
+    # erlang
+    # ghc
+    # highway
+    # imagemagick
+    # libtool
+    # libxslt
+    # libyaml
+    # markdown
+    # mas
+    # packer
+    # readline
+    # sbt
+    # tig
+    # unixodbc
+    # z
+)
+
+
+cask_apps=(
+    1password
+    alfred
+    appcleaner
+    caffeine
+    clipy
+    docker
+    flux
+    google-chrome
+    google-japanese-ime
+    gpgtools
+    kitematic
+    slack
+    the-unarchiver
+    trailer
+
+    # alcatraz
+    # android-studio
+    # bettertouchtool
+    # dash
+    # dropbox
+    # evernote
+    # firefoxdeveloperedition-ja
+    # forklift
+    # genymotion
+    # google-cloud-sdk
+    # hyperswitch
+    # insomniax
+    # intel-haxm
+    # intellij-idea
+    # iterm2
+    # java
+    # karabiner
+    # karabiner-elements
+    # kindle
+    # licecap
+    # seashore
+    # sketch
+    # skitch
+)
+
+
+brew_tap=(
+    font-fira-code
+)
+
+mas_apps=(
+    443987910
+    426410278
+
+    # 549083868
+    # 539883307
+)
+
+# Start Execute =========================================
+
 if ! which brew > /dev/null 2>&1 ; then
     cat << 'EOF'
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
- Install [brew] command
+Install [brew] command
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew update
 fi
 
 cat << 'EOF'
@@ -14,116 +133,11 @@ cat << 'EOF'
 ===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
 EOF
 
-# brew tap =================================================
-brew tap \
-     caskroom/cask \
-     caskroom/fonts \
-     railwaycat/emacsmacport \
-     tkengo/highway
+brew update
 
+echo "${brew_tap[*]}" | xargs brew tap
+echo "${cli_apps[*]}" | xargs brew install
+echo "${cask_apps[*]}" | xargs brew cask install
 
-# brew install =============================================
-brew install \
-     autoconf \
-     autojump \
-     automake \
-     awscli \
-     aspell \
-     byobu \
-     curl \
-     diff-so-fancy \
-     direnv \
-     ediorconfig \
-     emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon \
-     erlang \
-     exa \
-     fish \
-     fzf \
-     ghc \
-     ghq \
-     gibo \
-     git \
-     highway \
-     httpie \
-     hub \
-     jq \
-     libtool \
-     libxslt \
-     libyaml \
-     m-cli \
-     markdown \
-     mas \
-     mysql --client-only \
-     neovim \
-     newt \
-     openssl \
-     readline \
-     reattach-to-user-namespace \
-     sbt \
-     sshrc \
-     the_silver_searcher \
-     tig \
-     tmux \
-     tree \
-     unixodbc \
-     wget \
-     wrk \
-     z
-# brew install android-sdk
-# brew install imagemagick
-# brew install packer
-
-
-# brew cask install =============================================
-brew cask install \
-     alcatraz \
-     alfred \
-     appcleaner \
-     bettertouchtool \
-     caffeine \
-     clipy \
-     docker-edge \
-     flux \
-     google-chrome \
-     google-japanese-ime \
-     gpgtools \
-     java \
-     kitematic \
-     slack \
-     the-unarchiver \
-     google-cloud-sdk \
-     virtualbox
-
-
-# brew cask install android-studio
-# brew cask install atom
-# brew cask install bartender
-# brew cask install dash
-# brew cask install dropbox
-# brew cask install evernote
-# brew cask install firefoxdeveloperedition-ja
-# brew cask install forklift
-# brew cask install genymotion
-# brew cask install hyperswitch
-# brew cask install insomniax
-# brew cask install intel-haxm
-# brew cask install intellij-idea
-# brew cask install iterm2
-# brew cask install kaleidoscope
-# brew cask install karabiner
-# brew cask install karabiner-elements
-# brew cask install kindle
-# brew cask install licecap
-# brew cask install seashore
-# brew cask install sketch
-# brew cask install skitch
-# brew cask install trailer
-# brew cask install vagrant
-# brew cask install vagrant-bar
-# brew cask install vagrant-manager
-# brew cask install xquartz
-# brew cask install xtrafinder
-
-# font install ==========================================
-brew cask install font-fira-code
-# brew cask install font-ricty-diminished
+brew upgrade
+brew cleanup
