@@ -1,12 +1,11 @@
 #! /bin/bash
 
-brew_tap=(
-    caskroom/cask
+brew_taps=(
     caskroom/fonts
     railwaycat/emacsmacport
-
-    # tkengo/highway
+#   d12frosted/emacs-plus
 )
+
 
 
 cli_apps=(
@@ -15,7 +14,7 @@ cli_apps=(
     diff-so-fancy
     direnv
     editorconfig
-    emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
+#   emacs-plus --HEAD --with-natural-title-bars
     exa
     fish
     fzf
@@ -26,6 +25,7 @@ cli_apps=(
     hub
     jq
     m-cli
+    mas
     mysql --client-only
     neovim
     newt
@@ -52,7 +52,6 @@ cli_apps=(
     # libxslt
     # libyaml
     # markdown
-    # mas
     # packer
     # readline
     # sbt
@@ -63,7 +62,6 @@ cli_apps=(
 
 
 cask_apps=(
-    1password
     alfred
     appcleaner
     caffeine
@@ -72,7 +70,7 @@ cask_apps=(
     flux
     google-chrome
     google-japanese-ime
-    gpgtools
+    # gpgtools
     kitematic
     slack
     the-unarchiver
@@ -104,7 +102,7 @@ cask_apps=(
 )
 
 
-brew_tap=(
+fonts=(
     font-fira-code
 )
 
@@ -135,9 +133,11 @@ EOF
 
 brew update
 
-echo "${brew_tap[*]}" | xargs brew tap
+echo "${brew_taps[*]}" | xargs brew tap
 echo "${cli_apps[*]}" | xargs brew install
 echo "${cask_apps[*]}" | xargs brew cask install
+echo "${mas_apps[*]}" | xargs mas install
+echo "${fonts[*]}" | xargs brew cask install
 
 brew upgrade
 brew cleanup
