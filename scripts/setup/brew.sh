@@ -15,6 +15,7 @@ cli_apps=(
     direnv
     editorconfig
 #   emacs-plus --HEAD --with-natural-title-bars
+    emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
     brew install gnupg
     exa
     fish
