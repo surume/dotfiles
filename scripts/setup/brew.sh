@@ -15,6 +15,7 @@ cli_apps=(
     direnv
     editorconfig
 #   emacs-plus --HEAD --with-natural-title-bars
+    brew install gnupg
     exa
     fish
     fzf
@@ -70,7 +71,7 @@ cask_apps=(
     flux
     google-chrome
     google-japanese-ime
-    # gpgtools
+    # gpg-suite
     kitematic
     slack
     the-unarchiver
