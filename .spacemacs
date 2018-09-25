@@ -406,6 +406,37 @@ you should place your code here."
     (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
   ;; add the hook to call our super awesome function.
   (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
+
+  (use-package google-translate)
+
+  ;; google-translate workaround
+  (defun google-translate-enja-or-jaen (&optional string)
+    "Translate words in region or current position. Can also specify query with C-u"
+    (interactive)
+    (setq string
+          (cond ((stringp string) string)
+                (current-prefix-arg
+                 (read-string "Google Translate: "))
+                ((use-region-p)
+                 (buffer-substring (region-beginning) (region-end)))
+                (t
+                 (thing-at-point 'word))))
+    (let* ((asciip (string-match
+                    (format "\\`[%s]+\\'" "[:ascii:]’“”–")
+                    string)))
+      (run-at-time 0.1 nil 'deactivate-mark)
+      (google-translate-translate
+       (if asciip "en" "ja")
+       (if asciip "ja" "en")
+       string)))
+
+  ;; Fix error of "Failed to search TKK"
+  (defun google-translate--get-b-d1 ()
+    ;; TKK='427110.1469889687'
+    (list 427110 1469889687))
+
+
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
