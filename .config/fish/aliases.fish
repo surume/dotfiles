@@ -29,12 +29,10 @@ function rmrepo
   rm -rf $selectedRepo
 end
 
-# vagrant
-alias v vagrant
-
 # docker
 alias d docker
 alias fig docker-compose
+alias k kubectl
 # alias dst 'docker stats $(docker ps|grep -v "NAMES"|awk '{ print $NF }'|tr "\n" " ")'
 
 # global ip
