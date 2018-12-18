@@ -2,7 +2,7 @@
 set -x TERM "xterm-256color"
 
 set -x EDITOR 'vim'
-set -x GOPATH $HOME/src
+set -x GOPATH $HOME
 set -x DIFF_HIGHLIGHT_PATH /usr/local/share/git-core/contrib/diff-highlight
 # set -x ANDROID_HOME=/usr/local/opt/android-sdk
 
