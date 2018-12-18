@@ -10,6 +10,11 @@ function ss
   ssh -A $hostname
 end
 
+function dssh
+    docker ps | grep -v "CONTAINER"| fzf | awk '{print $1}' | read -l container_id
+    docker exec -it $container_id /bin/bash
+end
+
 # git ============================================================================
 alias g git
 alias ls exa
