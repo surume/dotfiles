@@ -30,7 +30,7 @@ function mkrepo
 end
 
 function rmrepo
-  ghq list -p | peco | read -l selectedRepo
+  ghq list -p | fzf | read -l selectedRepo
   rm -rf $selectedRepo
 end
 
