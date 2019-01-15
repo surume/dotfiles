@@ -38,7 +38,6 @@ values."
      git
      github
      haskell
-     php
      python
      html
      javascript
