@@ -42,7 +42,6 @@ This function should only modify configuration layer settings."
      auto-completion
      ;; better-defaults
      emacs-lisp
-     pretty-fonts
      ;; git
      helm
      ;; markdown
@@ -68,7 +67,6 @@ This function should only modify configuration layer settings."
                                       elscreen
                                       auto-save-buffers-enhanced
                                       key-chord
-                                      pretty-fonts
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -514,6 +512,7 @@ before packages are loaded."
 
   ;; プロジェクト/ファイル移動
   (define-key global-map (kbd "C-c h") 'projectile-switch-project)
+  (define-key global-map (kbd "s-g") 'projectile-switch-project)
   (define-key global-map (kbd "s-p") 'counsel-projectile)
 
   ;; 定義元ジャンプ
