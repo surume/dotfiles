@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
      auto-completion
      ;; better-defaults
      emacs-lisp
+     pretty-fonts
      ;; git
      helm
      ;; markdown
@@ -67,6 +68,7 @@ This function should only modify configuration layer settings."
                                       elscreen
                                       auto-save-buffers-enhanced
                                       key-chord
+                                      pretty-fonts
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -431,6 +433,7 @@ It should only modify the values of Spacemacs settings."
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
 
+   require-final-newline t
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
@@ -465,6 +468,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (defun remove-enh-magic-comment ()
+    (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+  (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
 
   ;; 高速化対応
   (tool-bar-mode -1)
