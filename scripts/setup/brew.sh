@@ -67,6 +67,7 @@ cask_apps=(
     alfred
     appcleaner
     caffeine
+    cheatsheet
     clipy
     docker
     flux

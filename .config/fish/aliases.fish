@@ -6,12 +6,12 @@ function ssh
 end
 
 function ss
-  grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | peco | read -l hostname
-  ssh -A $hostname
+  grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | fzf | read -l sshhostname
+  ssh -A $sshhostname
 end
 
 function dssh
-    docker ps | grep -v "CONTAINER"| fzf | awk '{print $1}' | read -l container_id
+    docker ps --format "table {{.ID}} {{.Names}}" | grep -v "CONTAINER"| fzf | awk '{print $1}' | read -l container_id
     docker exec -it $container_id /bin/bash
 end
 
