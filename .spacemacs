@@ -472,52 +472,64 @@ before packages are loaded."
     (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
   (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
 
+  ;; FiraCode リガチャ対応
+  (mac-auto-operator-composition-mode)
+
   ;; 高速化対応
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
+
   ;; 自動保存設定
   (setq auto-save-buffers-enhanced-interval 2)
   (auto-save-buffers-enhanced t)
 
+  ;; Keybind
   (setq mac-command-modifier 'super) ;; meta
   (setq mac-option-modifier 'alt)
   (setq mac-right-command-modifier 'super)
   (setq mac-right-option-modifier 'hyper)
-                                        ;
-  ;; (define-key global-map (kbd "s-v") 'evil-paste-before)
+
   (define-key global-map (kbd "s-v") 'spacemacs/evil-mc-paste-before)
   (define-key global-map (kbd "s-f") 'spacemacs/enter-ahs-forward)
   (define-key evil-visual-state-map (kbd "s-f") 'evil-visualstar/begin-search-forward)
   (define-key global-map (kbd "s-/") 'comment-line)
+
   ;; ウィンドウ移動
   (define-key global-map (kbd "C-k") 'evil-window-up)
   (define-key global-map (kbd "C-j") 'evil-window-down)
   (define-key global-map (kbd "C-h") 'evil-window-left)
   (define-key global-map (kbd "C-l") 'evil-window-right)
+
   ;; 補完設定
   (global-company-mode)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
+
   ;; jj, kk で ESC
   (key-chord-mode 1)
   (setq key-chord-two-keys-delay 0.6)
   (key-chord-define evil-insert-state-map  "jj" 'evil-normal-state)
   (key-chord-define evil-insert-state-map  "kk" 'evil-normal-state)
+
   ;; プロジェクト/ファイル移動
   (define-key global-map (kbd "C-c h") 'projectile-switch-project)
   (define-key global-map (kbd "s-p") 'counsel-projectile)
+
   ;; 定義元ジャンプ
   (define-key global-map (kbd "s-b") 'dumb-jvump-go)
   (define-key global-map (kbd "s-[") 'dumb-jump-back)
   (define-key global-map (kbd "s-B") 'dumb-jump-go-other-window)
+
   ;; elscreen設定
   (setq elscreen-prefix-key (kbd "s-e"))
   (elscreen-start)
   (define-key global-map (kbd "s-n") 'elscreen-create)
+  (define-key global-map (kbd "s-t") 'elscreen-create)
   (define-key global-map (kbd "s-w") 'elscreen-kill)
   (define-key global-map (kbd "s-{") 'elscreen-previous)
   (define-key global-map (kbd "s-}") 'elscreen-next)
+
   ;; JSのセミコロンチェックを殺す
   (setq js2-strict-missing-semi-warning nil)
   (setq js2-missing-semi-one-line-override nil)
