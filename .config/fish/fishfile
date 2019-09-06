@@ -1,10 +1,8 @@
-fisherman/await
 edc/bass
 oh-my-fish/theme-bobthefish
 fisherman/fzf
-fisherman/get
 fisherman/getopts
 decors/fish-ghq
-fisherman/last_job_id
 fisherman/spin
 fisherman/z
+evanlucas/fish-kubectl-completions
