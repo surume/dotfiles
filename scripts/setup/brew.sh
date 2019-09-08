@@ -10,6 +10,7 @@ brew_taps=(
 
 cli_apps=(
     awscli
+    bat
     curl
     diff-so-fancy
     direnv
@@ -18,6 +19,7 @@ cli_apps=(
     emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
     brew install gnupg
     exa
+    fd
     fish
     fzf
     ghq
@@ -36,7 +38,9 @@ cli_apps=(
     the_silver_searcher
     tmux
     reattach-to-user-namespace
+    ripgrep
     tree
+    tokei
     wget
     wrk
 
