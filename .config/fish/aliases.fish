@@ -20,6 +20,8 @@ alias g git
 alias ls exa
 alias vi nvim
 alias vim nvim
+alias cat bat
+alias find fd
 hub alias -s | source
 
 function mkrepo
