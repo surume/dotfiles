@@ -32,8 +32,7 @@ function mkrepo
 end
 
 function rmrepo
-  ghq list -p | fzf | read -l selectedRepo
-  rm -rf $selectedRepo
+  ghq list -p | fzf -m | xargs -I{} rm -rf {}
 end
 
 # docker
