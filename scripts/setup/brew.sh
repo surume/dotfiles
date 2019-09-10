@@ -15,7 +15,7 @@ cli_apps=(
     diff-so-fancy
     direnv
     editorconfig
-    '"emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon"'
+    "'emacs-mac --with-imagemagick --with-spacemacs-icon'"
     exa
     fd
     fish
@@ -141,11 +141,10 @@ cat << 'EOF'
 EOF
 
 brew update
-
-echo "${brew_taps[*]}" | xargs -n1 brew tap
-echo "${cli_apps[*]}" | xargs -n1 brew install
-echo "${cask_apps[*]}" | xargs -n1 brew cask install
-echo "${mas_apps[*]}" | xargs -n1 mas install
-echo "${fonts[*]}" | xargs -n1 brew cask install
-
 brew upgrade
+
+echo "${brew_taps[*]}" | xargs -n1 -I {} /bin/bash -c "brew tap {}"
+echo "${cli_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install {}"
+echo "${cask_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew cask install {}"
+echo "${mas_apps[*]}" | xargs -n1 -I {} /bin/bash -c "mas install {}"
+echo "${fonts[*]}" | xargs -n1 -I {} /bin/bash -c "brew cask install {}"
