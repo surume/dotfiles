@@ -2,8 +2,8 @@
 
 brew_taps=(
     caskroom/fonts
-    railwaycat/emacsmacport
-#   d12frosted/emacs-plus
+    # railwaycat/emacsmacport
+    # d12frosted/emacs-plus
 )
 
 
@@ -15,9 +15,7 @@ cli_apps=(
     diff-so-fancy
     direnv
     editorconfig
-#   emacs-plus --HEAD --with-natural-title-bars
-    emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon
-    brew install gnupg
+    '"emacs-mac --with-gnutls --with-imagemagick --with-spacemacs-icon"'
     exa
     fd
     fish
@@ -28,12 +26,15 @@ cli_apps=(
     httpie
     hub
     jq
+    kubectx
     m-cli
     mas
-    mysql --client-only
+    '"mysql --client-only"'
     neovim
     newt
     openssl
+    pinentry-mac
+    reattach-to-user-namespace
     sshrc
     the_silver_searcher
     tmux
@@ -50,13 +51,14 @@ cli_apps=(
     # autojump
     # automake
     # byobu
+    # emacs-plus --HEAD --with-natural-title-bars
     # erlang
     # ghc
+    # gnupg
     # highway
     # imagemagick
     # libtool
-    # libxslt
-    # libyaml
+    # libxslt   # libyaml
     # markdown
     # packer
     # readline
@@ -140,11 +142,10 @@ EOF
 
 brew update
 
-echo "${brew_taps[*]}" | xargs brew tap
-echo "${cli_apps[*]}" | xargs brew install
-echo "${cask_apps[*]}" | xargs brew cask install
-echo "${mas_apps[*]}" | xargs mas install
-echo "${fonts[*]}" | xargs brew cask install
+echo "${brew_taps[*]}" | xargs -n1 brew tap
+echo "${cli_apps[*]}" | xargs -n1 brew install
+echo "${cask_apps[*]}" | xargs -n1 brew cask install
+echo "${mas_apps[*]}" | xargs -n1 mas install
+echo "${fonts[*]}" | xargs -n1 brew cask install
 
 brew upgrade
-brew cleanup
