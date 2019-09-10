@@ -7,7 +7,7 @@ end
 
 function ss
   grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | fzf | read -l sshhostname
-  ssh -A $sshhostname
+  sshrc -A $sshhostname
 end
 
 function dssh
