@@ -520,7 +520,7 @@ before packages are loaded."
   ;; プロジェクト/ファイル移動
   ;; (define-key global-map (kbd "C-c h") 'projectile-switch-project)
   (define-key global-map (kbd "s-g") 'projectile-switch-project)
-  (define-key global-map (kbd "s-p") 'counsel-projectile)
+  (define-key global-map (kbd "s-p") 'projectile-find-file)
 
   ;; 定義元ジャンプ
   (define-key global-map (kbd "s-b") 'dumb-jvump-go)
