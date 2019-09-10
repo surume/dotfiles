@@ -29,7 +29,7 @@ cli_apps=(
     kubectx
     m-cli
     mas
-    '"mysql --client-only"'
+    mysql-client
     neovim
     newt
     openssl
