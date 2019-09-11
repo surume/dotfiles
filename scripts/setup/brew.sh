@@ -28,6 +28,7 @@ cli_apps=(
     jq
     kubectx
     kubernetes-helm
+    kustomize
     m-cli
     mas
     mysql-client
