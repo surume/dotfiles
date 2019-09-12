@@ -25,6 +25,7 @@ cli_apps=(
     ghq
     gibo
     git
+    grpcurl
     httpie
     hub
     jq
