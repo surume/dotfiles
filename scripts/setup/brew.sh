@@ -2,6 +2,7 @@
 
 brew_taps=(
     caskroom/fonts
+    weaveworks/tap
     # railwaycat/emacsmacport
     # d12frosted/emacs-plus
 )
@@ -15,6 +16,7 @@ cli_apps=(
     diff-so-fancy
     direnv
     editorconfig
+    eksctl
     "'emacs-mac --with-imagemagick --with-spacemacs-icon'"
     exa
     fd
