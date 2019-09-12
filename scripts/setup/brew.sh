@@ -118,7 +118,7 @@ cask_apps=(
 
 
 fonts=(
-    font-fira-code
+    caskroom/fonts/font-fira-code
 )
 
 mas_apps=(
