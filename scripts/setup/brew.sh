@@ -85,6 +85,7 @@ cask_apps=(
     google-chrome
     google-japanese-ime
     # gpg-suite
+    hyper
     kitematic
     slack
     the-unarchiver
