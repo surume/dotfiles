@@ -1,13 +1,13 @@
 # ssh ============================================================================
-function ssh
-  rm -f ~/.ssh/config
-  cat ~/.sshlocal/config ~/.ssh/global.config > ~/.ssh/config
-  /usr/bin/ssh $argv
-end
+# function ssh
+#   rm -f ~/.ssh/config
+#   cat ~/.sshlocal/config ~/.ssh/global.config > ~/.ssh/config
+#   /usr/bin/ssh $argv
+# end
 
 function ss
-  grep "^Host " ~/.ssh/config | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | fzf | read -l sshhostname
-  sshrc -A $sshhostname
+    cat ~/.ssh/config ~/.ssh/conf.d/local.nosync/confi* | grep "^Host " | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | fzf | read -l sshhostname
+    sshrc -A $sshhostname
 end
 
 function dssh
