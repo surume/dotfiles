@@ -1,10 +1,4 @@
 # ssh ============================================================================
-# function ssh
-#   rm -f ~/.ssh/config
-#   cat ~/.sshlocal/config ~/.ssh/global.config > ~/.ssh/config
-#   /usr/bin/ssh $argv
-# end
-
 function ss
     cat ~/.ssh/config ~/.ssh/conf.d/local.nosync/confi* | grep "^Host " | egrep -v 'github.com|bitbucket.org' | sed s/"Host "// | sort | fzf | read -l sshhostname
     sshrc -A $sshhostname
@@ -20,7 +14,6 @@ alias g git
 alias ls exa
 alias vi nvim
 alias vim nvim
-alias cat bat
 alias find fd
 hub alias -s | source
 
@@ -35,14 +28,14 @@ function rmrepo
   ghq list -p | fzf -m | xargs -I{} rm -rf {}
 end
 
-# docker
+# docker =========================================================================
 alias d docker
 alias fig docker-compose
 alias k kubectl
-# alias dst 'docker stats $(docker ps|grep -v "NAMES"|awk '{ print $NF }'|tr "\n" " ")'
+# alias dst 'docker stats $(docker ps | grep -v "NAMES" | awk '{ print $NF }' | tr "\n" " ")'
 
-# global ip
+# global ip ======================================================================
 alias gip 'curl globalip.me'
 
-# bundle exec
+# bundle exec ====================================================================
 alias be 'bundle exec'
