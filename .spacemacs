@@ -494,6 +494,8 @@ before packages are loaded."
   (setq auto-save-buffers-enhanced-interval 2)
   (auto-save-buffers-enhanced t)
 
+  (defalias 'helm-project-do-rg 'helm-projectile-rg)
+
   ;; Keybind
   (setq mac-command-modifier 'super) ;; meta
   (setq mac-option-modifier 'alt)
@@ -515,7 +517,6 @@ before packages are loaded."
   (global-company-mode)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key evil-normal-state-map (kbd "SPC /") 'helm-projectile-rg)
 
   ;; jj, kk で ESC
   (key-chord-mode 1)
