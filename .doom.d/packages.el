@@ -7,4 +7,5 @@
 (package! ivy-ghq :recipe (:host github :repo "analyticd/ivy-ghq"))
 ;; (package! some-package)
 ;; (package! another-package :recipe (:host github :repo "username/repo"))
-;; (package! builtin-package :disable t)
+(package! evil-snipe :disable t)
+(package! +evil/repeat-evil-snipe-s :disable t)

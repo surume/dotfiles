@@ -1,6 +1,20 @@
 ;;; .doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
+;; font
+(setq doom-font (font-spec :family "Fira Code" :size 11)
+      doom-variable-pitch-font (font-spec :family "Fira Code")
+      doom-unicode-font (font-spec :family "Fira Code")
+      doom-big-font (font-spec :family "Fira Code" :size 21))
+
+;; FiraCode リガチャ対応
+(mac-auto-operator-composition-mode)
+
+;; 高速化対応
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+
 ;; meta
 (setq mac-command-modifier 'super)
 (setq mac-option-modifier 'alt)
@@ -21,10 +35,10 @@
 ;; 補完設定
 (global-company-mode)
 (define-key company-active-map (kbd "C-n") 'company-select-next)
-(define-key company-active-map (kbd "C-p") 'company-select-previous);; Keybind
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
 
 ;; 自動保存設定
-(setq auto-save-buffers-enhanced-interval 1.0)
+(setq auto-save-buffers-enhanced-interval 1.2)
 (auto-save-buffers-enhanced t)
 
 ;; プロジェクト/ファイル移動
