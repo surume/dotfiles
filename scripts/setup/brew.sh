@@ -1,13 +1,8 @@
 #! /bin/bash
 
 brew_taps=(
-    caskroom/fonts
     weaveworks/tap
-    # railwaycat/emacsmacport
-    # d12frosted/emacs-plus
 )
-
-
 
 cli_apps=(
     awscli
@@ -17,7 +12,6 @@ cli_apps=(
     direnv
     editorconfig
     eksctl
-    "'emacs-mac --with-imagemagick --with-spacemacs-icon'"
     exa
     fd
     fish
@@ -40,45 +34,21 @@ cli_apps=(
     openssl
     pinentry-mac
     reattach-to-user-namespace
+    ripgrep
+    spectacle
     sshrc
     the_silver_searcher
     tmux
-    reattach-to-user-namespace
-    ripgrep
-    tree
     tokei
+    tree
     wget
     wrk
-
-    # android-sdk
-    # aspell
-    # autoconf
-    # autojump
-    # automake
-    # byobu
-    # emacs-plus --HEAD --with-natural-title-bars
-    # erlang
-    # ghc
-    # gnupg
-    # highway
-    # imagemagick
-    # libtool
-    # libxslt   # libyaml
-    # markdown
-    # packer
-    # readline
-    # sbt
-    # tig
-    # unixodbc
-    # z
 )
-
 
 cask_apps=(
     alfred
     appcleaner
     caffeine
-    cheatsheet
     clipy
     docker
     flux
@@ -90,43 +60,15 @@ cask_apps=(
     slack
     the-unarchiver
     trailer
-
-    # alcatraz
-    # android-studio
-    # bettertouchtool
-    # dash
-    # dropbox
-    # evernote
-    # firefoxdeveloperedition-ja
-    # forklift
-    # genymotion
-    # google-cloud-sdk
-    # hyperswitch
-    # insomniax
-    # intel-haxm
-    # intellij-idea
-    # iterm2
-    # java
-    # karabiner
-    # karabiner-elements
-    # kindle
-    # licecap
-    # seashore
-    # sketch
-    # skitch
 )
 
-
 fonts=(
-    caskroom/fonts/font-fira-code
+    font-fira-code
 )
 
 mas_apps=(
     443987910
     426410278
-
-    # 549083868
-    # 539883307
 )
 
 # Start Execute =========================================
