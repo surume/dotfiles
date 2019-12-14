@@ -38,6 +38,7 @@ cli_apps=(
     spectacle
     sshrc
     the_silver_searcher
+    tig
     tmux
     tokei
     tree
