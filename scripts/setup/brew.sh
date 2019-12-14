@@ -26,6 +26,7 @@ cli_apps=(
     kubectx
     kubernetes-helm
     kustomize
+    lazygit
     m-cli
     mas
     mysql-client
