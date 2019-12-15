@@ -1,4 +1,31 @@
 {
     "files.autoSave": "onFocusChange",
-    "window.zoomLevel": -1
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "vim.useSystemClipboard":true,
+    "vim.statusBarColorControl": true,
+    "vim.cmdLineInitialColon": true,
+    "vim.hlsearch": false,
+    "vim.statusBarColors" : {
+        "normal": ["#8ac6f2", "#444444"],
+        "insert": ["#95e454", "#444444"],
+        "visual": ["#f2c68a", "#444444"],
+        "visualline": ["#f2c68a", "#444444"],
+        "visualblock": ["#f2c68a", "#444444"],
+        "replace": ["#e5786d", "#444444"]
+    },
+    "vim.easymotion": true,
+    "vim.visualstar": true,
+    "vim.useCtrlKeys": true,
+    "vim.leader": "<space>",
+    "vim.easymotionKeys": "sdfghjkl",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#8ac6f2",
+        "statusBar.noFolderBackground": "#8ac6f2",
+        "statusBar.debuggingBackground": "#8ac6f2",
+        "statusBar.foreground": "#444444"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
 }
