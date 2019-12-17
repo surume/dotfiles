@@ -3,5 +3,17 @@
     {
         "key": "ctrl+x ctrl+f",
         "command": "extension.dired.open",
+    },
+    {
+        "key": "ctrl+x 0",
+        "command": "workbench.action.closeActiveEditor",
+    },
+    {
+        "key": "ctrl+x 2",
+        "command": "workbench.action.splitEditorOrthogonal",
+    },
+    {
+        "key": "ctrl+x 3",
+        "command": "workbench.action.splitEditor",
     }
 ]
