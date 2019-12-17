@@ -63,24 +63,3 @@ EOF
     mkdir -p ~/.local/share/fish
     echo "set -x DOTFILES_PATH $DOTFILES_PATH" >> ~/.local/share/fish/config.fish
 fi
-
-vscode_path=$HOME/Library/Application\ Support/Code\ -\ Insiders/User/
-if [ ! -e "$vscode_path/keybindings.json" ]; then
-cat << 'EOF'
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
- Copy VSCode setting
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
-EOF
-    mkdir -p $vscode_path
-    ls ./vscode | xargs -I {} ln -s $PWD/vscode/{} $HOME/Library/Application\ Support/Code\ -\ Insiders/User/{}
-fi
-
-cat << 'EOF'
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
- Install vscode extensions
-===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#===#
-EOF
-cat ./vscode/extensions | while read line
-do
-  code-Insiders --install-extension $line
-done

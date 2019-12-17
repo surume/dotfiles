@@ -15,5 +15,13 @@
     {
         "key": "ctrl+x 3",
         "command": "workbench.action.splitEditor",
-    }
-]
+    },
+    {
+        "key": "ctrl+x shift+'",
+        "command": "workbench.action.splitEditorOrthogonal",
+    },
+    {
+        "key": "ctrl+x shift+5",
+        "command": "workbench.action.splitEditor",
+    },
+ ]

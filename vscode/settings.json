@@ -7,7 +7,7 @@
     },
 
     "window.title": "${dirty}${activeEditorShort} / ${rootName}", // タイトルバーの文字
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
 
     "editor.minimap.enabled": false,
     "editor.highlightActiveIndentGuide": true,

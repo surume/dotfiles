@@ -28,7 +28,8 @@ fi
 
 
 source $DOTFILES_PATH/scripts/setup/brew.sh
-source $DOTFILES_PATH/scripts/setup/deploy_dotfiles.sh
+source $DOTFILES_PATH/scripts/setup/dotfiles.sh
+source $DOTFILES_PATH/scripts/setup/vscode.sh
 source $DOTFILES_PATH/scripts/setup/fish.sh
 source $DOTFILES_PATH/scripts/setup/mac_settings.sh
 fish $DOTFILES_PATH/scripts/setup/install.fish
