@@ -36,7 +36,7 @@ cli_apps=(
     pinentry-mac
     reattach-to-user-namespace
     ripgrep
-    spectacle
+    # spectacle
     sshrc
     the_silver_searcher
     tig
@@ -57,8 +57,10 @@ cask_apps=(
     google-chrome
     google-japanese-ime
     # gpg-suite
+    hiddenbar
     hyper
     kitematic
+    rectangle
     slack
     the-unarchiver
     trailer

@@ -7,7 +7,7 @@
     },
 
     "window.title": "${dirty}${activeEditorShort} / ${rootName}", // タイトルバーの文字
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
 
     "editor.minimap.enabled": false,
     "editor.highlightActiveIndentGuide": true,
@@ -60,9 +60,9 @@
     "workbench.editor.showTabs": true, // タブ表示
     "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
-        "statusBar.background": "#8ac6f2",
-        "statusBar.noFolderBackground": "#8ac6f2",
-        "statusBar.debuggingBackground": "#8ac6f2",
+        "statusBar.background": "#f2c68a",
+        "statusBar.noFolderBackground": "#f2c68a",
+        "statusBar.debuggingBackground": "#f2c68a",
         "statusBar.foreground": "#444444"
     },
     "workbench.colorTheme": "Breeze Dark Theme", // アイコンの適用
@@ -70,5 +70,15 @@
     "workbench.sideBar.location": "left", // サイドバーを左に
 
     "extensions.autoUpdate": true, // 自動更新
-    "extensions.ignoreRecommendations": false, // 推奨事項の通知をOFF
+    "extensions.ignoreRecommendations": false,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "remote.extensionKind": {
+        "ms-azuretools.vscode-docker": "workspace"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always", // 推奨事項の通知をOFF
 }
