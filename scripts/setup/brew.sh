@@ -1,7 +1,8 @@
 #! /bin/bash
 
 brew_taps=(
-    weaveworks/tap
+    # weaveworks/tap
+    homebrew/cask-fonts
 )
 
 cli_apps=(
@@ -19,6 +20,7 @@ cli_apps=(
     ghq
     gibo
     git
+    google-cloud-sdk
     grpcurl
     httpie
     hub
@@ -48,6 +50,7 @@ cli_apps=(
 )
 
 cask_apps=(
+    alacritty
     alfred
     appcleaner
     caffeine
@@ -64,6 +67,7 @@ cask_apps=(
     slack
     the-unarchiver
     trailer
+    visual-studio-code-insiders
 )
 
 fonts=(
@@ -97,6 +101,6 @@ brew upgrade
 
 echo "${brew_taps[*]}" | xargs -n1 -I {} /bin/bash -c "brew tap {}"
 echo "${cli_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install {}"
-echo "${cask_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew cask install {}"
+echo "${cask_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install --cask {}"
 echo "${mas_apps[*]}" | xargs -n1 -I {} /bin/bash -c "mas install {}"
-echo "${fonts[*]}" | xargs -n1 -I {} /bin/bash -c "brew cask install {}"
+echo "${fonts[*]}" | xargs -n1 -I {} /bin/bash -c "brew install {}"

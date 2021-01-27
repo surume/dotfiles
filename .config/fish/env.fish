@@ -17,3 +17,4 @@ set -x COMPOSE_DOCKER_CLI_BUILD 1
 
 # direnv
 direnv hook fish | source
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
