@@ -63,6 +63,7 @@ cask_apps=(
     hiddenbar
     hyper
     kitematic
+    lunar
     rectangle
     slack
     the-unarchiver
