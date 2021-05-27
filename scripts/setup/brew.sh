@@ -35,6 +35,7 @@ cli_apps=(
     neovim
     newt
     openssl
+    pgcli
     pinentry-mac
     reattach-to-user-namespace
     ripgrep
