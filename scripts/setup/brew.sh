@@ -28,6 +28,7 @@ cli_apps=(
     kubectx
     kubernetes-helm
     kustomize
+    krew
     lazygit
     m-cli
     mas

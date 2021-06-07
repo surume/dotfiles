@@ -10,6 +10,7 @@ set -x PATH /usr/local/bin $PATH
 set -x PATH $GOPATH/bin $PATH
 set -x PATH $DIFF_HIGHLIGHT_PATH $PATH
 set -x PATH /usr/local/opt/mysql-client/bin $PATH
+set -gx PATH $PATH $HOME/.krew/bin
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
 set -x DOCKER_BUILDKIT 1
