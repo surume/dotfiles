@@ -42,6 +42,7 @@ cli_apps=(
     ripgrep
     # spectacle
     sshrc
+    starship
     the_silver_searcher
     tig
     tmux
