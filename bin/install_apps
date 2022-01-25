@@ -24,6 +24,7 @@ brew_apps=(
     kubectx
     kubernetes-helm
     kustomize
+    hidetatz/tap/kubecolor
     krew
     lazygit
     m-cli
