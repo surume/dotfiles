@@ -287,3 +287,6 @@ xcuserdata/
 .config/fish/conf.d
 .config/fish/functions
 .config/fish/fish_variables
+.config/tmux/tpm/*
+.config/pgcli/*
+!.config/pgcli/config
