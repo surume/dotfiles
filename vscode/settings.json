@@ -1,84 +1,155 @@
 {
-    "files.autoSave": "onFocusChange",
-    "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/node_modules/*/**": true,
-    },
-
-    "window.title": "${dirty}${activeEditorShort} / ${rootName}", // タイトルバーの文字
-    "window.zoomLevel": 1,
-
-    "editor.minimap.enabled": false,
-    "editor.highlightActiveIndentGuide": true,
-    "editor.lineNumbers": false, // 行番号非表示
-    "editor.roundedSelection": true, // 選択範囲角丸
-    "editor.renderLineHighlight": "all", // 選択中の行を強調する
-    "editor.insertSpaces": true, // Tabキーで半角スペースを入力
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace", // Font
-    "editor.tabSize": 2, // TabSize
-    "editor.folding": false, // コードの折りたたみ
-    "editor.quickSuggestions": {
-        "comments": false, // コメント内では無効
-        "strings": true, // 文字列内では有効
-        "other": true //  その他の場所で有効
-    }, // 補完候補の自動表示
-    "editor.letterSpacing": 0, // 文字の間隔を詰める
-    "editor.formatOnType": true, // コード整形
-    "editor.formatOnPaste": true, // コード整形
-    "editor.autoIndent": false, // オートインデント
-    "editor.cursorStyle": "block", // カーソルの形状
-    "editor.cursorBlinking": "smooth", // カーソルの表示形式
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.cursorWidth": 5, // カーソル幅
-    "editor.emptySelectionClipboard": true, // 選択範囲無しでのコピーを許可
-    "editor.links": true, // リンクをクリック可能に
-    "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
-    "editor.mouseWheelScrollSensitivity": 0.7, // マウスホイール回転の移動係数
-    "editor.mouseWheelZoom": false, // Ctrl+マウスホイールによるズームを無効化
-    "editor.suggestFontSize": 14, // サジェストの文字サイズ
-    "editor.suggestLineHeight": 14, // サジェスト欄の行の高さ
-
-    "vim.useSystemClipboard": true,
-    "vim.statusBarColorControl": true,
-    "vim.cmdLineInitialColon": true,
-    "vim.hlsearch": false,
-    "vim.statusBarColors" : {
-        "normal": ["#8ac6f2", "#444444"],
-        "insert": ["#95e454", "#444444"],
-        "visual": ["#f2c68a", "#444444"],
-        "visualline": ["#f2c68a", "#444444"],
-        "visualblock": ["#f2c68a", "#444444"],
-        "replace": ["#e5786d", "#444444"]
-    },
-    "vim.easymotion": true,
-    "vim.visualstar": true,
-    "vim.useCtrlKeys": true,
-    "vim.leader": "<space>",
-    "vim.easymotionKeys": "sdfghjkl",
-
-    "workbench.editor.showTabs": true, // タブ表示
-    "workbench.activityBar.visible": false,
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#f2c68a",
-        "statusBar.noFolderBackground": "#f2c68a",
-        "statusBar.debuggingBackground": "#f2c68a",
-        "statusBar.foreground": "#444444"
-    },
-    "workbench.colorTheme": "Breeze Dark Theme", // アイコンの適用
-    "workbench.statusBar.visible": true, // ステータスバー(下端)を表示
-    "workbench.sideBar.location": "left", // サイドバーを左に
-
-    "extensions.autoUpdate": true, // 自動更新
-    "extensions.ignoreRecommendations": false,
-    "workbench.iconTheme": "vscode-icons",
+  "files.autoSave": "onFocusChange",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.rvm/**": true,
+    "**/node_modules/*/**": true,
+    "**/node_modules/**": true,
+    "**/GoogleDrive/**": true,
+    "**/Dropbox/**": true,
+    "**/Pictures/**": true
+  },
+  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
+  "editor.minimap.enabled": false,
+  "editor.highlightActiveIndentGuide": true,
+  "editor.lineNumbers": "on", // 行番号非表示
+  "editor.roundedSelection": true, // 選択範囲角丸
+  "editor.renderLineHighlight": "all", // 選択中の行を強調する
+  "editor.insertSpaces": false, // Tabキーで半角スペースを入力
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace", // Font
+  "editor.tabSize": 8, // TabSize
+  "editor.folding": false, // コードの折りたたみ
+  "editor.quickSuggestions": {
+    "comments": false, // コメント内では無効
+    "strings": true, // 文字列内では有効
+    "other": true //  その他の場所で有効
+  }, // 補完候補の自動表示
+  "editor.letterSpacing": 0, // 文字の間隔を詰める
+  "editor.formatOnType": true, // コード整形
+  "editor.formatOnPaste": true, // コード整形
+  "editor.autoIndent": true, // オートインデント
+  "editor.cursorStyle": "line", // カーソルの形状
+  "editor.cursorBlinking": "smooth", // カーソルの表示形式
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorWidth": 5, // カーソル幅
+  "editor.emptySelectionClipboard": true, // 選択範囲無しでのコピーを許可
+  "editor.links": true, // リンクをクリック可能に
+  "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
+  "editor.mouseWheelScrollSensitivity": 0.7, // マウスホイール回転の移動係数
+  "editor.mouseWheelZoom": false, // Ctrl+マウスホイールによるズームを無効化
+  "editor.suggestFontSize": 14, // サジェストの文字サイズ
+  "editor.suggestLineHeight": 14, // サジェスト欄の行の高さ
+  "vim.useSystemClipboard": true,
+  "vim.statusBarColorControl": true,
+  "vim.cmdLineInitialColon": true,
+  "vim.hlsearch": false,
+  "vim.statusBarColors": {
+    "normal": [
+      "#8ac6f2",
+      "#444444"
+    ],
+    "insert": [
+      "#95e454",
+      "#444444"
+    ],
+    "visual": [
+      "#f2c68a",
+      "#444444"
+    ],
+    "visualline": [
+      "#f2c68a",
+      "#444444"
+    ],
+    "visualblock": [
+      "#f2c68a",
+      "#444444"
+    ],
+    "replace": [
+      "#e5786d",
+      "#444444"
+    ]
+  },
+  "vim.easymotion": true,
+  "vim.visualstar": true,
+  "vim.useCtrlKeys": true,
+  "vim.leader": "<space>",
+  "vim.easymotionKeys": "sdfghjkl",
+  "workbench.editor.showTabs": false, // タブ表示
+  "workbench.editor.tabSizing": "shrink", // エディターのタブの大きさを制御します。
+  "workbench.activityBar.visible": false,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#8ac6f2",
+    "statusBar.noFolderBackground": "#8ac6f2",
+    "statusBar.debuggingBackground": "#8ac6f2",
+    "statusBar.foreground": "#444444",
+    "statusBar.debuggingForeground": "#444444"
+  },
+  "workbench.colorTheme": "Breeze Dark Theme", // アイコンの適用
+  "workbench.statusBar.visible": true, // ステータスバー(下端)を表示
+  "workbench.sideBar.location": "left", // サイドバーを左に
+  "extensions.autoUpdate": true, // 自動更新
+  "extensions.ignoreRecommendations": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "remote.extensionKind": {
+    "ms-azuretools.vscode-docker": "workspace"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.insertFinalNewline": true,
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "python.insidersChannel": "off",
+  "python.languageServer": "Pylance",
+  "python.jediMemoryLimit": 1024,
+  "editor.formatOnSave": true,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "remote.extensionKind": {
-        "ms-azuretools.vscode-docker": "workspace"
-    },
-    "javascript.updateImportsOnFileMove.enabled": "always", // 推奨事項の通知をOFF
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "jupyter.insidersChannel": "weekly",
+  "editor.fontLigatures": true,
+  "git.autofetch": true,
+  "window.clickThroughInactive": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "tabnine.experimentalAutoImports": true,
+  "[crystal]": {
+    "editor.defaultFormatter": "crystal-lang-tools.crystal-lang"
+  },
+  "crystal-lang.completion": true,
+  "crystal-lang.hover": false,
+  "crystal-lang.implementations": true,
+  "vs-kubernetes": {
+    "vscode-kubernetes.kubectl-path.linux": "/home/vscode/.vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.minikube-path.linux": "/home/vscode/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+    "vscode-kubernetes.helm-path.linux": "/home/vscode/.vs-kubernetes/tools/helm/linux-amd64/helm"
+  },
+  "redhat.telemetry.enabled": true, // 推奨事項の通知をOFF
+  "yaml.schemaStore.enable": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
