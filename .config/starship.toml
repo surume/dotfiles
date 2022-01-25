@@ -1,0 +1,60 @@
+# カスタムフォーマットを利用します
+format = """\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$docker_context\
+$kubernetes\
+$cmd_duration
+$character
+"""
+
+right_format = """\
+"""
+
+# starshipが現在のディレクトリ下のファイルをチェックするまで10ミリ秒待ちます
+
+scan_timeout = 10
+
+# プロンプトの先頭の空行を無効にします
+add_newline = false
+ 
+[character]
+success_symbol = "[⚡️➜](bold green)"
+error_symbol = "[⚡️➜](bold red) "
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "-5"
+time_range = "10:00:00-14:00:00"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed = "👅"
+deleted = "🗑"
+
+# kubernetes
+[kubernetes]
+symbol = "⛵ "
+style = "dimmed green"
+disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+
+# docker
+[docker_context]
+symbol = "🐋 "
+disabled = false
