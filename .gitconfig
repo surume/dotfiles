@@ -2,16 +2,13 @@
 # .gitconfig
 #
 [core]
-  excludesfile = ~/.gitignore
-  attributesfile = ~/.gitattributes
-	editor = nvim
-  # editor = emacsclient
-    # Unicode
+  excludesfile =  ~/.config/git/gitignore
+  attributesfile = ~/.config/git/gitattributes
+  editor = vim
   precomposeunicode = true
   quotepath = true
   pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
-    # simple,matching,upstream,current
   default = simple
 [color]
   ui = auto
@@ -28,44 +25,6 @@
 	compactionHeuristic = true
 [help]
   autocorrect = 0
-[alias]
-  co = checkout
-  cm = commit
-  ps = push
-  ft = fetch
-  br = branch
-  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
-  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
-  dif = diff
-  ce = commit -v --amend
-  st = status --branch --short
-  si = status --ignored --short
-  stpeco = "!f () { git st | grep -v '##' | awk '{print $2}' | peco; };f"
-  vspec = "!f () { git st | grep 'spec' | awk '{print $2}' | peco | xargs vagrant ssh -- rspec; };f"
-  strubocop = "!f () { git stpeco | xargs rubocop -a; };f"
-  branches = branch -a
-  remotes = remote -v
-  tags = tag -l
-  lg = log --graph --all --decorate --abbrev-commit --branches --date=short --pretty=format:\"%C(red)%h%C(reset) %C(green)[%ad]%C(reset) %s %C(cyan)@%an%C(reset) %C(yellow)%d%C(reset)\"
-  fp = fetch --prune
-  dh = diff --histogram
-  dw = diff --word-diff
-  dc = diff --cached
-  wc = whatchanged
-  tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-  ignore = update-index --assume-unchanged
-  unignore = update-index --no-assume-unchanged
-  ignored = !git ls-files -v | grep "^[a-z]"
-  skip-worktree = update-index --skip-worktree
-  unskip-worktree = update-index --no-skip-worktree
-  skiped = git ls-files -v | grep ^S
-  addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | peco | xargs git add; };f"
-  prr = "!hub browse -- compare/$(git symbolic-ref --short HEAD)'?'expand=1'&'body=%23%23%23%20%e6%a6%82%e8%a6%81%0d%0a%0d%0a%23%23%23%20TODO%0d%0a%0d%0a%2d%20%5b%20%5d%20todo1%0d%0a%0d%0a%23%23%23%20%e5%8b%95%e4%bd%9c%e7%a2%ba%e8%aa%8d%e6%96%b9%e6%b3%95%0d%0a%0d%0a%23%23%23%20%e3%83%9e%e3%83%bc%e3%82%b8%e6%9d%a1%e4%bb%b6"
-  create-pull-request = !sh -c 'stash pull-request $0 $@'
-  fpop = git stash show -p | git apply && git stash drop
-  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
-  showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
-  openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f
@@ -73,9 +32,10 @@
 [ghq]
   root = ~/src
 [commit]
-	template = ~/.git_commit_msg.txt
+	template = ~/.config/git/git_commit_msg.txt
 [include]
-  path = ~/.gitconfig_local
+  path = ~/.config/git/user_setting
+  path = ~/.config/git/git_alias
 [merge "mergepbx"]
 	name = Xcode project files merger
 	driver = mergepbx %O %A %B

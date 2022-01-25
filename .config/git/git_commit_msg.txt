@@ -3,17 +3,17 @@
 #  └ A new feature
 #🐛fix: 
 #  └  A bug fix
-#🔥remove:
+#🔥remove: 
 #  └ Remove code or files
 # 📝doc: 
 #  └ Documentation only changes
 #💄style: 
 #  └ Changes that do not affect the meaning of the code\n(white-space, formatting, missing semi-colons, etc)}}
-#♻️refactor: 
+#♻️refactor:  
 #  └ A code change that neither fixes a bug nor adds a featur
 #⚡perf: 
 #  └ A code change that improves performance
-#🚨 test:
+#🚨 test: 
 #  └ Adding missing or correcting existing tests
 #🔧chore: 
 #  └ Changes to the build process or auxiliary tools and libraries\nsuch as documentation generation
