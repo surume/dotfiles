@@ -1,0 +1,36 @@
+#!/bin/bash
+
+cat << 'EOF'
+    __              __         ___          ___
+  /\ \            /\ \__    /'___\  __    /\_ \
+  \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
+  /'_` \   / __`\  \ \ \/  \ \ ,__\\/\ \    \ \ \    /'__`\  /',__\
+  /\ \L\ \ /\ \L\ \  \ \ \_  \ \ \_/ \ \ \    \_\ \_ /\  __/ /\__, `\
+  \ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
+  \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
+EOF
+
+if test "${DOTFILES_PATH}" = "";then
+  echo 'DOTFILES_PATH is undefined'
+  exit
+fi
+
+if [ ! -d $DOTFILES_PATH ]; then
+  echo "Start git clone dotfiles repo"
+  git clone git@github.com:Surume/dotfiles.git $DOTFILES_PATH
+fi
+
+cd $DOTFILES_PATH
+
+./bin/install_apps
+./bin/update_dotfiles
+./bin/vscode.sh
+./bin/install_fish
+./bin/update_fish
+./bin/update_mac_settings
+
+cat << 'EOF'
+  Provision Finished!
+  Please Restart Terminal
+EOF
+

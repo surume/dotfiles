@@ -1,0 +1,17 @@
+#!/bin/bash
+cd `dirname ${0}/../../`
+
+echo "Link files"
+ln -s `pwd`/.config ~
+ln -s `pwd`/.gitconfig ~
+ln -s `pwd`/.sshrc ~
+ln -s `pwd`/.tmux.conf ~
+ln -s `pwd`/.vimrc ~
+ln -s `pwd`/.xvimrc ~
+
+if [ ! -e ~/.local/share/fish/config.fish ]; then
+  echo " Create ~/.local/share/fish/config.fish"
+
+  mkdir -p ~/.local/share/fish
+  echo "set -x DOTFILES_PATH $DOTFILES_PATH" >> ~/.local/share/fish/config.fish
+fi

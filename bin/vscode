@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd `dirname ${0}`
+
+vscode_path=$HOME/Library/Application\ Support/Code\ -\ Insiders/User/
+
+if [ ! -e "$vscode_path/keybindings.json" ]; then
+  echo "Copy VSCode setting"
+
+  mkdir -p $vscode_path
+  ls ../../vscode | xargs -I {} ln -s $PWD/vscode/{} $HOME/Library/Application\ Support/Code\ -\ Insiders/User/{}
+fi
+
+echo "Install vscode extensions:"
+
+cat ./vscode/extensions | while read line; do
+  code-Insiders --install-extension $line
+done
