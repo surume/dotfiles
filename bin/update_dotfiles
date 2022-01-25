@@ -1,13 +1,13 @@
 #!/bin/bash
-cd `dirname ${0}/../../`
+cd "$(dirname "${0}")/../" || exit
 
 echo "Link files"
-ln -s `pwd`/.config ~
-ln -s `pwd`/.gitconfig ~
-ln -s `pwd`/.sshrc ~
-ln -s `pwd`/.tmux.conf ~
-ln -s `pwd`/.vimrc ~
-ln -s `pwd`/.xvimrc ~
+ln -s "$PWD/.config" ~
+ln -s "$PWD/.gitconfig" ~
+ln -s "$PWD/.sshrc" ~
+ln -s "$PWD/.tmux.conf" ~
+ln -s "$PWD/.vimrc" ~
+ln -s "$PWD/.xvimrc" ~
 
 if [ ! -e ~/.local/share/fish/config.fish ]; then
   echo " Create ~/.local/share/fish/config.fish"
