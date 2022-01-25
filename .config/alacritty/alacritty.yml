@@ -105,22 +105,22 @@ window:
 font:
   # Normal (roman) font face
   normal:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Bold Italic
 
   # Point size
