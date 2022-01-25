@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if ! test $SHELL = '/usr/local/bin/fish'; then
+if ! test "$SHELL" = '/usr/local/bin/fish'; then
     echo "Change SHELL to Fish"
-    if ! cat /etc/shells | grep '/usr/local/bin/fish'; then
+    if ! cat < /etc/shells | grep '/usr/local/bin/fish'; then
         sudo sed -i '' '
         $a\
             /usr/local/bin/fish
