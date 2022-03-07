@@ -60,6 +60,8 @@ brew_apps=(
     font-fira-code-nerd-font
     google-chrome
     google-japanese-ime
+    brewlet
+
     # gpg-suite
     hiddenbar
     hyper
