@@ -74,6 +74,7 @@ brew_apps=(
 
 mas_apps=(
     443987910 # 1password
+    1429033973 # RunCat
 )
 
 if ! which brew > /dev/null 2>&1 ; then
