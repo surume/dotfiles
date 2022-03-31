@@ -35,6 +35,7 @@ brew_apps=(
     openssl
     pgcli
     pinentry-mac
+    planetscale/tap/pscale
     reattach-to-user-namespace
     ripgrep
     # spectacle
