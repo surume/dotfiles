@@ -4,6 +4,7 @@ brew_apps=(
     # Cli
     awscli
     bat
+    bitwarden
     curl
     diff-so-fancy
     direnv
