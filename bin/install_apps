@@ -76,7 +76,7 @@ brew_apps=(
 )
 
 mas_apps=(
-    443987910 # 1password
+#   443987910 # 1password
     1429033973 # RunCat
 )
 
