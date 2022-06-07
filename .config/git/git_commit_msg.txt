@@ -5,11 +5,11 @@
 #  └  A bug fix
 #🔥remove: 
 #  └ Remove code or files
-# 📝doc: 
+#📝doc: 
 #  └ Documentation only changes
 #💄style: 
 #  └ Changes that do not affect the meaning of the code\n(white-space, formatting, missing semi-colons, etc)}}
-#♻️refactor:  
+#♻️refactor: 
 #  └ A code change that neither fixes a bug nor adds a featur
 #⚡perf: 
 #  └ A code change that improves performance
