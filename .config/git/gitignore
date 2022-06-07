@@ -290,3 +290,7 @@ xcuserdata/
 .config/tmux/plugins/*
 .config/pgcli/*
 !.config/pgcli/config
+
+.config/TabNine/
+.config/planetscale/
+
