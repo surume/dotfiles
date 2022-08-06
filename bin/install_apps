@@ -17,6 +17,7 @@ brew_apps=(
     fastlane
     fd
     fish
+    flutter
     fzf
     ghq
     gibo
