@@ -30,9 +30,7 @@
   unskip-worktree = update-index --no-skip-worktree
   skiped = git ls-files -v | grep ^S
   addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | peco | xargs git add; };f"
-  prr = "!hub browse -- compare/$(git symbolic-ref --short HEAD)'?'expand=1"
-  create-pull-request = !sh -c 'stash pull-request $0 $@'
+  prc = "!gh pr create"
+  prv = "!gh pr view $(git symbolic-ref --short HEAD) --web"
   fpop = git stash show -p | git apply && git stash drop
   dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
-  showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
-  openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
