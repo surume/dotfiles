@@ -6,13 +6,9 @@ SHELL_PATH="/opt/homebrew/bin/fish"
 if ! test "$SHELL" = "$SHELL_PATH"; then
     echo "Change SHELL to Fish"
     if ! cat < /etc/shells | grep "$SHELL_PATH"; then
-        sudo sed -i '' "
-        $a\
-            $SHELL_PATH
-        " /etc/shells
+        echo "$SHELL_PATH" | sudo tee -a /etc/shells
     fi
     chsh -s "$SHELL_PATH"
-
 
     echo "Install Fisher"
     curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
