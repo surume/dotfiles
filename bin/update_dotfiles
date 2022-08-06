@@ -2,12 +2,12 @@
 cd "$(dirname "${0}")/../" || exit
 
 echo "Link files"
-ln -s "$PWD/.config" ~
-ln -s "$PWD/.gitconfig" ~
-ln -s "$PWD/.sshrc" ~
-ln -s "$PWD/.tmux.conf" ~
-ln -s "$PWD/.vimrc" ~
-ln -s "$PWD/.xvimrc" ~
+ln -sf "$PWD/.config" ~
+ln -sf "$PWD/.gitconfig" ~
+ln -sf "$PWD/.sshrc" ~
+ln -sf "$PWD/.tmux.conf" ~
+ln -sf "$PWD/.vimrc" ~
+ln -sf "$PWD/.xvimrc" ~
 
 if [ ! -e ~/.local/share/fish/config.fish ]; then
   echo " Create ~/.local/share/fish/config.fish"

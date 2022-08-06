@@ -24,7 +24,7 @@ cd "$DOTFILES_PATH" || exit
 
 ./bin/install_apps
 ./bin/update_dotfiles
-./bin/update_vscode.sh
+./bin/update_vscode
 ./bin/install_fish
 ./bin/update_fish
 ./bin/update_mac_settings

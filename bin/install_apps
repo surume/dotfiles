@@ -1,10 +1,13 @@
 #! /bin/bash
 
+brew tap homebrew/cask-fonts
+
 brew_apps=(
     # Cli
     awscli
     bat
     bitwarden
+    colima
     curl
     diff-so-fancy
     direnv
@@ -20,13 +23,15 @@ brew_apps=(
     git
     google-cloud-sdk
     grpcurl
+    helm
     httpie
     hub
     jq
+    karabiner-elements
     kubectx
-    kubernetes-helm
     kustomize
-    hidetatz/tap/kubecolor
+    # hidetatz/tap/kubecolor
+    jjuarez/homebrew-tap-1/kubecolor
     krew
     lazygit
     m-cli
@@ -41,7 +46,7 @@ brew_apps=(
     reattach-to-user-namespace
     ripgrep
     # spectacle
-    sshrc
+    # sshrc
     starship
     the_silver_searcher
     tig
@@ -61,20 +66,21 @@ brew_apps=(
     docker
     flux
     font-fira-code-nerd-font
-    google-chrome
+    # google-chrome
     google-japanese-ime
+    brave-browser
     brewlet
 
     # gpg-suite
     hiddenbar
-    hyper
-    kitematic
+    # hyper
+    # kitematic
     lunar
     rectangle
     slack
     the-unarchiver
     trailer
-    visual-studio-code-insiders
+    visual-studio-code
 )
 
 mas_apps=(
@@ -85,6 +91,8 @@ mas_apps=(
 if ! which brew > /dev/null 2>&1 ; then
   echo "Install [brew] command"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/shotamiyamoto/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 echo "Install Apps:"
@@ -92,5 +100,5 @@ echo "Install Apps:"
 brew update
 brew upgrade
 
-echo "${brew_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install {}"
+echo "${brew_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install --quiet {}"
 echo "${mas_apps[*]}" | xargs -n1 -I {} /bin/bash -c "mas install {}"

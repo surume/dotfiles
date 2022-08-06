@@ -114,12 +114,12 @@ Prediction	Ctrl Delete	DeleteSelectedCandidate
 Suggestion	Ctrl n	PredictAndConvert
 Suggestion	Down	PredictAndConvert
 Suggestion	Shift Enter	CommitFirstSuggestion
-DirectInput	Escape	CancelAndIMEOff
-Precomposition	Escape	CancelAndIMEOff
-Composition	Escape	CancelAndIMEOff
-Conversion	Escape	CancelAndIMEOff
-Suggestion	Escape	CancelAndIMEOff
-Prediction	Escape	CancelAndIMEOff
+DirectInput	Esc	CancelAndIMEOff
+Precomposition	Esc	CancelAndIMEOff
+Composition	Esc	CancelAndIMEOff
+Conversion	Esc	CancelAndIMEOff
+Suggestion	Esc	CancelAndIMEOff
+Prediction	Esc	CancelAndIMEOff
 Composition	Hankaku/Zenkaku	IMEOff
 Composition	Kanji	IMEOff
 Composition	OFF	IMEOff

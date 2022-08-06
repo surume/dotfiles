@@ -1,14 +1,17 @@
 #!/bin/bash
 
-if ! test "$SHELL" = '/usr/local/bin/fish'; then
+SHELL_PATH="/opt/homebrew/bin/fish"
+
+
+if ! test "$SHELL" = "$SHELL_PATH"; then
     echo "Change SHELL to Fish"
-    if ! cat < /etc/shells | grep '/usr/local/bin/fish'; then
-        sudo sed -i '' '
+    if ! cat < /etc/shells | grep "$SHELL_PATH"; then
+        sudo sed -i '' "
         $a\
-            /usr/local/bin/fish
-        ' /etc/shells
+            $SHELL_PATH
+        " /etc/shells
     fi
-    chsh -s /usr/local/bin/fish
+    chsh -s "$SHELL_PATH"
 
 
     echo "Install Fisher"

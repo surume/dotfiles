@@ -3,11 +3,13 @@ cd "$(dirname "${0}")" || exit
 
 vscode_path=$HOME/Library/Application\ Support/Code\ -\ Insiders/User/
 mkdir -p "$vscode_path"
-ln -s "$PWD/vscode/keybindings.json" ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
-ln -s "$PWD/vscode/settings.json" ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
+# ln -s "$PWD/vscode/keybindings.json" ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
+# ln -s "$PWD/vscode/settings.json" ~/Library/Application\ Support/Code-\ Insiders/User/settings.json
+ln -sf "$PWD/../vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+ln -sf "$PWD/../vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 
 # echo "Install vscode extensions:"
-
+  
 # cat ../vscode/extensions | while read line; do
 #   code-Insiders --install-extension $line
 # done

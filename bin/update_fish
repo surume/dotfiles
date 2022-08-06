@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!fish
 
 echo "Update Fisher Plugins:"
 fisher update

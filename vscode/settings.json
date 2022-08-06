@@ -12,13 +12,12 @@
   },
   "window.title": "${dirty}${activeEditorShort} / ${rootName}",
   "editor.minimap.enabled": false,
-  "editor.highlightActiveIndentGuide": true,
   "editor.lineNumbers": "on", // 行番号非表示
   "editor.roundedSelection": true, // 選択範囲角丸
   "editor.renderLineHighlight": "all", // 選択中の行を強調する
   "editor.insertSpaces": false, // Tabキーで半角スペースを入力
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace", // Font
-  "editor.tabSize": 8, // TabSize
+  "editor.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace", // Font
+  "editor.tabSize": 2, // TabSize
   "editor.folding": false, // コードの折りたたみ
   "editor.quickSuggestions": {
     "comments": false, // コメント内では無効
@@ -28,14 +27,14 @@
   "editor.letterSpacing": 0, // 文字の間隔を詰める
   "editor.formatOnType": true, // コード整形
   "editor.formatOnPaste": true, // コード整形
-  "editor.autoIndent": true, // オートインデント
+  "editor.autoIndent": "full", // オートインデント
   "editor.cursorStyle": "line", // カーソルの形状
   "editor.cursorBlinking": "smooth", // カーソルの表示形式
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorWidth": 5, // カーソル幅
   "editor.emptySelectionClipboard": true, // 選択範囲無しでのコピーを許可
   "editor.links": true, // リンクをクリック可能に
-  "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
+  "editor.matchBrackets": "always", // 対応する括弧の強調表示をオンに
   "editor.mouseWheelScrollSensitivity": 0.7, // マウスホイール回転の移動係数
   "editor.mouseWheelZoom": false, // Ctrl+マウスホイールによるズームを無効化
   "editor.suggestFontSize": 14, // サジェストの文字サイズ
@@ -85,7 +84,7 @@
     "statusBar.foreground": "#444444",
     "statusBar.debuggingForeground": "#444444"
   },
-  "workbench.colorTheme": "Breeze Dark Theme", // アイコンの適用
+  "workbench.colorTheme": "Tokyo Night Storm", // アイコンの適用
   "workbench.statusBar.visible": true, // ステータスバー(下端)を表示
   "workbench.sideBar.location": "left", // サイドバーを左に
   "extensions.autoUpdate": true, // 自動更新
@@ -151,5 +150,7 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.guides.highlightActiveIndentation": true,
+  "workbench.startupEditor": "none"
 }
