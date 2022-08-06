@@ -58,6 +58,7 @@ brew_apps=(
     wrk
 
     # Cask
+    authy
     alacritty
     alfred
     appcleaner
