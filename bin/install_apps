@@ -24,6 +24,7 @@ brew_apps=(
     gibo
     git
     google-cloud-sdk
+    gpg
     grpcurl
     helm
     httpie
