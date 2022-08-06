@@ -19,6 +19,7 @@ brew_apps=(
     fish
     flutter
     fzf
+    gh
     ghq
     gibo
     git
@@ -26,7 +27,6 @@ brew_apps=(
     grpcurl
     helm
     httpie
-    hub
     jq
     karabiner-elements
     kubectx
