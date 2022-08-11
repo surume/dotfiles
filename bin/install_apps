@@ -4,6 +4,7 @@ brew tap homebrew/cask-fonts
 
 brew_apps=(
     # Cli
+    argocd
     awscli
     bat
     bitwarden
