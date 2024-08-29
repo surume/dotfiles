@@ -1,0 +1,77 @@
+{
+    "title": "For Vim in Japanese",
+    "rules": [
+        {
+            "description": "日本語入力の っj を jj にマッピングする",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j"
+                    },
+                    "to": [
+                        {
+                            "key_code": "return_or_enter"
+                        },
+                        {
+                            "key_code": "japanese_eisuu"
+                        },
+                        {
+                            "key_code": "j"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "j_pressed",
+                            "value": 1
+                        },
+                        {
+                            "type": "input_source_if",
+                            "input_sources": [
+                                {
+                                    "language": "^ja$"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j"
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "j_pressed",
+                                "value": 1
+                            }
+                        },
+                        {
+                            "key_code": "j"
+                        }
+                    ],
+                    "to_delayed_action": {
+                        "to_if_invoked": [
+                            {
+                                "set_variable": {
+                                    "name": "j_pressed",
+                                    "value": 0
+                                }
+                            }
+                        ],
+                        "to_if_canceled": [
+                            {
+                                "set_variable": {
+                                    "name": "j_pressed",
+                                    "value": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
