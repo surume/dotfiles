@@ -1,0 +1,49 @@
+{
+  "title": "Change jj to Escape for dvorak",
+  "rules": [
+    {
+      "description": "Change jj to Escape",
+      "manipulators": [
+	    {
+	      "type": "basic",
+	      "from": {
+		"key_code": "c",
+		"modifiers": { "optional": [ "any" ] }
+	      },
+	      "to": [
+	        { "key_code": "delete_or_backspace" },
+		{ "key_code": "escape" }
+	      ],
+	      "conditions": [
+		{ "type": "variable_if", "name": "press-j", "value": 1 }
+	      ]
+	    },
+	    {
+	      "type": "basic",
+	      "from": {
+		"key_code": "c",
+		"modifiers":
+		 { "optional": [ "any" ] }
+	      },
+	      "to": [
+		{ "set_variable": { "name": "press-j", "value": 1 } }
+	      ],
+	      "to_if_alone": [
+		 { "key_code": "c" }
+	      ],
+	      "to_delayed_action": {
+		"to_if_invoked": [
+		  { "set_variable": { "name": "press-j", "value": 0 } }
+		],
+		"to_if_canceled": [
+		  { "set_variable": { "name": "press-j", "value": 0 } }
+		]
+	      },
+	      "conditions": [
+		{ "type": "variable_if", "name": "press-j", "value": 0 }
+	      ]
+	    }
+	  ]
+    }
+  ]
+}
