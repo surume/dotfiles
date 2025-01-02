@@ -1,10 +1,11 @@
 [alias]
   co = checkout
   cm = commit
+  aic = !aicommit2
   ps = push
   ft = fetch
   br = branch
-  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
+  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; git branch -vv | grep gone] | awk '{print $1}' | xargs -r git branch -D; };f"
   delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
   dif = diff
   ce = commit -v --amend
@@ -30,7 +31,7 @@
   unskip-worktree = update-index --no-skip-worktree
   skiped = git ls-files -v | grep ^S
   addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | peco | xargs git add; };f"
-  prc = "!gh pr create"
+  prc = "!gh pr create --web  --assignee surume"
   prv = "!gh pr view $(git symbolic-ref --short HEAD) --web"
   fpop = git stash show -p | git apply && git stash drop
   dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
