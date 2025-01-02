@@ -81,5 +81,9 @@
     {
         "key": "ctrl+u x",
         "command": "-magit.reset-hard"
+    },
+    {
+        "key": "shift+cmd+o",
+        "command": "gitlens.openFileOnRemote"
     }
 ]
