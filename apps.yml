@@ -49,6 +49,7 @@ brew_cli:
   - tmux
   - tokei
   - tree
+  - usql
   - wget
   - wrk
   # - yq # default installed
