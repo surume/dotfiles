@@ -1,6 +1,6 @@
 [config] # in configuration.toml
-model="google_ai_studio/gemini-1.5-flash"
-fallback_models=["google_ai_studio/gemini-1.5-flash"]
+model="gemini/gemini-2.0-flash-exp"
+fallback_models=["gemini/gemini-2.0-flash-exp"]
 
 [pr_description] # /describe #
 use_description_markers=true
