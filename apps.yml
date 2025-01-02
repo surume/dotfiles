@@ -1,0 +1,84 @@
+brew_cli:
+  - argocd
+  - awscli
+  - bat
+  # - colima
+  - curl
+  - diff-so-fancy
+  - direnv
+  - editorconfig
+  - eksctl
+  - eza
+  - fastlane
+  - fd
+  - fish
+  - flutter
+  - fzf
+  - gh
+  - ghq
+  - gibo
+  - git
+  - google-cloud-sdk
+  - gpg
+  - grpcurl
+  - helm
+  - httpie
+  - jjuarez/homebrew-tap-1/kubecolor
+  - jq
+  - karabiner-elements
+  - krew
+  - kubectx
+  - kustomize
+  - lazygit
+  - m-cli
+  - mas
+  - mise
+  - mysql-client
+  - newt
+  - openssl
+  - pam-reattach
+  - percona-xtrabackup
+  - pgcli
+  - pinentry-mac
+  - planetscale/tap/pscale
+  - reattach-to-user-namespace
+  - ripgrep
+  - starship
+  - the_silver_searcher
+  - tig
+  - tmux
+  - tokei
+  - tree
+  - wget
+  - wrk
+  # - yq # default installed
+
+brew_cask:
+  - appcleaner
+  - authy
+  - bitwarden
+  - bloomrpc
+  - brave-browser
+  - brewlet
+  - caffeine
+  - cursor
+  - docker
+  - flux
+  - font-udev-gothic-nf
+  - ghostty
+  - google-japanese-ime
+  - hiddenbar
+  - lunar
+  - orbstack
+  - raindropio
+  - raycast
+  - slack
+  - the-unarchiver
+  - trailer
+
+appstore:
+  # - 443987910 # 1password
+  - 1429033973 # RunCat
+
+npm:
+  - aicommit2
