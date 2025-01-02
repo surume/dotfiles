@@ -9,10 +9,6 @@ fi
 
 brew install --quiet yq
 
-# brew_cli_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.brew_cli[]')
-# brew_cask_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.brew_cask[]')
-# mas_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.appstore[]')
-# npm_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.npm[]')
 brew_cli_apps=$(yq -r '.brew_cli[]' "$(dirname "$0")/../apps.yml")
 brew_cask_apps=$(yq -r '.brew_cask[]' "$(dirname "$0")/../apps.yml")
 mas_apps=$(yq -r '.appstore[]' "$(dirname "$0")/../apps.yml")
