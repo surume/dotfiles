@@ -1,7 +1,6 @@
 name: "Run pr-agent"
 
 on:
-  push:
   pull_request:
     types: [opened, reopened, ready_for_review]
   issue_comment:
@@ -20,9 +19,5 @@ jobs:
         id: pragent
         uses: Codium-ai/pr-agent@main
         env:
-          OPENAI_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          # GOOGLE_AI_STUDIO.GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          # model: "gemini/gemini-2.0-flash-exp"
-          # config.model: "gemini/gemini-2.0-flash-exp"
+          GOOGLE_AI_STUDIO.GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
