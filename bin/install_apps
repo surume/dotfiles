@@ -45,7 +45,9 @@ brew_apps=(
     neovim
     newt
     openssl
+    ollama
     pam-reattach
+    percona-xtrabackup
     pgcli
     pinentry-mac
     planetscale/tap/pscale
@@ -61,6 +63,7 @@ brew_apps=(
     tree
     wget
     wrk
+    yq
 
     # Cask
     authy
@@ -68,6 +71,7 @@ brew_apps=(
     bloomrpc
     caffeine
     clipy
+    cursor
     docker
     flux
     font-fira-code-nerd-font
@@ -81,6 +85,8 @@ brew_apps=(
     # hyper
     # kitematic
     lunar
+    raindropio
+    raycast
     rectangle
     slack
     the-unarchiver
