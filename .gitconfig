@@ -4,7 +4,7 @@
 [core]
   excludesfile =  ~/.config/git/gitignore
   attributesfile = ~/.config/git/gitattributes
-  editor = cursor
+  editor = vim
   precomposeunicode = true
   quotepath = true
   pager = diff-so-fancy | less --tabs=4 -RFX
