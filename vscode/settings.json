@@ -15,8 +15,7 @@
   "editor.lineNumbers": "on", // 行番号非表示
   "editor.roundedSelection": true, // 選択範囲角丸
   "editor.renderLineHighlight": "all", // 選択中の行を強調する
-  "editor.insertSpaces": false, // Tabキーで半角スペースを入力
-  "editor.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace", // Font
+  "editor.insertSpaces": false, // Font
   "editor.tabSize": 2, // TabSize
   "editor.folding": false, // コードの折りたたみ
   "editor.quickSuggestions": {
@@ -30,7 +29,7 @@
   "editor.autoIndent": "full", // オートインデント
   "editor.cursorStyle": "line", // カーソルの形状
   "editor.cursorBlinking": "smooth", // カーソルの表示形式
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorWidth": 5, // カーソル幅
   "editor.emptySelectionClipboard": true, // 選択範囲無しでのコピーを許可
   "editor.links": true, // リンクをクリック可能に
@@ -75,8 +74,7 @@
   "vim.leader": "<space>",
   "vim.easymotionKeys": "sdfghjkl",
   "workbench.editor.showTabs": false, // タブ表示
-  "workbench.editor.tabSizing": "shrink", // エディターのタブの大きさを制御します。
-  "workbench.activityBar.visible": false,
+  "workbench.editor.tabSizing": "shrink",
   "workbench.colorCustomizations": {
     "statusBar.background": "#8ac6f2",
     "statusBar.noFolderBackground": "#8ac6f2",
@@ -125,7 +123,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.wordWrap": "off",
   "tabnine.experimentalAutoImports": true,
   "[crystal]": {
@@ -152,5 +150,44 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.guides.highlightActiveIndentation": true,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "rust-analyzer.lru.capacity": 64,
+  "rust-analyzer.checkOnSave.target": null,
+  "rust-analyzer.diagnostics.disabled": [
+    "incorrect-ident-case"
+  ],
+  "rust-analyzer.diagnostics.enable": false,
+  "remote.containers.dockerPath": "/opt/homebrew/bin/docker",
+  "editor.fontFamily": "'FiraCode NF', Menlo, Monaco, 'Courier New', monospace",
+  "dev.containers.dockerPath": "/usr/local/bin/docker",
+  "dev.containers.dockerComposePath": "/opt/homebrew/bin/docker-compose",
+  "files.associations": {
+    "*.yaml": "yaml"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot-labs.showTestGenerationLenses": true,
+  "github.copilot-labs.showBrushesLenses": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false,
+    "markdown": false
+  },
+  "files.trimTrailingWhitespace": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 1,
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  "dart.openDevTools": "flutter",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
