@@ -21,6 +21,7 @@ brew_apps=(
     flutter
     fzf
     gh
+    ghostty
     ghq
     gibo
     git
