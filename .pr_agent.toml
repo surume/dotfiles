@@ -5,7 +5,7 @@ fallback_models=["gemini/gemini-2.0-flash-exp"]
 [pr_description] # /describe #
 use_description_markers=true
 inline_file_summary='table'
-keep_original_user_title=false
+keep_original_user_title=true
 
 [pr_reviewer] # /review #
 inline_code_comments=true
