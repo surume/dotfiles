@@ -64,8 +64,6 @@ brew_apps=(
 
     # Cask
     authy
-    alacritty
-    alfred
     appcleaner
     bloomrpc
     caffeine
