@@ -36,9 +36,6 @@
 [include]
   path = ~/.config/git/user_setting
   path = ~/.config/git/git_alias
-[merge "mergepbx"]
-  name = Xcode project files merger
-  driver = mergepbx %O %A %B
 [pager]
   log = diff-highlight | less
   show = diff-highlight | less
