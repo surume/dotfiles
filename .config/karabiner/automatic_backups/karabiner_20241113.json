@@ -143,10 +143,7 @@
                     "to": [{ "key_code": "left_command" }]
                 }
             ],
-            "virtual_hid_keyboard": {
-                "country_code": 1,
-                "keyboard_type_v2": "ansi"
-            }
+            "virtual_hid_keyboard": { "country_code": 1 }
         }
     ]
 }
