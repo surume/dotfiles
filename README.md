@@ -1,5 +1,7 @@
 dotfiles
 ====
+[![Check](https://github.com/surume/dotfiles/actions/workflows/check.yaml/badge.svg)](https://github.com/surume/dotfiles/actions/workflows/check.yaml)
+
 ## Install
 
 Installed directory is based on the `DOTFILES_PATH` environment variable
