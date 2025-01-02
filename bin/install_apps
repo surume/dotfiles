@@ -1,104 +1,5 @@
 #! /bin/bash
 
-brew tap homebrew/cask-fonts
-
-brew_apps=(
-    # Cli
-    argocd
-    awscli
-    bat
-    bitwarden
-    colima
-    curl
-    diff-so-fancy
-    direnv
-    editorconfig
-    eksctl
-    eza
-    fastlane
-    fd
-    fish
-    flutter
-    fzf
-    gh
-    ghostty
-    ghq
-    gibo
-    git
-    google-cloud-sdk
-    gpg
-    grpcurl
-    helm
-    httpie
-    jq
-    karabiner-elements
-    kubectx
-    kustomize
-    # hidetatz/tap/kubecolor
-    jjuarez/homebrew-tap-1/kubecolor
-    krew
-    lazygit
-    m-cli
-    mas
-    mise
-    mysql-client
-    neovim
-    newt
-    openssl
-    ollama
-    pam-reattach
-    percona-xtrabackup
-    pgcli
-    pinentry-mac
-    planetscale/tap/pscale
-    reattach-to-user-namespace
-    ripgrep
-    # spectacle
-    # sshrc
-    starship
-    the_silver_searcher
-    tig
-    tmux
-    tokei
-    tree
-    wget
-    wrk
-    yq
-
-    # Cask
-    authy
-    appcleaner
-    bloomrpc
-    caffeine
-    clipy
-    cursor
-    docker
-    flux
-    font-fira-code-nerd-font
-    # google-chrome
-    google-japanese-ime
-    brave-browser
-    brewlet
-
-    # gpg-suite
-    hiddenbar
-    # hyper
-    # kitematic
-    lunar
-    raindropio
-    raycast
-    rectangle
-    slack
-    the-unarchiver
-    trailer
-    visual-studio-code
-)
-
-mas_apps=(
-#   443987910 # 1password
-    1429033973 # RunCat
-)
-
 if ! command -v brew > /dev/null 2>&1 ; then
   echo "Install [brew] command"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -106,10 +7,23 @@ if ! command -v brew > /dev/null 2>&1 ; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-echo "Install Apps:"
+brew install --quiet yq
+
+# brew_cli_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.brew_cli[]')
+# brew_cask_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.brew_cask[]')
+# mas_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.appstore[]')
+# npm_apps=$(cat `dirname "$0"`/../apps.yml | yq -r '.npm[]')
+brew_cli_apps=$(yq -r '.brew_cli[]' "$(dirname "$0")/../apps.yml")
+brew_cask_apps=$(yq -r '.brew_cask[]' "$(dirname "$0")/../apps.yml")
+mas_apps=$(yq -r '.appstore[]' "$(dirname "$0")/../apps.yml")
+npm_apps=$(yq -r '.npm[]' "$(dirname "$0")/../apps.yml")
+
+echo "Install Apps..."
 
 brew update
 brew upgrade
 
-echo "${brew_apps[*]}" | xargs -n1 -I {} /bin/bash -c "brew install --quiet {}"
-echo "${mas_apps[*]}" | xargs -n1 -I {} /bin/bash -c "mas install {}"
+echo "${brew_cli_apps[@]}" | xargs -n1 -I {} /bin/bash -c "brew install --quiet {}"
+echo "${brew_cask_apps[@]}" | xargs -n1 -I {} /bin/bash -c "brew install --cask --quiet {}"
+echo "${mas_apps[@]}" | xargs -n1 -I {} /bin/bash -c "mas install {}"
+npm install -g "${npm_apps[@]}"
