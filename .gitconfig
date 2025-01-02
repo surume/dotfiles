@@ -4,7 +4,7 @@
 [core]
   excludesfile =  ~/.config/git/gitignore
   attributesfile = ~/.config/git/gitattributes
-  editor = vim
+  editor = cursor
   precomposeunicode = true
   quotepath = true
   pager = diff-so-fancy | less --tabs=4 -RFX
@@ -22,7 +22,7 @@
   log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
-	compactionHeuristic = true
+  compactionHeuristic = true
 [help]
   autocorrect = 0
 [filter "lfs"]
@@ -32,22 +32,22 @@
 [ghq]
   root = ~/src
 [commit]
-	template = ~/.config/git/git_commit_msg.txt
+  template = ~/.config/git/git_commit_msg.txt
 [include]
   path = ~/.config/git/user_setting
   path = ~/.config/git/git_alias
 [merge "mergepbx"]
-	name = Xcode project files merger
-	driver = mergepbx %O %A %B
+  name = Xcode project files merger
+  driver = mergepbx %O %A %B
 [pager]
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
 [fetch]
-	prune = true
+  prune = true
 [magithub]
-	online = false
+  online = false
 [magithub "status"]
-	includeStatusHeader = false
-	includePullRequestsSection = false
-	includeIssuesSection = false
+  includeStatusHeader = false
+  includePullRequestsSection = false
+  includeIssuesSection = false
