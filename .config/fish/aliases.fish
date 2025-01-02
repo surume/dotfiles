@@ -11,7 +11,7 @@ end
 
 # git ============================================================================
 alias g git
-alias ls exa
+alias ls eza
 alias vi nvim
 alias vim nvim
 alias find fd
