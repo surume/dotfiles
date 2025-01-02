@@ -1,4 +1,4 @@
-#############################################################################################################
+##############################################################################################################
 #
 # .gitignore
 # $ gibo Ansible Archives Dropbox Emacs Ensime JetBrains macOS MonoDevelop Redis SBT Vagrant Vim Xcode > ~/.gitignore
@@ -170,7 +170,7 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+#Icon
 
 
 # Thumbnails
@@ -293,4 +293,11 @@ xcuserdata/
 
 .config/TabNine/
 .config/planetscale/
+
+.devcontainer
+.vscode
+.devcontainer/Dockerfile
+
+.idea/
+.cursorrc
 
