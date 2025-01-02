@@ -1,0 +1,16 @@
+[pr_description] # /describe #
+use_description_markers=true
+inline_file_summary='table'
+keep_original_user_title=false
+
+[pr_reviewer] # /review #
+inline_code_comments=true
+enable_help_text=false
+extra_instructions="""\
+フィードバックセクションでは次のことを注意してください
+- フィードバックは日本語でしてください
+- フィードバックはコードの修正についてであること
+"""
+[config] # in configuration.toml
+model="google_ai_studio/gemini-1.5-flash"
+fallback_models=["google_ai_studio/gemini-1.5-flash"]
