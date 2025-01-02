@@ -6,9 +6,9 @@ fallback_models=["gemini/gemini-2.0-flash-exp"]
 # use_description_markers=true
 # inline_file_summary='table'
 keep_original_user_title=true
-+extra_instructions="""\
-+- Please use Japanese in descriptions. Titles should have prefix of commitlint pattern such as `feat:`, `fix:`, `perf:`, `refactor:`, `test:`, `chore:`, `ci:`, `docs:` etc
-+"""
+extra_instructions="""\
+- Please use Japanese in descriptions. Titles should have prefix of commitlint pattern such as `feat:`, `fix:`, `perf:`, `refactor:`, `test:`, `chore:`, `ci:`, `docs:` etc
+"""
 
 [pr_reviewer] # /review #
 inline_code_comments=true
