@@ -14,7 +14,7 @@ brew_apps=(
     direnv
     editorconfig
     eksctl
-    exa
+    eza
     fastlane
     fd
     fish
