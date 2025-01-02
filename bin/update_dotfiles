@@ -7,7 +7,6 @@ ln -sf "$PWD/.gitconfig" ~
 ln -sf "$PWD/.sshrc" ~
 ln -sf "$PWD/.tmux.conf" ~
 ln -sf "$PWD/.vimrc" ~
-ln -sf "$PWD/.xvimrc" ~
 
 if [ ! -e ~/.local/share/fish/config.fish ]; then
   echo " Create ~/.local/share/fish/config.fish"
