@@ -39,6 +39,7 @@ brew_apps=(
     lazygit
     m-cli
     mas
+    mise
     mysql-client
     neovim
     newt
