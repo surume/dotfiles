@@ -14,7 +14,10 @@ m firewall enable
 m hostname macbook
 
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 1
 
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
+
+# bar icon spacing
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 1
+defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 3
