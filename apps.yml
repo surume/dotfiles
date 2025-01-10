@@ -48,6 +48,7 @@ brew_cli:
   - tig
   - tmux
   - tokei
+  - translate-shell
   - tree
   - usql
   - wget
