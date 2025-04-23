@@ -22,3 +22,7 @@ source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # Created by `pipx` on 2024-09-26 12:14:40
 set PATH $PATH /Users/shotamiyamoto/.local/bin
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
