@@ -1,2 +1,8 @@
 [tools]
-node = ['20', '18']
+node = ['22', '18']
+flutter = "3.35.7-stable"
+"npm:envilder" = "latest"
+
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
