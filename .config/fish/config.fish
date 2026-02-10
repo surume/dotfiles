@@ -27,4 +27,3 @@ set PATH $PATH /Users/shotamiyamoto/.local/bin
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
