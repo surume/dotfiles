@@ -42,3 +42,5 @@
   diff = diff-highlight | less
 [fetch]
   prune = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

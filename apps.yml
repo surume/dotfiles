@@ -57,15 +57,13 @@ brew_cli:
 
 brew_cask:
   - appcleaner
-  - authy
   - bitwarden
-  - bloomrpc
   - brave-browser
   - brewlet
   - caffeine
   - cursor
   - docker
-  - flux
+  - flux-app
   - font-udev-gothic-nf
   - ghostty
   - google-japanese-ime
