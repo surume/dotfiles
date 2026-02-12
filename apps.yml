@@ -60,7 +60,6 @@ brew_cask:
   - bitwarden
   - brave-browser
   - brewlet
-  - caffeine
   - cursor
   - docker
   - flux-app
@@ -78,6 +77,7 @@ brew_cask:
 
 appstore:
   # - 443987910 # 1password
+  - 937984704 # Amphetamine
   - 1429033973 # RunCat
 
 npm:

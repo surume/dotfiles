@@ -23,6 +23,7 @@ set -x PATH /opt/homebrew/opt/openjdk@11/bin $PATH
 set -x PATH $PATH $HOME/.krew/bin
 
 set -x MY_GITHUB_ROOT (ghq root)/github.com/(git config --get user.name)
+set -x MAS_NO_AUTO_INDEX 1
 set -x DOCKER_BUILDKIT 1
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x USE_GKE_GCLOUD_AUTH_PLUGIN True
