@@ -130,11 +130,6 @@
   "crystal-lang.completion": true,
   "crystal-lang.hover": false,
   "crystal-lang.implementations": true,
-  "vs-kubernetes": {
-    "vscode-kubernetes.kubectl-path.linux": "/home/vscode/.vs-kubernetes/tools/kubectl/kubectl",
-    "vscode-kubernetes.minikube-path.linux": "/home/vscode/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
-    "vscode-kubernetes.helm-path.linux": "/home/vscode/.vs-kubernetes/tools/helm/linux-amd64/helm"
-  },
   "redhat.telemetry.enabled": true,
   "yaml.schemaStore.enable": false,
   "[markdown]": {
@@ -155,9 +150,8 @@
     "incorrect-ident-case"
   ],
   "rust-analyzer.diagnostics.enable": false,
-  "editor.fontFamily": "'FiraCode NF', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'UDEV Gothic 35NFLG', 'FiraCode NF', Menlo, Monaco, 'Courier New', monospace",
   "dev.containers.dockerPath": "/opt/homebrew/bin/docker",
-  "dev.containers.dockerComposePath": "/opt/homebrew/bin/docker-compose",
   "files.associations": {
     "*.yaml": "yaml"
   },
