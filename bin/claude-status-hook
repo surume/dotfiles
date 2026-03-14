@@ -30,14 +30,16 @@ else
     SHOULD_NOTIFY=false
     if [ "$STATUS" = "waiting" ] && [ "$PREV_STATUS" = "thinking" -o "$PREV_STATUS" = "paused" ]; then
         SHOULD_NOTIFY=true
+    elif [ "$STATUS" = "paused" ] && [ "$PREV_STATUS" = "thinking" ]; then
+        SHOULD_NOTIFY=true
     fi
 
     FRONTMOST=$(osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true' 2>/dev/null)
-    [ "$FRONTMOST" = "Ghostty" ] && SHOULD_NOTIFY=false
+    [ "$FRONTMOST" = "ghostty" ] && SHOULD_NOTIFY=false
 
     if [ "$SHOULD_NOTIFY" = true ]; then
         TITLE="Claude Code"
-        MSG="${DIR_NAME}: 完了しました"
+        [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
         nohup bash -c "result=\$(alerter --title '$TITLE' --message '$MSG' --close-label '閉じる' --sound default --timeout 10 --ignore-dnd 2>/dev/null); [ \"\$result\" = '@CONTENTCLICKED' ] && open -a Ghostty" >/dev/null 2>&1 &
         disown
     fi
