@@ -25,6 +25,18 @@ for rule in "$PWD"/.config/claude/rules/*.md; do
   [ -f "$rule" ] && ln -sf "$rule" ~/.claude/rules/
 done
 
+# Git user setting
+if [ ! -e "$PWD/.config/git/user_setting" ]; then
+  read -rp "Git user name: " git_name
+  read -rp "Git email: " git_email
+  cat > "$PWD/.config/git/user_setting" <<GITEOF
+[user]
+    name = ${git_name}
+    email = ${git_email}
+GITEOF
+  echo "Created .config/git/user_setting"
+fi
+
 if [ ! -e ~/.local/share/fish/config.fish ]; then
   echo " Create ~/.local/share/fish/config.fish"
 
