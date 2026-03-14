@@ -50,7 +50,6 @@ install_apps() {
 link_dotfiles() {
   echo "Link dotfiles"
   ln -sf "$DOTFILES_DIR/.config" ~
-  ln -sf "$DOTFILES_DIR/.gitconfig" ~
   ln -sf "$DOTFILES_DIR/.sshrc" ~
   ln -sf "$DOTFILES_DIR/.vimrc" ~
 
