@@ -4,8 +4,8 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout other repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: check bin shell
-        run: ls -1 ./bin | xargs -I{} shellcheck ./bin/{}
+      - name: check shell scripts
+        run: shellcheck setup bin/*
