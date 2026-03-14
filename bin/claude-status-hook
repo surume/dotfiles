@@ -30,6 +30,6 @@ else
     if [ "$PREV_STATUS" = "thinking" ] && [ "$STATUS" = "waiting" -o "$STATUS" = "paused" ]; then
         TITLE="Claude Code"
         [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
-        terminal-notifier -title "$TITLE" -message "$MSG" -activate "com.mitchellh.ghostty" -sound default &
+        osascript -e 'tell application "Ghostty" to activate' &
     fi
 fi
