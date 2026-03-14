@@ -16,10 +16,20 @@ eval "$(/usr/bin/jq -r '@sh "SESSION_ID=\(.session_id // "") CWD=\(.cwd // "")"'
 
 mkdir -p "$STATUS_DIR"
 
+PREV_STATUS=""
+[ -f "$STATUS_DIR/$SESSION_ID" ] && PREV_STATUS=$(/usr/bin/jq -r '.status // ""' "$STATUS_DIR/$SESSION_ID" 2>/dev/null)
+
 if [ "$STATUS" = "cleanup" ]; then
     rm -f "$STATUS_DIR/$SESSION_ID"
 else
     BRANCH=$(git -C "$CWD" branch --show-current 2>/dev/null || true)
+    DIR_NAME="${CWD##*/}"
     /usr/bin/jq -n --arg status "$STATUS" --arg cwd "$CWD" --arg iterm_session "${ITERM_SESSION_ID:-}" --arg branch "$BRANCH" \
         '{status: $status, cwd: $cwd, iterm_session_id: $iterm_session, branch: $branch}' > "$STATUS_DIR/$SESSION_ID"
+
+    if [ "$PREV_STATUS" = "thinking" ] && [ "$STATUS" = "waiting" -o "$STATUS" = "paused" ]; then
+        TITLE="Claude Code"
+        [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
+        osascript -e "display notification \"$MSG\" with title \"$TITLE\"" &
+    fi
 fi
