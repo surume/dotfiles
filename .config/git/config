@@ -19,7 +19,7 @@
 [ghq]
   root = ~/src
 [commit]
-  template = ~/.config/git/git_commit_msg.txt
+  template = ~/.config/git/commit_template
 [include]
   path = ~/.config/git/user_setting
   path = ~/.config/git/aliases
