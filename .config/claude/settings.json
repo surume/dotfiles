@@ -1,6 +1,48 @@
 {
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": true,
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(docker:*)",
+      "Bash(docker compose:*)",
+      "Bash(brew:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm:*)",
+      "Bash(mise:*)",
+      "Bash(make:*)",
+      "Bash(go:*)",
+      "Bash(cargo:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(which:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(diff:*)",
+      "Bash(curl:*)",
+      "Bash(jq:*)",
+      "Bash(yq:*)",
+      "Bash(shellcheck:*)",
+      "Bash(fish:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)"
+    ]
+  },
   "mcpServers": {
     "context7": {
       "type": "stdio",
