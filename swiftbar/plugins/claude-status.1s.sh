@@ -3,13 +3,13 @@
 
 STATUS_DIR="/tmp/claude-code-sessions"
 NOW=$(date +%s)
-STALE_SECONDS=7200  # 2 hours
+STALE_SECONDS=7200
 
-# Cleanup stale files and count sessions
 thinking=0
 waiting=0
 paused=0
 total=0
+sessions=()
 
 if [ -d "$STATUS_DIR" ]; then
     for f in "$STATUS_DIR"/*; do
@@ -20,54 +20,34 @@ if [ -d "$STATUS_DIR" ]; then
             continue
         fi
         total=$((total + 1))
-        status=$(/usr/bin/jq -r '.status // empty' "$f" 2>/dev/null)
-        if [ "$status" = "thinking" ]; then
-            thinking=$((thinking + 1))
-        elif [ "$status" = "paused" ]; then
-            paused=$((paused + 1))
-        elif [ "$status" = "waiting" ]; then
-            waiting=$((waiting + 1))
-        fi
+        eval "$(/usr/bin/jq -r '@sh "status=\(.status // "") cwd=\(.cwd // "") branch=\(.branch // "")"' "$f" 2>/dev/null)"
+        case "$status" in
+            thinking) thinking=$((thinking + 1)) ;;
+            paused)   paused=$((paused + 1)) ;;
+            waiting)  waiting=$((waiting + 1)) ;;
+        esac
+        sessions+=("$status|$cwd|$branch")
     done
 fi
 
-# Display
 if [ "$total" -eq 0 ]; then
     echo "💤"
 elif [ "$paused" -gt 0 ]; then
-    if [ "$total" -eq 1 ]; then
-        echo "⚠️"
-    else
-        echo "⚠️${paused}/${total}"
-    fi
+    [ "$total" -eq 1 ] && echo "⚠️" || echo "⚠️${paused}/${total}"
 elif [ "$thinking" -gt 0 ]; then
-    if [ "$total" -eq 1 ]; then
-        echo "🤔"
-    else
-        echo "🤔 ${thinking}/${total}"
-    fi
+    [ "$total" -eq 1 ] && echo "🤔" || echo "🤔 ${thinking}/${total}"
 elif [ "$waiting" -gt 0 ]; then
-    if [ "$total" -eq 1 ]; then
-        echo "🟢"
-    else
-        echo "🟢 ${total}"
-    fi
+    [ "$total" -eq 1 ] && echo "🟢" || echo "🟢 ${total}"
 else
     echo "❓"
 fi
 
-# Dropdown menu
 echo "---"
 if [ "$total" -eq 0 ]; then
     echo "No active sessions"
 else
-    for f in "$STATUS_DIR"/*; do
-        [ -f "$f" ] || continue
-        session_id=$(basename "$f")
-        status=$(/usr/bin/jq -r '.status // empty' "$f" 2>/dev/null)
-        cwd=$(/usr/bin/jq -r '.cwd // empty' "$f" 2>/dev/null)
-        iterm_session=$(/usr/bin/jq -r '.iterm_session_id // empty' "$f" 2>/dev/null)
-        branch=$(/usr/bin/jq -r '.branch // empty' "$f" 2>/dev/null)
+    for session in "${sessions[@]}"; do
+        IFS='|' read -r status cwd branch <<< "$session"
         case "$status" in
             thinking) icon="🤔" ;;
             paused)   icon="⚠️" ;;
