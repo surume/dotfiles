@@ -10,16 +10,9 @@ $cmd_duration
 $character
 """
 
-right_format = """\
-"""
-
-# starshipが現在のディレクトリ下のファイルをチェックするまで10ミリ秒待ちます
-
 scan_timeout = 10
-
-# プロンプトの先頭の空行を無効にします
 add_newline = false
- 
+
 [character]
 success_symbol = "[⚡️➜](bold green)"
 error_symbol = "[⚡️➜](bold red) "
@@ -28,8 +21,6 @@ error_symbol = "[⚡️➜](bold red) "
 disabled = false
 format = '🕙[\[ $time \]]($style) '
 time_format = "%T"
-utc_time_offset = "-5"
-time_range = "10:00:00-14:00:00"
 
 [git_status]
 conflicted = "🏳"
