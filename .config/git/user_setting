@@ -1,8 +1,0 @@
-[user]
-    name = yourname
-    email = you@example.com
-[pr-release]
-    token = your_token
-[pr-release "branch"]
-    production = release
-    staging = master
