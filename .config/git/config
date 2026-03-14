@@ -1,8 +1,4 @@
-#
-# .gitconfig
-#
 [core]
-  attributesfile = ~/.config/git/gitattributes
   editor = vim
   precomposeunicode = true
   quotepath = true
@@ -11,11 +7,6 @@
   default = simple
 [color]
   ui = auto
-  status = auto
-  diff = auto
-  branch = auto
-  interactive = auto
-  grep = auto
 [diff]
   patience = true
   compactionHeuristic = true
@@ -32,11 +23,7 @@
 [include]
   path = ~/.config/git/user_setting
   path = ~/.config/git/git_alias
-[pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
 [fetch]
   prune = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
