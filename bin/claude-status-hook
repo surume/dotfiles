@@ -30,6 +30,6 @@ else
     if [ "$PREV_STATUS" = "thinking" ] && [ "$STATUS" = "waiting" -o "$STATUS" = "paused" ]; then
         TITLE="Claude Code"
         [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
-        osascript -e "display notification \"$MSG\" with title \"$TITLE\"" &
+        terminal-notifier -title "$TITLE" -message "$MSG" -activate "com.mitchellh.ghostty" -sound default &
     fi
 fi
