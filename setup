@@ -3,7 +3,8 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-cat << 'EOF'
+show_banner() {
+  cat << 'EOF'
     __              __         ___          ___
   /\ \            /\ \__    /'___\  __    /\_ \
   \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
@@ -12,6 +13,19 @@ cat << 'EOF'
   \ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
   \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
 EOF
+}
+
+show_usage() {
+  echo "Usage: ./setup [command]"
+  echo ""
+  echo "Commands:"
+  echo "  (none)    Run all setup steps"
+  echo "  apps      Install apps via Homebrew, App Store, npm"
+  echo "  link      Create symlinks for dotfiles"
+  echo "  git       Setup git user config"
+  echo "  fish      Setup Fish shell and Fisher plugins"
+  echo "  mac       Apply macOS system settings"
+}
 
 install_apps() {
   if ! command -v brew > /dev/null 2>&1; then
@@ -110,13 +124,24 @@ setup_mac() {
   defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 3
 }
 
-install_apps
-link_dotfiles
-setup_git
-setup_fish
-setup_mac
+run_all() {
+  show_banner
+  install_apps
+  link_dotfiles
+  setup_git
+  setup_fish
+  setup_mac
+  echo ""
+  echo "Provision Finished! Please Restart Terminal"
+}
 
-cat << 'EOF'
-  Provision Finished!
-  Please Restart Terminal
-EOF
+case "${1:-}" in
+  apps) install_apps ;;
+  link) link_dotfiles ;;
+  git)  setup_git ;;
+  fish) setup_fish ;;
+  mac)  setup_mac ;;
+  help) show_usage ;;
+  "")   run_all ;;
+  *)    echo "Unknown command: $1" && show_usage && exit 1 ;;
+esac
