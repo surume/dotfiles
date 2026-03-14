@@ -28,7 +28,7 @@ else
         '{status: $status, cwd: $cwd, iterm_session_id: $iterm_session, branch: $branch}' > "$STATUS_DIR/$SESSION_ID"
 
     SHOULD_NOTIFY=false
-    if [ "$STATUS" = "waiting" ] && [ "$PREV_STATUS" = "thinking" -o "$PREV_STATUS" = "paused" ]; then
+    if [ "$STATUS" = "waiting" ] && { [ "$PREV_STATUS" = "thinking" ] || [ "$PREV_STATUS" = "paused" ]; }; then
         SHOULD_NOTIFY=true
     elif [ "$STATUS" = "paused" ] && [ "$PREV_STATUS" = "thinking" ]; then
         SHOULD_NOTIFY=true
