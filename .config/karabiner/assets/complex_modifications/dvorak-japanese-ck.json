@@ -9,7 +9,7 @@
           "from": {
             "key_code": "i",
             "modifiers": {
-              "optional": ["caps_lock", "option", "shift", "control"]
+              "optional": ["caps_lock"]
             }
           },
           "to": [{ "key_code": "v" }],
