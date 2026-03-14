@@ -12,10 +12,10 @@
   },
   "window.title": "${dirty}${activeEditorShort} / ${rootName}",
   "editor.minimap.enabled": false,
-  "editor.lineNumbers": "on", // 行番号非表示
+  "editor.lineNumbers": "on",
   "editor.roundedSelection": true, // 選択範囲角丸
   "editor.renderLineHighlight": "all", // 選択中の行を強調する
-  "editor.insertSpaces": false, // Font
+  "editor.insertSpaces": false,
   "editor.tabSize": 2, // TabSize
   "editor.folding": false, // コードの折りたたみ
   "editor.quickSuggestions": {
@@ -82,7 +82,7 @@
     "statusBar.foreground": "#444444",
     "statusBar.debuggingForeground": "#444444"
   },
-  "workbench.colorTheme": "Tokyo Night Storm", // アイコンの適用
+  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.statusBar.visible": true, // ステータスバー(下端)を表示
   "workbench.sideBar.location": "left", // サイドバーを左に
   "extensions.autoUpdate": true, // 自動更新
@@ -135,7 +135,7 @@
     "vscode-kubernetes.minikube-path.linux": "/home/vscode/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
     "vscode-kubernetes.helm-path.linux": "/home/vscode/.vs-kubernetes/tools/helm/linux-amd64/helm"
   },
-  "redhat.telemetry.enabled": true, // 推奨事項の通知をOFF
+  "redhat.telemetry.enabled": true,
   "yaml.schemaStore.enable": false,
   "[markdown]": {
     "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
