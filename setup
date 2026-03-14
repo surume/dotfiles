@@ -35,16 +35,7 @@ install_apps() {
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
-  brew install --quiet yq
-
-  local apps_file="$DOTFILES_DIR/apps.yml"
-  brew update
-  brew upgrade
-
-  yq -r '.brew_cli[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "brew install --quiet {}"
-  yq -r '.brew_cask[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "brew install --cask --quiet {}"
-  yq -r '.appstore[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "mas install {}"
-  yq -r '.npm[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "npm install -g {}"
+  brew bundle --file="$DOTFILES_DIR/Brewfile"
 }
 
 link_dotfiles() {
