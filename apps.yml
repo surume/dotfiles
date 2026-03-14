@@ -52,6 +52,7 @@ brew_cli:
   - tree
   - wget
   - wrk
+  - xo/xo/usql
   # - yq # default installed
 
 brew_cask:
