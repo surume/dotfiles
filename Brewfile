@@ -1,8 +1,10 @@
 tap "jjuarez/homebrew-tap-1"
 tap "planetscale/tap"
+tap "vjeantet/tap"
 tap "xo/xo"
 
 # CLI
+brew "vjeantet/tap/alerter"
 brew "argocd"
 brew "awscli"
 brew "bat"
