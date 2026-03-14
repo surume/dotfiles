@@ -1,7 +1,12 @@
+# App runtime state (not config)
 argocd
 configstore
 firebase
+gcloud
 raycast
 stripe
 wireshark
 zed
+
+# Auto-managed
+fish/fish_variables
