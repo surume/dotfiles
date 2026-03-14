@@ -5,15 +5,13 @@
   ps = push
   ft = fetch
   br = branch
-  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; git branch -vv | grep gone] | awk '{print $1}' | xargs -r git branch -D; };f"
-  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master'|xargs git branch -d; };f"
+  brc = "!f () { git branch --merged|egrep -v '\\*|develop|master|main'|xargs git branch -d; git branch -vv | grep gone] | awk '{print $1}' | xargs -r git branch -D; };f"
+  delete-merged-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|master|main'|xargs git branch -d; };f"
   dif = diff
   ce = commit -v --amend
   st = status --branch --short
   si = status --ignored --short
-  stpeco = "!f () { git st | grep -v '##' | awk '{print $2}' | peco; };f"
-  vspec = "!f () { git st | grep 'spec' | awk '{print $2}' | peco | xargs vagrant ssh -- rspec; };f"
-  strubocop = "!f () { git stpeco | xargs rubocop -a; };f"
+  stfzf = "!f () { git st | grep -v '##' | awk '{print $2}' | fzf; };f"
   branches = branch -a
   remotes = remote -v
   tags = tag -l
@@ -30,7 +28,7 @@
   skip-worktree = update-index --skip-worktree
   unskip-worktree = update-index --no-skip-worktree
   skipped = !git ls-files -v | grep ^S
-  addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | peco | xargs git add; };f"
+  addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | fzf -m | xargs git add; };f"
   prc = "!gh pr create --web  --assignee surume"
   prv = "!gh pr view $(git symbolic-ref --short HEAD) --web"
   fpop = !git stash show -p | git apply && git stash drop
