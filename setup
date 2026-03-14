@@ -36,6 +36,8 @@ install_apps() {
   fi
 
   brew bundle --file="$DOTFILES_DIR/Brewfile"
+  mkdir -p ~/Library/LaunchAgents
+  brew autoupdate start --upgrade --cleanup --immediate 2>/dev/null || true
 }
 
 link_dotfiles() {
