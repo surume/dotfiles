@@ -2,7 +2,6 @@
 # .gitconfig
 #
 [core]
-  excludesfile =  ~/.config/git/gitignore
   attributesfile = ~/.config/git/gitattributes
   editor = vim
   precomposeunicode = true
