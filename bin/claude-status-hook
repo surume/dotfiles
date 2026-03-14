@@ -27,7 +27,14 @@ else
     /usr/bin/jq -n --arg status "$STATUS" --arg cwd "$CWD" --arg iterm_session "${ITERM_SESSION_ID:-}" --arg branch "$BRANCH" \
         '{status: $status, cwd: $cwd, iterm_session_id: $iterm_session, branch: $branch}' > "$STATUS_DIR/$SESSION_ID"
 
-    if [ "$PREV_STATUS" = "thinking" ] && [ "$STATUS" = "waiting" -o "$STATUS" = "paused" ]; then
+    SHOULD_NOTIFY=false
+    if [ "$STATUS" = "waiting" ] && [ "$PREV_STATUS" = "thinking" -o "$PREV_STATUS" = "paused" ]; then
+        SHOULD_NOTIFY=true
+    elif [ "$STATUS" = "paused" ] && [ "$PREV_STATUS" = "thinking" ]; then
+        SHOULD_NOTIFY=true
+    fi
+
+    if [ "$SHOULD_NOTIFY" = true ]; then
         TITLE="Claude Code"
         [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
         (result=$(alerter --title "$TITLE" --message "$MSG" --close-label "閉じる" --sound default --timeout 10 2>/dev/null)
