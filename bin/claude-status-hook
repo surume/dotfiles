@@ -5,18 +5,12 @@ set -euo pipefail
 #
 # Usage:
 #   echo '{"session_id":"...","cwd":"..."}' | claude-status-hook <thinking|waiting|paused|cleanup>
-#
-# Reads session_id from stdin JSON (via hooks), writes status to
-# /tmp/claude-code-sessions/<session_id>. Used by SwiftBar plugin
-# to aggregate status across multiple Claude Code sessions.
 
 STATUS_DIR="/tmp/claude-code-sessions"
 STATUS="${1:-}"
 
 INPUT=$(cat)
-
-SESSION_ID=$(echo "$INPUT" | /usr/bin/jq -r '.session_id // empty')
-CWD=$(echo "$INPUT" | /usr/bin/jq -r '.cwd // empty')
+eval "$(/usr/bin/jq -r '@sh "SESSION_ID=\(.session_id // "") CWD=\(.cwd // "")"' <<< "$INPUT")"
 
 [ -z "$SESSION_ID" ] && exit 0
 
