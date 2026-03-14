@@ -1,0 +1,24 @@
+{
+  "title": "Dvorak Japanese: map C key to K",
+  "rules": [
+    {
+      "description": "Dvorak Japanese only: map C key to K",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i",
+            "modifiers": { "optional": ["any"] }
+          },
+          "to": [{ "key_code": "v" }],
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [{ "language": "^ja$" }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
