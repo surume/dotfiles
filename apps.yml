@@ -42,7 +42,6 @@ brew_cli:
   - pgcli
   - pinentry-mac
   - planetscale/tap/pscale
-  - reattach-to-user-namespace
   - ripgrep
   - starship
   - the_silver_searcher
@@ -51,7 +50,6 @@ brew_cli:
   - tokei
   - translate-shell
   - tree
-  - usql
   - wget
   - wrk
   # - yq # default installed
