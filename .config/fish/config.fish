@@ -5,8 +5,6 @@ if status --is-login
   . ~/.config/fish/aliases.fish
 end
 
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
 starship init fish | source
 
 # pnpm
