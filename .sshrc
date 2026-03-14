@@ -1,5 +1,5 @@
 alias g=git
-alias fig=docker-compose
+alias fig='docker compose'
 alias ll="ls -al"
 alias d=docker
 alias vi=vim
