@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "Update Fisher Plugins:"
-fish -c "fisher update"

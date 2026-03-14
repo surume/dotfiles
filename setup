@@ -1,0 +1,122 @@
+#!/bin/bash
+set -euo pipefail
+
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+cat << 'EOF'
+    __              __         ___          ___
+  /\ \            /\ \__    /'___\  __    /\_ \
+  \_\ \     ___   \ \ ,_\  /\ \__/ /\_\   \//\ \       __     ____
+  /'_` \   / __`\  \ \ \/  \ \ ,__\\/\ \    \ \ \    /'__`\  /',__\
+  /\ \L\ \ /\ \L\ \  \ \ \_  \ \ \_/ \ \ \    \_\ \_ /\  __/ /\__, `\
+  \ \___,_\\ \____/   \ \__\  \ \_\   \ \_\   /\____\\ \____\\/\____/
+  \/__,_ / \/___/     \/__/   \/_/    \/_/   \/____/ \/____/ \/___/
+EOF
+
+install_apps() {
+  if ! command -v brew > /dev/null 2>&1; then
+    echo "Install Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
+  brew install --quiet yq
+
+  local apps_file="$DOTFILES_DIR/apps.yml"
+  brew update
+  brew upgrade
+
+  yq -r '.brew_cli[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "brew install --quiet {}"
+  yq -r '.brew_cask[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "brew install --cask --quiet {}"
+  yq -r '.appstore[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "mas install {}"
+  yq -r '.npm[]' "$apps_file" | xargs -n1 -I {} /bin/bash -c "npm install -g {}"
+}
+
+link_dotfiles() {
+  echo "Link dotfiles"
+  ln -sf "$DOTFILES_DIR/.config" ~
+  ln -sf "$DOTFILES_DIR/.gitconfig" ~
+  ln -sf "$DOTFILES_DIR/.sshrc" ~
+  ln -sf "$DOTFILES_DIR/.vimrc" ~
+
+  # VSCode
+  local vscode_dir="$HOME/Library/Application Support/Code/User"
+  mkdir -p "$vscode_dir"
+  ln -sf "$DOTFILES_DIR/.config/Code/User/keybindings.json" "$vscode_dir/keybindings.json"
+  ln -sf "$DOTFILES_DIR/.config/Code/User/settings.json" "$vscode_dir/settings.json"
+
+  # SwiftBar
+  local swiftbar_dir="$HOME/Library/Application Support/SwiftBar/Plugins"
+  mkdir -p "$swiftbar_dir"
+  for plugin in "$DOTFILES_DIR"/swiftbar/plugins/*.sh; do
+    [ -f "$plugin" ] && ln -sf "$plugin" "$swiftbar_dir/"
+  done
+
+  # Claude Code
+  ln -sf "$DOTFILES_DIR/bin/claude-status-hook" /opt/homebrew/bin/claude-status-hook
+  mkdir -p ~/.claude/rules
+  ln -sf "$DOTFILES_DIR/.config/claude/settings.json" ~/.claude/settings.json
+  ln -sf "$DOTFILES_DIR/.config/claude/keybindings.json" ~/.claude/keybindings.json
+  ln -sf "$DOTFILES_DIR/.config/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+  for rule in "$DOTFILES_DIR"/.config/claude/rules/*.md; do
+    [ -f "$rule" ] && ln -sf "$rule" ~/.claude/rules/
+  done
+}
+
+setup_git() {
+  if [ ! -e "$DOTFILES_DIR/.config/git/user_setting" ]; then
+    read -rp "Git user name: " git_name
+    read -rp "Git email: " git_email
+    cat > "$DOTFILES_DIR/.config/git/user_setting" <<GITEOF
+[user]
+    name = ${git_name}
+    email = ${git_email}
+GITEOF
+    echo "Created .config/git/user_setting"
+  fi
+  git -C "$DOTFILES_DIR" update-index --skip-worktree .config/git/user_setting 2>/dev/null || true
+}
+
+setup_fish() {
+  local shell_path="/opt/homebrew/bin/fish"
+  if [ "$SHELL" != "$shell_path" ]; then
+    echo "Change SHELL to Fish"
+    grep -q "$shell_path" /etc/shells || echo "$shell_path" | sudo tee -a /etc/shells
+    chsh -s "$shell_path"
+    echo "Install Fisher"
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs \
+      https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
+  fi
+  fish -c "fisher update"
+}
+
+setup_mac() {
+  echo "Configure macOS settings"
+  m dock --autohide enable
+  m dock --position left
+  m dock --showdelay 0.2
+  m dock --magnification disable
+  m dock --prune
+  m finder --showhiddenfiles enable
+  m firewall --enable
+  m hostname macbook
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+  defaults write -g InitialKeyRepeat -int 10
+  defaults write -g KeyRepeat -int 1
+  defaults write com.apple.controlcenter BatteryShowPercentage -bool true
+  defaults write com.apple.menuextra.clock IsAnalog -bool true
+  defaults -currentHost write -globalDomain NSStatusItemSpacing -int 1
+  defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 3
+}
+
+install_apps
+link_dotfiles
+setup_git
+setup_fish
+setup_mac
+
+cat << 'EOF'
+  Provision Finished!
+  Please Restart Terminal
+EOF
