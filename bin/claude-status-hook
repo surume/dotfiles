@@ -30,7 +30,7 @@ else
     if [ "$PREV_STATUS" = "thinking" ] && [ "$STATUS" = "waiting" -o "$STATUS" = "paused" ]; then
         TITLE="Claude Code"
         [ "$STATUS" = "paused" ] && MSG="${DIR_NAME}: 確認待ちです" || MSG="${DIR_NAME}: 完了しました"
-        (result=$(alerter --title "$TITLE" --message "$MSG" --actions "開く" --close-label "閉じる" --sound default --timeout 10 2>/dev/null)
-        [ "$result" = "開く" ] && open -a Ghostty) &
+        (result=$(alerter --title "$TITLE" --message "$MSG" --close-label "閉じる" --sound default --timeout 10 2>/dev/null)
+        [ "$result" = "@CONTENTCLICKED" ] && open -a Ghostty) &
     fi
 fi
