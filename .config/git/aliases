@@ -29,4 +29,5 @@
   addselect = "!f () { git st | sed -e \"/M  /d\" | awk '{print $2}' | sed -e '1d' | fzf -m | xargs git add; };f"
   prc = "!gh pr create --web --assignee @me"
   prv = "!gh pr view $(git symbolic-ref --short HEAD) --web"
+  rv = "!gh repo view --web"
   fpop = !git stash show -p | git apply && git stash drop
