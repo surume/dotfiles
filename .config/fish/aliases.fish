@@ -28,7 +28,7 @@ end
 
 # docker =========================================================================
 alias d docker
-alias fig docker-compose
+alias fig 'docker compose'
 alias k kubecolor
 # alias dst 'docker stats $(docker ps | grep -v "NAMES" | awk '{ print $NF }' | tr "\n" " ")'
 
