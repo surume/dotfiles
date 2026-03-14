@@ -16,7 +16,7 @@ for plugin in "$PWD"/swiftbar/plugins/*.sh; do
 done
 
 # Claude Code
-ln -sf "$PWD/bin/claude-status-hook" /usr/local/bin/claude-status-hook
+ln -sf "$PWD/bin/claude-status-hook" /opt/homebrew/bin/claude-status-hook
 mkdir -p ~/.claude/rules
 ln -sf "$PWD/.config/claude/settings.json" ~/.claude/settings.json
 ln -sf "$PWD/.config/claude/keybindings.json" ~/.claude/keybindings.json

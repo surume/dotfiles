@@ -77,11 +77,6 @@ else
         dir_name="${cwd##*/}"
         label="${icon} ${dir_name}"
         [ -n "$branch" ] && label="${label} (${branch})"
-        if [ -n "$iterm_session" ]; then
-            iterm_session_short=${iterm_session##*:}
-            echo "${label} | bash=$(dirname "$0")/../bin/iterm-activate-session param1=${iterm_session_short} terminal=false"
-        else
-            echo "${label}"
-        fi
+        echo "${label} | bash=/usr/bin/open param1=-a param2=Ghostty terminal=false"
     done
 fi
