@@ -54,7 +54,7 @@ link_dotfiles() {
   local swiftbar_dir="$HOME/Library/Application Support/SwiftBar/Plugins"
   mkdir -p "$swiftbar_dir"
   for plugin in "$DOTFILES_DIR"/swiftbar/plugins/*.sh; do
-    [ -f "$plugin" ] && ln -sf "$plugin" "$swiftbar_dir/"
+    [ -f "$plugin" ] && ln -sfn "$plugin" "$swiftbar_dir/$(basename "$plugin")"
   done
 
   # Claude Code
