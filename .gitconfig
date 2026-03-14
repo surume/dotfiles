@@ -19,9 +19,6 @@
   grep = auto
 [diff]
   patience = true
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
   compactionHeuristic = true
 [help]
   autocorrect = 0

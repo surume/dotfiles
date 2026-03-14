@@ -4,6 +4,25 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Dvorak Japanese only: map C key to K",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [{ "language": "^ja$" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "v" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "日本語入力の っj を jj にマッピングする",
                         "manipulators": [
                             {

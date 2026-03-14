@@ -89,7 +89,6 @@
   "extensions.ignoreRecommendations": false,
   "workbench.iconTheme": "material-icon-theme",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "remote.extensionKind": {
     "ms-azuretools.vscode-docker": "workspace"
   },
@@ -125,7 +124,6 @@
   },
   "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.wordWrap": "off",
-  "tabnine.experimentalAutoImports": true,
   "[crystal]": {
     "editor.defaultFormatter": "crystal-lang-tools.crystal-lang"
   },
@@ -157,16 +155,13 @@
     "incorrect-ident-case"
   ],
   "rust-analyzer.diagnostics.enable": false,
-  "remote.containers.dockerPath": "/opt/homebrew/bin/docker",
   "editor.fontFamily": "'FiraCode NF', Menlo, Monaco, 'Courier New', monospace",
-  "dev.containers.dockerPath": "/usr/local/bin/docker",
+  "dev.containers.dockerPath": "/opt/homebrew/bin/docker",
   "dev.containers.dockerComposePath": "/opt/homebrew/bin/docker-compose",
   "files.associations": {
     "*.yaml": "yaml"
   },
   "editor.inlineSuggest.enabled": true,
-  "github.copilot-labs.showTestGenerationLenses": true,
-  "github.copilot-labs.showBrushesLenses": true,
   "github.copilot.enable": {
     "*": true,
     "yaml": true,

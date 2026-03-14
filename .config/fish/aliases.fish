@@ -15,8 +15,6 @@ alias ls eza
 alias vi nvim
 alias vim nvim
 alias find fd
-hub alias -s | source
-
 function mkrepo
   set -lx repo $MY_GITHUB_ROOT/$argv
   mkdir -p $repo

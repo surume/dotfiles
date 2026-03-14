@@ -11,5 +11,5 @@ if ! test "$SHELL" = "$SHELL_PATH"; then
     chsh -s "$SHELL_PATH"
 
     echo "Install Fisher"
-    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
 fi

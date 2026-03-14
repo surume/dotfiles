@@ -1,5 +1,4 @@
 christian-kohler.path-intellisense
-CoenraadS.bracket-pair-colorizer
 DocMarty.open-tig
 eamodio.gitlens
 EditorConfig.EditorConfig
@@ -14,6 +13,5 @@ ms-vscode-remote.vscode-remote-extensionpack
 naumovs.color-highlight
 rrudi.vscode-dired
 VisualStudioExptTeam.vscodeintellicode
-vscode-icons-team.vscode-icons
 vscodevim.vim
 zxh404.vscode-proto3

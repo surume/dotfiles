@@ -1,9 +1,5 @@
 // Place your key bindings in this file to override the defaults
 [
-    // {
-    //     "key": "ctrl+x ctrl+f",
-    //     "command": "extension.dired.open",
-    // },
     {
         "key": "ctrl+x 0",
         "command": "workbench.action.closeActiveEditor",

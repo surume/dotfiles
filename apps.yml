@@ -19,6 +19,7 @@ brew_cli:
   - gibo
   - git
   - google-cloud-sdk
+  - google-drive
   - gpg
   - grpcurl
   - helm
