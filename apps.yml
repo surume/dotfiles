@@ -73,6 +73,7 @@ brew_cask:
   - raindropio
   - raycast
   - slack
+  - swiftbar
   - the-unarchiver
   - trailer
 

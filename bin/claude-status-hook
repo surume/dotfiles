@@ -1,0 +1,31 @@
+#!/bin/bash
+set -euo pipefail
+#
+# claude-status-hook - Write per-session Claude Code status
+#
+# Usage:
+#   echo '{"session_id":"...","cwd":"..."}' | claude-status-hook <thinking|waiting|paused|cleanup>
+#
+# Reads session_id from stdin JSON (via hooks), writes status to
+# /tmp/claude-code-sessions/<session_id>. Used by SwiftBar plugin
+# to aggregate status across multiple Claude Code sessions.
+
+STATUS_DIR="/tmp/claude-code-sessions"
+STATUS="${1:-}"
+
+INPUT=$(cat)
+
+SESSION_ID=$(echo "$INPUT" | /usr/bin/jq -r '.session_id // empty')
+CWD=$(echo "$INPUT" | /usr/bin/jq -r '.cwd // empty')
+
+[ -z "$SESSION_ID" ] && exit 0
+
+mkdir -p "$STATUS_DIR"
+
+if [ "$STATUS" = "cleanup" ]; then
+    rm -f "$STATUS_DIR/$SESSION_ID"
+else
+    BRANCH=$(git -C "$CWD" branch --show-current 2>/dev/null || true)
+    /usr/bin/jq -n --arg status "$STATUS" --arg cwd "$CWD" --arg iterm_session "${ITERM_SESSION_ID:-}" --arg branch "$BRANCH" \
+        '{status: $status, cwd: $cwd, iterm_session_id: $iterm_session, branch: $branch}' > "$STATUS_DIR/$SESSION_ID"
+fi

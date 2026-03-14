@@ -1,0 +1,35 @@
+#!/bin/bash
+set -euo pipefail
+# iterm-activate-session - Activate an iTerm2 session by its unique ID
+#
+# Usage: iterm-activate-session <ITERM_SESSION_ID>
+
+SESSION_ID="${1:-}"
+[ -z "$SESSION_ID" ] && exit 1
+
+osascript <<EOF
+tell application "iTerm"
+    set found to false
+    repeat with w in windows
+        repeat with t in tabs of w
+            repeat with s in sessions of t
+                if unique id of s is equal to "$SESSION_ID" then
+                    set found to true
+                    set foundWindow to w
+                    set foundTab to t
+                    set foundSession to s
+                    exit repeat
+                end if
+            end repeat
+            if found then exit repeat
+        end repeat
+        if found then exit repeat
+    end repeat
+
+    if found then
+        set index of foundWindow to 1
+        tell foundWindow to select foundTab
+        activate
+    end if
+end tell
+EOF

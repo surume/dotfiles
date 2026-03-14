@@ -8,6 +8,23 @@ ln -sf "$PWD/.sshrc" ~
 ln -sf "$PWD/.tmux.conf" ~
 ln -sf "$PWD/.vimrc" ~
 
+# SwiftBar
+SWIFTBAR_PLUGIN_DIR="$HOME/Library/Application Support/SwiftBar/Plugins"
+mkdir -p "$SWIFTBAR_PLUGIN_DIR"
+for plugin in "$PWD"/swiftbar/plugins/*.sh; do
+  [ -f "$plugin" ] && ln -sf "$plugin" "$SWIFTBAR_PLUGIN_DIR/"
+done
+
+# Claude Code
+ln -sf "$PWD/bin/claude-status-hook" /usr/local/bin/claude-status-hook
+mkdir -p ~/.claude/rules
+ln -sf "$PWD/.config/claude/settings.json" ~/.claude/settings.json
+ln -sf "$PWD/.config/claude/keybindings.json" ~/.claude/keybindings.json
+ln -sf "$PWD/.config/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+for rule in "$PWD"/.config/claude/rules/*.md; do
+  [ -f "$rule" ] && ln -sf "$rule" ~/.claude/rules/
+done
+
 if [ ! -e ~/.local/share/fish/config.fish ]; then
   echo " Create ~/.local/share/fish/config.fish"
 
