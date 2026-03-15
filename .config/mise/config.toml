@@ -1,6 +1,6 @@
 [tools]
-node = ['22', '18']
-flutter = "3.35.7-stable"
+node = ['24', '22']
+"vfox:mise-plugins/vfox-flutter" = "3.41.4"
 "npm:envilder" = "latest"
 
 
