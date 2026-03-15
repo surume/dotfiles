@@ -15,7 +15,7 @@
                                 ],
                                 "from": {
                                     "key_code": "i",
-                                    "modifiers": { "optional": ["any"] }
+                                    "modifiers": { "optional": ["caps_lock"] }
                                 },
                                 "to": [{ "key_code": "v" }],
                                 "type": "basic"
