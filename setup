@@ -3,6 +3,119 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# Progress UI
+STEPS=("Installing apps" "Linking dotfiles" "Setting up git" "Setting up fish" "Configuring macOS" "Installing Xcode")
+TOTAL=${#STEPS[@]}
+CURRENT_STEP=0
+SPINNER_CHARS='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+SPINNER_PID=""
+HEADER_LINES=$((TOTAL + 4))
+SETUP_LOG="/tmp/dotfiles-setup.log"
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+DIM='\033[2m'
+RESET='\033[0m'
+
+setup_scroll_region() {
+  local rows
+  rows=$(tput lines 2>/dev/null || echo 24)
+  tput clear 2>/dev/null || true
+  # Set scroll region: lines below header
+  printf '\033[%d;%dr' "$((HEADER_LINES + 1))" "$rows"
+  # Move cursor to log area
+  tput cup "$HEADER_LINES" 0 2>/dev/null || true
+}
+
+reset_scroll_region() {
+  local rows
+  rows=$(tput lines 2>/dev/null || echo 24)
+  printf '\033[;%dr' "$rows"
+}
+
+draw_header() {
+  tput sc 2>/dev/null || true
+  local cols
+  cols=$(tput cols 2>/dev/null || echo 60)
+  local bar_width=$((cols - 10))
+  local filled=$((bar_width * CURRENT_STEP / TOTAL))
+  local empty=$((bar_width - filled))
+
+  tput cup 0 0 2>/dev/null || true
+  echo ""
+  for i in "${!STEPS[@]}"; do
+    tput el 2>/dev/null || true
+    if [ "$i" -lt "$CURRENT_STEP" ]; then
+      printf '  %b✔%b %s\n' "$GREEN" "$RESET" "${STEPS[$i]}"
+    elif [ "$i" -eq "$CURRENT_STEP" ]; then
+      printf '  %b⠋%b %s...\n' "$BLUE" "$RESET" "${STEPS[$i]}"
+    else
+      printf '  %b◦ %s%b\n' "$DIM" "${STEPS[$i]}" "$RESET"
+    fi
+  done
+  tput el 2>/dev/null || true
+  printf '  %b' "$BLUE"
+  printf '━%.0s' $(seq 1 "$filled")
+  printf '%b' "$DIM"
+  printf '░%.0s' $(seq 1 "$empty")
+  printf '%b %d%%\n' "$RESET" $((CURRENT_STEP * 100 / TOTAL))
+  tput el 2>/dev/null || true
+  printf '  %b' "$DIM"
+  printf '─%.0s' $(seq 1 "$((cols - 4))")
+  printf '%b\n' "$RESET"
+  tput rc 2>/dev/null || true
+}
+
+start_spinner() {
+  (
+    local i=0
+    while true; do
+      local ch="${SPINNER_CHARS:$((i % ${#SPINNER_CHARS})):1}"
+      tput sc 2>/dev/null || true
+      tput cup $((CURRENT_STEP + 1)) 2 2>/dev/null || true
+      printf '%b%s%b' "$BLUE" "$ch" "$RESET"
+      tput rc 2>/dev/null || true
+      i=$((i + 1))
+      sleep 0.08
+    done
+  ) &
+  SPINNER_PID=$!
+}
+
+stop_spinner() {
+  if [ -n "$SPINNER_PID" ]; then
+    kill "$SPINNER_PID" 2>/dev/null || true
+    wait "$SPINNER_PID" 2>/dev/null || true
+    SPINNER_PID=""
+  fi
+}
+
+begin_step() {
+  draw_header
+  start_spinner
+}
+
+end_step() {
+  stop_spinner
+  CURRENT_STEP=$((CURRENT_STEP + 1))
+}
+
+show_complete() {
+  draw_header
+  echo ""
+  printf '  %b✔ Provision Finished! Please Restart Terminal%b\n' "$GREEN" "$RESET"
+  printf '  Log: %s\n' "$SETUP_LOG"
+  echo ""
+}
+
+cleanup() {
+  stop_spinner
+  reset_scroll_region
+  tput cnorm 2>/dev/null || true
+}
+
+trap cleanup EXIT
+
 show_banner() {
   cat << 'EOF'
     __              __         ___          ___
@@ -25,6 +138,7 @@ show_usage() {
   echo "  git       Setup git user config"
   echo "  fish      Setup Fish shell and Fisher plugins"
   echo "  mac       Apply macOS system settings"
+  echo "  xcode     Install Xcode from App Store"
 }
 
 install_apps() {
@@ -42,7 +156,6 @@ install_apps() {
 }
 
 link_dotfiles() {
-  echo "Link dotfiles"
   ln -sf "$DOTFILES_DIR/.config" ~
   ln -sf "$DOTFILES_DIR/.sshrc" ~
   ln -sf "$DOTFILES_DIR/.vimrc" ~
@@ -101,7 +214,6 @@ setup_fish() {
 }
 
 setup_mac() {
-  echo "Configure macOS settings"
   m dock --autohide enable
   m dock --position left
   m dock --showdelay 0.2
@@ -119,24 +231,44 @@ setup_mac() {
   defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 3
 }
 
+install_xcode() {
+  mas install 497799835
+  sudo xcodebuild -license accept 2>/dev/null || true
+}
+
+run_step() {
+  begin_step
+  "$@" 2>&1 | tee -a "$SETUP_LOG"
+  end_step
+}
+
 run_all() {
   show_banner
-  install_apps
-  link_dotfiles
-  setup_git
-  setup_fish
-  setup_mac
-  echo ""
-  echo "Provision Finished! Please Restart Terminal"
+  sleep 1
+  : > "$SETUP_LOG"
+  tput civis 2>/dev/null || true
+  setup_scroll_region
+
+  run_step install_apps
+  run_step link_dotfiles
+  run_step setup_git
+  run_step setup_fish
+  run_step setup_mac
+  run_step install_xcode
+
+  reset_scroll_region
+  show_complete
+  tput cnorm 2>/dev/null || true
 }
 
 case "${1:-}" in
-  apps) install_apps ;;
-  link) link_dotfiles ;;
-  git)  setup_git ;;
-  fish) setup_fish ;;
-  mac)  setup_mac ;;
-  help) show_usage ;;
-  "")   run_all ;;
-  *)    echo "Unknown command: $1" && show_usage && exit 1 ;;
+  apps)  install_apps ;;
+  link)  link_dotfiles ;;
+  git)   setup_git ;;
+  fish)  setup_fish ;;
+  mac)   setup_mac ;;
+  xcode) install_xcode ;;
+  help)  show_usage ;;
+  "")    run_all ;;
+  *)     echo "Unknown command: $1" && show_usage && exit 1 ;;
 esac

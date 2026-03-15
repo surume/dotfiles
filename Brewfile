@@ -17,6 +17,7 @@ brew "eksctl"
 brew "eza"
 brew "fastlane"
 brew "fd"
+brew "firebase-cli"
 brew "fish"
 brew "fzf"
 brew "gh"
@@ -86,3 +87,4 @@ cask "trailer"
 # mas "1Password", id: 443987910
 mas "Amphetamine", id: 937984704
 mas "RunCat", id: 1429033973
+mas "Xcode", id: 497799835
