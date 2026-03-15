@@ -61,7 +61,9 @@ link_dotfiles() {
   done
 
   # Claude Code
-  ln -sf "$DOTFILES_DIR/bin/claude-status-hook" /opt/homebrew/bin/claude-status-hook
+  for bin in "$DOTFILES_DIR"/bin/*; do
+    [ -f "$bin" ] && ln -sf "$bin" /opt/homebrew/bin/
+  done
   mkdir -p ~/.claude/rules
   ln -sf "$DOTFILES_DIR/.config/claude/settings.json" ~/.claude/settings.json
   ln -sf "$DOTFILES_DIR/.config/claude/keybindings.json" ~/.claude/keybindings.json

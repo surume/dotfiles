@@ -1,0 +1,4 @@
+#!/bin/bash
+input=$(cat)
+result=$(/opt/homebrew/bin/trans -b :ja <<< "$input" 2>&1)
+tmux display-popup -w 60% -h 40% -E "echo '$result'; read -n 1"
