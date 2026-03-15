@@ -61,7 +61,6 @@ brew "yq"
 
 # Cask
 cask "appcleaner"
-cask "bitwarden"
 cask "brave-browser"
 cask "claude-code"
 cask "codex"
@@ -86,5 +85,6 @@ cask "trailer"
 # App Store
 # mas "1Password", id: 443987910
 mas "Amphetamine", id: 937984704
+mas "Bitwarden", id: 1352778147
 mas "RunCat", id: 1429033973
 mas "Xcode", id: 497799835
