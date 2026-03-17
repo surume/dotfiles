@@ -166,6 +166,12 @@ link_dotfiles() {
   ln -sf "$DOTFILES_DIR/.config/Code/User/keybindings.json" "$vscode_dir/keybindings.json"
   ln -sf "$DOTFILES_DIR/.config/Code/User/settings.json" "$vscode_dir/settings.json"
 
+  # Cursor (share VSCode settings)
+  local cursor_dir="$HOME/Library/Application Support/Cursor/User"
+  mkdir -p "$cursor_dir"
+  ln -sf "$DOTFILES_DIR/.config/Code/User/keybindings.json" "$cursor_dir/keybindings.json"
+  ln -sf "$DOTFILES_DIR/.config/Code/User/settings.json" "$cursor_dir/settings.json"
+
   # SwiftBar
   local swiftbar_dir="$HOME/Library/Application Support/SwiftBar/Plugins"
   mkdir -p "$swiftbar_dir"
