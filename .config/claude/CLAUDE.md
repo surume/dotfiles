@@ -35,3 +35,11 @@
 - テストは t_wada 流 TDD に従う（rules/tdd-twada.md 参照）
 - エラーが出たら根本原因を調査する。同じコマンドのリトライは禁止
 - 並列実行できるタスクは Agent を使って並列化する
+
+# Lint
+
+- プロジェクトにリンターが存在する場合、commit 前に必ず lint を実行する
+- error だけでなく warning・info レベルもすべて修正する
+- リンターの例: eslint, biome, rubocop, golangci-lint, ruff, shellcheck, stylelint, hadolint 等
+- lint 設定ファイル（.eslintrc, biome.json, .golangci.yml 等）の存在で判断する
+- 自分が変更したファイルだけでなく、変更の影響範囲に lint を通す
